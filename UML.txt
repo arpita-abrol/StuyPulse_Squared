@@ -1,4 +1,14 @@
-lingering_pirates
+ _       _________ _        _______  _______  _______ _________ _        _______       _______ _________ _______  _______ _________ _______  _______ 
+( \      \__   __/( (    /|(  ____ \(  ____ \(  ____ )\__   __/( (    /|(  ____ \     (  ____ )\__   __/(  ____ )(  ___  )\__   __/(  ____ \(  ____ \
+| (         ) (   |  \  ( || (    \/| (    \/| (    )|   ) (   |  \  ( || (    \/     | (    )|   ) (   | (    )|| (   ) |   ) (   | (    \/| (    \/
+| |         | |   |   \ | || |      | (__    | (____)|   | |   |   \ | || |           | (____)|   | |   | (____)|| (___) |   | |   | (__    | (_____ 
+| |         | |   | (\ \) || | ____ |  __)   |     __)   | |   | (\ \) || | ____      |  _____)   | |   |     __)|  ___  |   | |   |  __)   (_____  )
+| |         | |   | | \   || | \_  )| (      | (\ (      | |   | | \   || | \_  )     | (         | |   | (\ (   | (   ) |   | |   | (            ) |
+| (____/\___) (___| )  \  || (___) || (____/\| ) \ \_____) (___| )  \  || (___) |     | )      ___) (___| ) \ \__| )   ( |   | |   | (____/\/\____) |
+(_______/\_______/|/    )_)(_______)(_______/|/   \__/\_______/|/    )_)(_______)_____|/       \_______/|/   \__/|/     \|   )_(   (_______/\_______)
+                                                                                (_____)                                                              
+
+
 APCS1 Final Project
 
 
@@ -8,7 +18,7 @@ POKEMON UML Diagram
 DRIVER FILE (PokemonDriver.java):
 Summary: runs the game
 
-Status: 
+Status: Haven't started
 
 
 
@@ -25,22 +35,49 @@ Methods:
 
 
 TRAINER FILE (Trainer.java):
-Summary: create your character, determine what you can do
+Summary: Creates your character. You start out with basic stats (money, Pokeballs, Potions). 
+As you catch more Pokemon, the number of Pokemon you own and inventory will increase. 
 
 Status: in-progress
 
 Instance vars:
--
+-ArrayList<Pokemon> onMePokemon- the Pokemon you currently can fight with (6 max, start with 0)
+-ArrayList<Pokemon> inLabPokemon- all the Pokemon you caught that aren't on you (start with 0)
+-ArrayList Pokeballs- all the Pokeballs you have (starts with [Pokeball: , 20, Great Ball: , 10, Ultra Ball: , 0, Master Ball: , 0])
+-ArrayList Potions- all the Potions you have (starts with [Potion: , 20, Super Potion: , 10, Hyper Potion: , 5, Full Potion: , 0])
+-int Money- all the money you have (start with 500)
+-int numPokeOnMe- number of Pokemon you are carrying with you (max 6, start with 0)
+-int numPokeInLab- number of Pokemon you have in your lab (start with 0)
 
 Methods:
--
-
-
+Accessors
+-private String getName()- returns your's name
+-private ArrayList getPokeOnMe()- returns ArrayList of all the Pokemon you're carrying
+-private int getNumPokeOnMe()- returns the number of Pokemon you're carrying
+-private ArrayList getPokeInLab()- returns ArrayList of all the Pokemon in your lab
+-private int getNumPokeInLab()- returns the number of Pokemon in your lab
+-private String getPotions()- returns string of all your potions
+-private String getPokeballs()- returns string of all your potions
+-private int getMoney()- retusn amount of money you have
+Mutators
+-private void setPotions(int name, int num)-increases the Potion at name-1 (name of potion) by num. 
+	The trainer will be shown 1: Potion 2: Super Potion 3: Hyper Potion 4: Full Potion and he/she will
+	choose a number(name) and amount(num).
+-private voidsetPokeballs(int name, int num)-increases the Pokeball at name-1 (name of potion) by num. 
+	The trainer will be shown 1: Pokeball 2: Great Ball 3: Ultra Ball 4: Master Ball and he/she will
+	choose a number(name) and amount(num).
+-private void setMoney(newMoney)- changes Money to newMoney
+Others
+-private void createPokeballs()- gives Trainer basic Pokeball stats
+-private void createPotions()- gives Trainer basic Potion stats
+-private void catchPokemon(Pokemon newPokemon)- send newly caught Pokemon to backpack or lab
 
 ADVENTURE MODE (AdventureMode.java):
 Summary: 'mini-game'- go through and battle pokemon and other trainers
 
-Status:  
+Status:
+-accessors and mutators are done
+-need to work on a throw Pokeball method and use potion method
 
 
 
