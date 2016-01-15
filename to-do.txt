@@ -1,0 +1,41 @@
+ligering_pirates
+
+
+TO-DO LIST:
+
+
+TASK:
+<words>
+DEADLINE:
+2016-01-XX
+
+
+
+TASK:
+create all CSV files needed
+
+DEADLINE:
+2016-01-15
+
+
+
+TASK:
+
+
+DEADLINE:
+
+
+
+TASK:
+base working version
+
+DEADLINE:
+2016-01-21
+
+
+
+TASK:
+extra features
+
+DEALINE:
+2016-01-?? (day before due)

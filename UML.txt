@@ -1,0 +1,67 @@
+lingering_pirates
+APCS1 Final Project
+
+
+POKEMON UML Diagram
+
+
+DRIVER FILE (PokemonDriver.java):
+Summary: runs the game
+
+Status: 
+
+
+
+POKEMON FILE (Pokemon.java):
+Summary: create pokemon, determine what Pokemon can do
+
+Status: in-progress
+Instance Vars:
+-name, type, level, attack, defense, HP, speed, moves (4 max)
+
+Methods: 
+-
+
+
+
+TRAINER FILE (Trainer.java):
+Summary: create your character, determine what you can do
+
+Status: in-progress
+
+Instance vars:
+-
+
+Methods:
+-
+
+
+
+ADVENTURE MODE (AdventureMode.java):
+Summary: 'mini-game'- go through and battle pokemon and other trainers
+
+Status:  
+
+
+
+GYM BATTLE File (Gyms.java):
+Summary: create gyms
+
+Status: 
+
+
+
+TOWN FILE (Town.java):
+Summary: creates and control towns
+
+Status: 
+
+
+
+
+
+
+
+
+Thoughts: 
+-make trainer an abstact file, and have three spawns: your character, gym leaders, henchmen, and random trainers
