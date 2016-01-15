@@ -38,9 +38,12 @@ TRAINER FILE (Trainer.java):
 Summary: Creates your character. You start out with basic stats (money, Pokeballs, Potions). 
 As you catch more Pokemon, the number of Pokemon you own and inventory will increase. 
 
-Status: in-progress
+Status: 
+-accessors and mutators are done
+-need to work on a throw Pokeball method and use potion method
 
 Instance vars:
+-String TrainerName- your name
 -ArrayList<Pokemon> onMePokemon- the Pokemon you currently can fight with (6 max, start with 0)
 -ArrayList<Pokemon> inLabPokemon- all the Pokemon you caught that aren't on you (start with 0)
 -ArrayList Pokeballs- all the Pokeballs you have (starts with [Pokeball: , 20, Great Ball: , 10, Ultra Ball: , 0, Master Ball: , 0])
@@ -51,7 +54,7 @@ Instance vars:
 
 Methods:
 Accessors
--private String getName()- returns your's name
+-private String getName()- returns your name
 -private ArrayList getPokeOnMe()- returns ArrayList of all the Pokemon you're carrying
 -private int getNumPokeOnMe()- returns the number of Pokemon you're carrying
 -private ArrayList getPokeInLab()- returns ArrayList of all the Pokemon in your lab
@@ -72,31 +75,27 @@ Others
 -private void createPotions()- gives Trainer basic Potion stats
 -private void catchPokemon(Pokemon newPokemon)- send newly caught Pokemon to backpack or lab
 
+
+
 ADVENTURE MODE (AdventureMode.java):
 Summary: 'mini-game'- go through and battle pokemon and other trainers
 
-Status:
--accessors and mutators are done
--need to work on a throw Pokeball method and use potion method
+Status: Mapping out the towns
+
 
 
 
 GYM BATTLE File (Gyms.java):
 Summary: create gyms
 
-Status: 
+Status: Haven't started yet
 
 
 
 TOWN FILE (Town.java):
 Summary: creates and control towns
 
-Status: 
-
-
-
-
-
+Status: Mapping out the towns
 
 
 
