@@ -16,42 +16,13 @@
 \____/\____\\__/  \____/\____/\____\
 
 
-01-07-16:
-
-Arpita: 
--worked on project proposal
-
-Ling:
-
-
-
-01-08-16:
+01-07-16 to 01-10-16:
 
 Arpita: 
 -worked on project proposal
 
 Ling:
 -worked on project proposal
-
-
-
-
-01-09-16:
-
-Arpita: 
--worked on project proposal
-
-Ling:
-
-
-
-
-01-10-16:
-
-Arpita: 
--worked on proejct proposal/design
-
-Ling:
 
 
 
@@ -70,7 +41,7 @@ Ling:
 
 Arpita: 
 -continued creating needed CSV files
--began abstract class Pokemon
+-began class Pokemon
 
 Ling:
 
@@ -80,7 +51,7 @@ Ling:
 01-13-16:
 
 Arpita: 
--worked on abstract class pokemon
+-worked on class pokemon
 
 Ling:
 -created Trainer class
@@ -91,7 +62,8 @@ Ling:
 01-14-16:
 
 Arpita:
-
+-worked on Pokemon.java
+-worked on UML diagram, flowchart, to-do list
 Ling:
 
 

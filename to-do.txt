@@ -23,9 +23,8 @@ DEADLINE:
 
 
 TASK:
--create all CSV files needed
--Finish class Trainer accessors and mutators
--Start driver class
+-finish UML diagram
+-finish flowchart
 
 DEADLINE:
 2016-01-15
@@ -33,17 +32,39 @@ DEADLINE:
 
 
 TASK:
+-create all CSV files needed
+-Finish class Trainer accessors and mutators
+-Finish class Pokemon basic version
+-Start driver class
+
+DEADLINE:
+2016-01-16
+
+
+
+TASK:
 -Have working chooseStarter() method in Trainer.java
+-begin creating enemy trainers and gym leaders
+-basic functionality of AdventureMode
 
 DEADLINE:
 2016-01-18
 
 
+
 TASK:
-base working version
+-Town class working
 
 DEADLINE:
-2016-01-21
+2016-01-20
+
+
+
+TASK:
+-base working version
+
+DEADLINE:
+2016-01-22
 
 
 
