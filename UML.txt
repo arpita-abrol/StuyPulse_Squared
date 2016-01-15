@@ -15,6 +15,7 @@ APCS1 Final Project
 POKEMON UML Diagram
 
 
+
 DRIVER FILE (PokemonDriver.java):
 Summary: runs the game
 
@@ -26,11 +27,42 @@ POKEMON FILE (Pokemon.java):
 Summary: create pokemon, determine what Pokemon can do
 
 Status: in-progress
+
 Instance Vars:
--name, type, level, attack, defense, HP, speed, moves (4 max)
+-private String _name;     //pokemon name
+-private String _type;     //pokemon type
+-private int _level;       //level of pokemon
+-private int _attack;      //pokemon attack--determines attack strength
+-private int _defense;     //pokemon defense--determines damage taken
+-private int _HP;          //pokemon HP--determines max damage
+-private int _speed;       //pokemon speed--determines first attacker
+-private ArrayList<Objects>  _moves;  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
 
 Methods: 
--
+Constructors:
+- public Pokemon( String name )
+- public Pokemon( String name, int level )
+- public Pokemon( String name, int level, ArrayList<Objects> moveList )
+Accessors: 
+- public String getName()
+- public String getType(
+- public int getLevel()
+- public int getAttack()
+- public int getDefense()
+- public int getHP()
+- public int getSpeed()
+Mutators:
+- public void setLevel( int newLevel )
+- public void setAttack( int newAttack )
+- public void setDefense( int newDefense )
+- public void setHP( int newHP )
+- public void setSpeed( int newSpeed 
+- public String evolve()
+- public boolean isAlive()
+- public int attack( Pokemon opp )
+- public String about( String pokemonName )
+- public String toString()
+
 
 
 
@@ -82,22 +114,56 @@ Summary: 'mini-game'- go through and battle pokemon and other trainers
 
 Status: Mapping out the towns
 
+Insance vars:
+- private int _town1
+- private int _town2
+- private int _maxMove
+- private int _move
+
+Methods:
+- public String forward()
+- public String battle()
 
 
 
-GYM BATTLE File (Gyms.java):
+GYM BATTLE File (Gym.java):
 Summary: create gyms
 
 Status: Haven't started yet
+
+Insance vars:
+-String _gymLeader
+-String[][] _pokemon
+-int _henchmen
+-boolean _defeated
+
+Methods:
+- public String battleHenchmen()
+- public String battleLeader()
 
 
 
 TOWN FILE (Town.java):
 Summary: creates and control towns
 
-Status: Mapping out the towns
+Statue: not started
+
+Insance vars:
+- private String _name
+- private int _townNum
+
+Methods:
+- public String shop()
+- public String heal()
+- public String changePokemon()
+- public String gymBattle( int townNum )
+- public String toString()
 
 
 
-Thoughts: 
--make trainer an abstact file, and have three spawns: your character, gym leaders, henchmen, and random trainers
+
+
+
+Thoughts/ideas: 
+-make trainer an abstact file, and have four subs: your character, gym leaders, henchmen, and random trainers
+-hardcode gym leaders into towns, abstract
