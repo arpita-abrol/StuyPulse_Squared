@@ -65,9 +65,9 @@ public abstract class Pokemon {
 
 
     //other methods
-    public String evolve() {
+    /*public String evolve() {
 	
-    }
+      }*/
 
     
     //abstract methods
