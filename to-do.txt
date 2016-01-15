@@ -33,10 +33,10 @@ DEADLINE:
 
 
 TASK:
-
+-Have working chooseStarter() method in Trainer.java
 
 DEADLINE:
-
+2016-01-18
 
 
 TASK:
