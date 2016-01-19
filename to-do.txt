@@ -43,7 +43,6 @@ DEADLINE:
 
 
 TASK:
--Have working chooseStarter() method in Trainer.java
 -begin creating enemy trainers and gym leaders
 -basic functionality of AdventureMode
 
@@ -54,6 +53,7 @@ DEADLINE:
 
 TASK:
 -Town class working
+-Have working chooseStarter() method in Trainer.java
 
 DEADLINE:
 2016-01-20
