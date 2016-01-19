@@ -65,8 +65,8 @@ Arpita:
 -worked on Pokemon.java
 -worked on UML diagram, flowchart, to-do list
 Ling:
-
-
+-worked on Trainer file in the UML diagram
+-added things to the to-do list
 
 
 01-15-16:
@@ -74,6 +74,8 @@ Ling:
 Arpita:
 
 Ling:
+-added test cases for money in Trainer
+-changed the starting stats for Potion and Pokeball in Trainer
 
 
 
