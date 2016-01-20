@@ -141,7 +141,7 @@ public class Trainer{
 	    throwPokeball(pokemonToCatch);
 	    }
 	else{
-	    setPokeballs(PokeChoice, (Integer)(Pokeballs.get(PokeChoice*2-1))-1);
+	    setPokeballs(PokeChoice, -1);
 	    if (blinkingPokeball(pokemonToCatch, PokeChoice)){
 		System.out.println("You caught a  "+pokemonToCatch.getName()+"!");
 		catchPokemon(pokemonToCatch);
