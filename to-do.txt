@@ -9,67 +9,56 @@
                                                                                 (_____)                                                              
 
 
- ____  __       ____   __     __    __  ____  ____  _   
-(_  _)/  \  ___(    \ /  \   (  )  (  )/ ___)(_  _)(_)  
-  )( (  O )(___)) D ((  O )  / (_/\ )( \___ \  )(   _   
- (__) \__/     (____/ \__/   \____/(__)(____/ (__) (_) 
+ ____  _____     ____  _____    __    ____  ___  ____   
+(_  _)(  _  )___(  _ \(  _  )  (  )  (_  _)/ __)(_  _)()
+  )(   )(_)((___))(_) ))(_)(    )(__  _)(_ \__ \  )(    
+ (__) (_____)   (____/(_____)  (____)(____)(___/ (__) ()
 
 
-TASK:
-<words>
-DEADLINE:
-2016-01-XX
-
-
-
-TASK:
+ ____   __    ___  _  _  ___    ____  _  _    __    _  __  ___ 
+(_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )/  )| __)
+  )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  )( |__ \
+ (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (__)(___/
 -finish UML diagram
 -finish flowchart
 
-DEADLINE:
-2016-01-15
+ ____   __    ___  _  _  ___    ____  _  _    __    _  __   _  
+(_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )/  ) / ) 
+  )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  )( / _ \
+ (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (__)\___/
+-create all CSV files needed BEING WORKED ON
+-Finish class Trainer accessors and mutators DONE
+-Finish class Pokemon basic version DONE
+
+ ____   __    ___  _  _  ___    ____  _  _    __    _  __  ___ 
+(_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )/  )( _ )
+  )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  )( / _ \
+ (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (__)\___/
+-begin creating enemy trainers and gym leaders BEING WORKED ON
+-basic functionality of AdventureMode BEING WORKED ON
 
 
-
-TASK:
--create all CSV files needed
--Finish class Trainer accessors and mutators
--Finish class Pokemon basic version
+ ____   __    ___  _  _  ___    ____  _  _    __    _  ___   ___  
+(_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )(__ \ / _ \ 
+  )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  / _/( (_) )
+ (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (____)\___/ 
+-Town class working
+-Have working chooseStarter() method in Trainer.java DONE-1/19
 -Start driver class
 
-DEADLINE:
-2016-01-16
 
-
-
-TASK:
--begin creating enemy trainers and gym leaders
--basic functionality of AdventureMode
-
-DEADLINE:
-2016-01-18
-
-
-
-TASK:
--Town class working
--Have working chooseStarter() method in Trainer.java
-
-DEADLINE:
-2016-01-20
-
-
-
-TASK:
+ ____   __    ___  _  _  ___    ____  _  _    __    _  ___   ___  
+(_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )(__ \ (__ \ 
+  )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  / _/  / _/ 
+ (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (____)(____)
 -base working version
-
-DEADLINE:
-2016-01-22
-
+-Driver- allow Trainer to choose Pokemon
+-Some sort of a map that can be traveled
 
 
-TASK:
-extra features
 
-DEALINE:
-2016-01-?? (day before due)
+ ____  _  _  ____  ____    __      ____  ____    __   ____  __  __  ____  ____  ___ 
+( ___)( \/ )(_  _)(  _ \  /__\    ( ___)( ___)  /__\ (_  _)(  )(  )(  _ \( ___)/ __)
+ )__)  )  (   )(   )   / /(__)\    )__)  )__)  /(__)\  )(   )(__)(  )   / )__) \__ \
+(____)(_/\_) (__) (_)\_)(__)(__)  (__)  (____)(__)(__)(__) (______)(_)\_)(____)(___/
+
