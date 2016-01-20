@@ -79,7 +79,6 @@ Ling:
 
 
 
-
 01-16-16:
 
 Arpita:
@@ -112,6 +111,10 @@ Ling:
 Arpita:
 
 Ling:
+-added throwingPokeball() to Trainer. It allows the Trainer to throw a Pokeball
+-added blinkingPokeball() to Trainer. Calculates the success rates and return whether you caught the Pokemon or not
+-added chooseStarter() to Trainer. Allows you to choose from 1 of 3 starter Pokemon
+-added MaxHP instance var/mutator/accessor to Pokemon. Used to test the new methods in Trainer
 
 
 
