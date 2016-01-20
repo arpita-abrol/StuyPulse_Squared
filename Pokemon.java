@@ -13,8 +13,10 @@ public class Pokemon {
     private int _attack;      //pokemon attack--determines attack strength
     private int _defense;     //pokemon defense--determines damage taken
     private int _HP;          //pokemon HP--determines max damage
+    private int _MaxHP;          //pokemon HP--determines max damage
     private int _speed;       //pokemon speed--determines first attacker
     private ArrayList<Objects>  _moves;  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
+    
     //private String _nickname; ~~EXTRA FEATURE--TBI  give your pokemon a nickname!
     //private String _object;  ~~EXTRA FEATURE--TBI   objects your pokemon can hold
 
@@ -68,6 +70,10 @@ public class Pokemon {
 	return _HP;
     }
 
+    public int getMaxHP() {
+	return _MaxHP;
+    }
+    
     public int getSpeed() {
 	return _speed;
     }
@@ -90,6 +96,10 @@ public class Pokemon {
 	_HP = newHP;
     }
 
+    public void setMaxHP( int newHP ) {
+	_MaxHP = newHP;
+    }
+    
     public void setSpeed( int newSpeed ) {
 	_speed = newSpeed;
     }
@@ -128,8 +138,8 @@ public class Pokemon {
     }
 
     public String toString() {
-	String fin = _name;
-	fin += "\tLevel: " + _level + "\nAttack: " + _attack + "\tDefense: " + _defense;
+	String fin = "\n"+_name;
+	fin += "\tLevel: " + _level + "\tAttack: " + _attack + "\tDefense: " + _defense;
 	return fin;
     }
 
