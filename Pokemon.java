@@ -9,6 +9,7 @@ public class Pokemon {
     private String _name;     //pokemon name
     private String _type;     //pokemon type
     private int _level;       //level of pokemon
+    private int _num;         //pokedex number
     private int[] _attack;      //pokemon attack--determines attack strength
     private int[] _defense;     //pokemon defense--determines damage taken
     private int[] _HP;          //pokemon HP--determines max damage
@@ -24,6 +25,7 @@ public class Pokemon {
 	_name = name;
 	//_type = ; //GET FROM CSV
 	_level = 1;
+	//_num = ; //get from csv
 	//int[] _attack = ; //GET FROM CSV
 	//int[] _defense = ; //GET FROM CSV
 	//int[] _HP = ; //GET FROM CSV
@@ -56,6 +58,10 @@ public class Pokemon {
     
     public int getLevel() {
 	return _level;
+    }
+
+    public int getNum() {
+	return _num;
     }
 
     public int getAttackT() {
@@ -104,6 +110,10 @@ public class Pokemon {
         _level = newLevel;
     }
 
+    public void setNum( int newNum ) {
+	_num = newNum;
+    }
+
     public void setAttackT( int newAttack ) {
 	_attack[0] = newAttack;
     }
@@ -147,7 +157,7 @@ public class Pokemon {
     public void setExpT( int newExp ) {
 	_exp[0] = newExp;
 	if( getExpT() >= getExp() ) {
-	    evolve();
+	    levelUp();
 	}
 	if( getLevel() == 100 ) {
 	    _exp[0] = 0;
@@ -164,17 +174,16 @@ public class Pokemon {
 
 
     //other methods
-    public void evolve() {
-	if( getLevel() >= 100 ) {
-	    System.out.println( "Max level reached" );
+    public void levelUp() {
+	if( getLevel() < 100 ) {
+	    _level += 1;
+	    setAttack( getAttack() + (int)(Math.random() * 5) );
+	    setDefense( getDefense() + (int)(Math.random() * 5) );
+	    setHP( getHP() + (int)(Math.random() * 3) );
+	    setSpeed( getSpeed() + (int)(Math.random() * 3) );
+	    setExp( _level * _level * _level );
+	    System.out.println( _name + " is now at level " + _level + "!");
 	}
-        _level += 1;
-	setAttack( getAttack() + (int)(Math.random() * 5) );
-	setDefense( getDefense() + (int)(Math.random() * 5) );
-	setHP( getHP() + (int)(Math.random() * 3) );
-	setSpeed( getSpeed() + (int)(Math.random() * 3) );
-	setExp( _level * _level * _level );
-	System.out.println( _name + " is now at level " + _level + "!");
     }
 
     //returns if pokemon is alive
