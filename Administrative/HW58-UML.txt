@@ -95,6 +95,7 @@ Other methods:
 - public int attack( Pokemon opp )
 - public String about( String pokemonName )
 - public String toString()
+- public void normalize()
 
 
 

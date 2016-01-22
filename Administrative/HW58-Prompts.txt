@@ -1,22 +1,38 @@
-Team lingering_pirates- Arpita Abrol and Ling Cheng
+Team lingering_pirates--Arpita Abrol and Ling Cheng
 APCS1 pd10
 HW58 -- Checking In
 2016-01-21
 
+
 Obstacles Overcome (and how!)
--There were problems with pushing files to GitHub and merging files, and files were deleted. 
--My partner and I both had backup files in case it happens again.
--For a while things were going slowly since the CSV files were taking a while to be prepared and they were needed to test the methods in order to proceed.
--We used temperary numbers and methods to test existing methods and changed the methods to match the new CSV files later.
+- There were problems with pushing files to GitHub and merging files, and files were deleted. 
+--- Solution: we both had backup files in case it happens again.
+--- Solution: we took advantage of Github's automatic backups and got our files from there
+- For a while things were going slowly since the CSV files were taking a while to be prepared and they were needed to test the methods in order to proceed.
+--- We used temperary numbers and methods to test existing methods and changed the methods to match the new CSV files later.
+- There was a problem with a corrupted file of a sort. After committing and pushing it to Github, some odd lines were added in (about 6 different ones) and the file could no longer be compilied (even after those lines were moved- invisible characters?).
+--- Took advantage of Github automatic backups, and retrieved the file from a previous version (couldn't revert back - error committing files with this issue).
+- Figuring out what we want to do (class hierarchy and methods needed)
+--- We looked at other sources for inspiration, such as YoRPG and the Pokemon Games (specifically, Pokemon Red/Blue/Yellow for GameBoy).
+
 
 Unresolved Issues
--We might not be able to do everything we wanted since there isn't enough time.
+- We might not be able to do everything we wanted since there isn't enough time.
+- allowing certain functions to be called anywhere in the Driver file--do we want that? And how would we apply it?
+- dealing with evolving via stones (how to distribute stones? randomly? prizes?)
+
 
 Cool Stuff Learned (conceptual and/or practical)
--How to use CSV files in Java
+- How to use CSV files in Java--reading, parsing, etc.
+
 
 Mid-development Design Changes (and why!)
--Might have to decrease the maps/gym leaders/ quests since we don't have as much time as we would like
+- Might have to decrease the maps/gym leaders/ quests
+--- We don't have as much time as we would like to implement everything
+
 
 Lessons Learned (...which you might apply to future projects, CS or otherwise)
--Always communicate with your partner to make sure when needs to be done and confirm if there are any changes in existing files
+- Time Management is KEY
+- Cloud Storage (like Dropbox) is very helpful. Backup your files frequently, even if you don't commit (also: commit often!). 
+- Always communicate with your partner to make sure when needs to be done and confirm if there are any changes in existing files.
+- Murphey's Law...
