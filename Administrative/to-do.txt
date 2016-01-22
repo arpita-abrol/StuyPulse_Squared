@@ -43,9 +43,9 @@
   )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  / _/( (_) )
  (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (____)\___/ 
 -Town class working
--Have working chooseStarter() method in Trainer.java DONE-1/19
--Start driver class DONE
--Trainer- seeStats() 
+-Have working chooseStarter() method in Trainer.java DONE
+-Start driver class WORK IN PROGRESS
+-Trainer- seeStats() HAVEN'T STARTED
 
  ____   __    ___  _  _  ___    ____  _  _    __    _  ___   ___  
 (_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )(__ \ (__ \ 
@@ -54,8 +54,8 @@
 -base working version
 -Trainer- allow Trainer to choose Pokemon DONE
 -Some sort of a map that can be traveled
--Trainer- be able to use potions DONE
--Trainer- shop()
+-Trainer- be able to use potions NEEDS TO BE DEBUGGED
+-Trainer- buyPotions(), buyPokeballs(), shop() WORK IN PROGRESS
 
 
  ____  _  _  ____  ____    __      ____  ____    __   ____  __  __  ____  ____  ___ 
