@@ -105,6 +105,8 @@ Ling:
 Arpita:
 
 Ling:
+-created Driver class
+-Trainer- started on usePotion()
 
   __    _  ___   __    _  __   _  
  /  )  / )(__ \ /  )  / )/  ) / ) 
@@ -114,6 +116,9 @@ Ling:
 Arpita:
 
 Ling:
+-Trainer- Finished usePotions()
+-Trainer- addressed different cases in throwPokeball() and chooseStarter()
+-Trainer- added getName(), getAmount(), addHP(), and isNum()
 
 
   __    _  ___   ___     _  __   _  
