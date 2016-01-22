@@ -8,7 +8,7 @@ public class Trainer{
     private ArrayList<Pokemon> onMePokemon;//Array of the Pokemon on you
     private ArrayList<Pokemon> inLabPokemon;//Array of Pokemon stored in the lab
     private ArrayList Pokeballs;//Array of your Pokeballs-Pokeball, Great Ball, Ultra Ball, Master Ball
-    private ArrayList Potions;//Array of your Potions- Potion, Super Potion, Hyper Potion,  Full Potion
+    private ArrayList Potions;//Array of your Potions- Potion, Super Potion, Hyper Potion,  Max Potion
     private int PokeDollars;
     private int numPokeOnMe;
     private int numPokeInLab;
@@ -92,7 +92,7 @@ public class Trainer{
       1: Potion
       2: Super Potion
       3: Hyper Potion
-      4: Full Potion
+      4: Max Potion
       choice is the number they choose and num is the amount they bought*/
     public void setPotions(int choice, int num){
 	Potions.set(choice*2-1, (getAmount(Potions, choice)+num));
@@ -124,7 +124,7 @@ public class Trainer{
 	Pokeballs.add("Master");
 	Pokeballs.add(0);
     }
-    //Trainers starts with 10 Potions, 5 Super Potions, 0 Hyper Potions, and 0 Full Potions
+    //Trainers starts with 10 Potions, 5 Super Potions, 0 Hyper Potions, and 0 Max Potions
     public void createPotions(){
 	Potions= new ArrayList();
 	Potions.add("Potions");
@@ -133,7 +133,7 @@ public class Trainer{
 	Potions.add(5);
 	Potions.add("Hyper Potions");
 	Potions.add(0);
-	Potions.add("Full Potions");
+	Potions.add("Max Potions");
 	Potions.add(0);
     }
 
@@ -240,7 +240,7 @@ public class Trainer{
     }
 
     
-    //1= potion 20HP, 2= Super Potion 50HP, 3= Hyper Potion 200HP, 4= Full Potion
+    //1= potion 20HP, 2= Super Potion 50HP, 3= Hyper Potion 200HP, 4= Max Potion
     public void usePotions(Pokemon pokemon){
 	System.out.println("Which potion would you like to use?");
 	System.out.println(getPotionsStr());
@@ -306,11 +306,11 @@ public class Trainer{
 
     public void buyPotions(){
 	System.out.println("Which potion would you like to buy?");
-	System.out.println("Name\tHealing\tCost");
-	System.out.println("1: Potion\t20HP\t300PokeDollars");
-	System.out.println("2: Super Potion\t50HP\t700PokeDollars");
-	System.out.println("3: Hyper Potion\t200HP\t1200PokeDollars");
-	System.out.println("4: Max Potion\tMaxHP\t2500PokeDollars");
+	System.out.println("Name      \tHealing   \tCost");
+	System.out.println("1: Potion\t20HP     \t300PokeDollars");
+	System.out.println("2: Super Potion\t50HP     \t700PokeDollars");
+	System.out.println("3: Hyper Potion\t200HP     \t1200PokeDollars");
+	System.out.println("4: Max Potion\tMaxHP     \t2500PokeDollars");
 	System.out.println("5: Exit Shop");
 	String choiceStr= Keyboard.readString();
 	
@@ -361,7 +361,7 @@ public class Trainer{
     public static void main(String[] args){
 	Trainer test= new Trainer("Ling");
 	
-	System.out.println("Your name is Trainer "+test.getTrainerName());
+	/*System.out.println("Your name is Trainer "+test.getTrainerName());
 	System.out.println("You have "+test.getNumPokeOnMe()+" Pokemon on you");
 	System.out.println("You have a total of "+(test.getNumPokeOnMe()+test.getNumPokeInLab()) + " Pokemon");	
 	System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
@@ -394,9 +394,13 @@ public class Trainer{
 
 	test.usePotions(test.getPokeOnMe().get(0));
 	System.out.println(test.getPokeOnMe().get(0).getHP());
-    
+	*/
 	/*System.out.println("Should be Potions: "+test.getName(test.getPotions(), 1));
 	  System.out.println("Should be 20: "+test.getAmount(test.getPotions(), 1));*/
+
+	test.buyPotions();
+	test.checkBag();
     }
+    
 
 }
