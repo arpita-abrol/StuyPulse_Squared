@@ -204,8 +204,8 @@ public class Pokemon {
     }
 
     public String toString() {
-	String fin = _name;
-	fin += "\nLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
+	String fin = "\n"+_name;
+	fin += "\tLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
 	return fin;
     }
 
