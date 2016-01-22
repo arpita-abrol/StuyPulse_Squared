@@ -111,6 +111,10 @@ public class Pokemon {
 
     
     //mutators
+    public void setName( String newName ) {
+	_name = newName;
+    }
+    
     public void setLevel( int newLevel ) {
         _level = newLevel;
     }
@@ -160,7 +164,6 @@ public class Pokemon {
 	_exp[0] = newExp;
 	if( getExpT() >= getExp() ) {
 	    levelUp();
-	    //evolve();
 	}
 	if( getLevel() == 100 ) {
 	    _exp[0] = 0;
@@ -187,6 +190,32 @@ public class Pokemon {
 	    setSpeed( getSpeed() + (int)(Math.random() * 2) );
 	    setExp();
 	    System.out.println( _name + " is now at level " + _level + "!");
+	    evolve();
+	}
+    }
+
+    public void evolve() {
+	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
+	if( data[2].equals("true") ) {
+	    //evolve
+	    if( data[3].equals("-1") ) {
+		//stones
+	    }
+	    if( data[3].equals("-2") ) {
+		//trade
+	    }
+	    if( data[3].equals("-3") ) {
+		//EEVEE
+	    }
+	    if( Integer.parseInt(data[3]) <= getLevel() ) {
+		setName( data[4] );
+		setNum( getNum() + 1 );
+		setAttack( getAttack() + 5 );
+		setDefense( getDefense() + 3 );
+		setHP( getHP() + 5 );
+		setSpeed( getSpeed() + 2 );
+		System.out.println(data[1] + " has evolved to " + getName() + "!");
+	    }
 	}
     }
 
@@ -216,7 +245,9 @@ public class Pokemon {
 
     //for testing purposes only
     public static void main( String[]args ) {
-	Pokemon sample = new Pokemon("Gloom",10);
+	Pokemon sample = new Pokemon("Bulbasaur",20);
+	System.out.println( sample );
+	sample.setExpT(10000);
 	System.out.println( sample );
     }
 	    
