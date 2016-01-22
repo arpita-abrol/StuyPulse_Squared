@@ -10,42 +10,51 @@ public class Pokemon {
     private String _type;     //pokemon type
     private int _level;       //level of pokemon
     private int _num;         //pokedex number
-    private int[] _attack;      //pokemon attack--determines attack strength
-    private int[] _defense;     //pokemon defense--determines damage taken
-    private int[] _HP;          //pokemon HP--determines max damage
-    private int[] _speed;       //pokemon speed--determines first attacker
-    private int[] _exp;        //pokemon exp--determines current exp/needed exp
-    private Objects[][]  _moves;  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
-    //private String _nickname; ~~EXTRA FEATURE--TBI  give your pokemon a nickname!
-    //private String _object;  ~~EXTRA FEATURE--TBI   objects your pokemon can hold
+    private int[] _attack = new int[2];      //pokemon attack--determines attack strength
+    private int[] _defense = new int[2];     //pokemon defense--determines damage taken
+    private int[] _HP = new int[2];          //pokemon HP--determines max damage
+    private int[] _speed = new int[2];       //pokemon speed--determines first attacker
+    private int[] _exp = new int[2];        //pokemon exp--determines current exp/needed exp
+    private int _numMoves;    //number of moves pokemon has (max 4)
+    private Objects[][]  _moves = new Objects[4][4];  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
+
 
 
     //Constructors
     public Pokemon( String name ) {
+	int num = CSVMaster.searchCSV( name, CSVMaster.pokeStats );
+	String[] data = CSVMaster.singleLine( CSVMaster.pokeStats.get(num) );
 	_name = name;
-	//_type = ; //GET FROM CSV
+	_type = data[6];
 	_level = 1;
-	//_num = ; //get from csv
-	_attack = new int[2]; //GET FROM CSV
-	_defense = new int[2]; //GET FROM CSV
-	_HP = new int[2]; //GET FROM CSV
-	//int[] _speed = ; //GET FROM CSV
-        int[] _exp = {0, (_level*_level*_level)};
+	_num = num;
+        setAttack(Integer.parseInt(data[3]));
+        setDefense(Integer.parseInt(data[4]));
+        setHP(Integer.parseInt(data[2]));
+        setSpeed(Integer.parseInt(data[5]));
+	setExp();
 	//Objects[][] _moves = {} {};MOVE-GETTER FUNCTION
+	///_numMoves = 
     }
-
+    
     public Pokemon( String name, int level ) {
 	this( name );
 	_level = level;
-	int[] _exp = {0, (_level*_level*_level)};
+	setAttack( getAttack() + (int)(Math.random()*2.5*level) );
+	setDefense( getDefense() + (int)(Math.random()*2*level) );
+	setHP( getHP() + (int)(Math.random()*3*level) );
+	setSpeed( getSpeed() + (int)(Math.random()*2*level) );
+	setExp();
 	//MOVE-GETTER FUNCTION
+	//_numMoves
     }
 
     public Pokemon( String name, int level, ArrayList<Objects> moveList ) {
 	this( name, level );
 	//MOVE-GETTER FUNCTION
+	//_numMoves
     }
-
+		   
 
     //accessors
     public String getName() {
@@ -106,6 +115,10 @@ public class Pokemon {
 
     
     //mutators
+    public void setName( String newName ) {
+	_name = newName;
+    }
+    
     public void setLevel( int newLevel ) {
         _level = newLevel;
     }
@@ -129,7 +142,6 @@ public class Pokemon {
     }
 
     public void setDefense( int newDefense ) {
-	if( newDefense > 100 ) {newDefense = 100; }
 	_defense[0] = newDefense;
 	_defense[1] = newDefense;
     }
@@ -139,7 +151,6 @@ public class Pokemon {
     }
 
     public void setHP( int newHP ) {
-	if( newHP > 100 ) {newHP = 100; }
 	_HP[0] = newHP;
 	_HP[1] = newHP;
     }
@@ -149,11 +160,10 @@ public class Pokemon {
     }
 
     public void setSpeed( int newSpeed ) {
-	if( newSpeed > 100 ) {newSpeed = 100; }
 	_speed[0] = newSpeed;
 	_speed[1] = newSpeed;
     }
-
+    
     public void setExpT( int newExp ) {
 	_exp[0] = newExp;
 	if( getExpT() >= getExp() ) {
@@ -163,10 +173,10 @@ public class Pokemon {
 	    _exp[0] = 0;
 	}
     }
-
-    public void setExp( int newExp ) {
+		   
+    public void setExp() {
 	_exp[0] = 0;
-	_exp[1] = newExp;
+	_exp[1] = ( getLevel()*getLevel()*getLevel()+1 );
 	if( getLevel() == 100 ) {
 	    _exp[1] = 999999999;
 	}
@@ -174,15 +184,42 @@ public class Pokemon {
 
 
     //other methods
+		   
     public void levelUp() {
 	if( getLevel() < 100 ) {
 	    _level += 1;
-	    setAttack( getAttack() + (int)(Math.random() * 5) );
-	    setDefense( getDefense() + (int)(Math.random() * 5) );
+	    setAttack( getAttack() + (int)(Math.random() * 2.5) );
+	    setDefense( getDefense() + (int)(Math.random() * 2) );
 	    setHP( getHP() + (int)(Math.random() * 3) );
-	    setSpeed( getSpeed() + (int)(Math.random() * 3) );
-	    setExp( _level * _level * _level );
+	    setSpeed( getSpeed() + (int)(Math.random() * 2) );
+	    setExp();
 	    System.out.println( _name + " is now at level " + _level + "!");
+	    evolve();
+	}
+    }
+
+    public void evolve() {
+	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
+	if( data[2].equals("true") ) {
+	    //evolve
+	    if( data[3].equals("-1") ) {
+		//stones
+	    }
+	    if( data[3].equals("-2") ) {
+		//trade
+	    }
+	    if( data[3].equals("-3") ) {
+		//EEVEE
+	    }
+	    if( Integer.parseInt(data[3]) <= getLevel() ) {
+		setName( data[4] );
+		setNum( getNum() + 1 );
+		setAttack( getAttack() + 5 );
+		setDefense( getDefense() + 3 );
+		setHP( getHP() + 5 );
+		setSpeed( getSpeed() + 2 );
+		System.out.println(data[1] + " has evolved to " + getName() + "!");
+	    }
 	}
     }
 
@@ -212,8 +249,11 @@ public class Pokemon {
 
     //for testing purposes only
     public static void main( String[]args ) {
-	
+	Pokemon sample = new Pokemon("Bulbasaur",20);
+	System.out.println( sample );
+	sample.setExpT(10000);
+	System.out.println( sample );
     }
-		    
+	    
 
 }
