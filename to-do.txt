@@ -44,17 +44,18 @@
  (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (____)\___/ 
 -Town class working
 -Have working chooseStarter() method in Trainer.java DONE-1/19
--Start driver class
-
+-Start driver class DONE
+-Trainer- seeStats() 
 
  ____   __    ___  _  _  ___    ____  _  _    __    _  ___   ___  
 (_  _) /__\  / __)( )/ )/ __)  (  _ \( \/ )  /  )  / )(__ \ (__ \ 
   )(  /(__)\ \__ \ )  ( \__ \   ) _ < \  /    )(  / /  / _/  / _/ 
  (__)(__)(__)(___/(_)\_)(___/  (____/ (__)   (__)(_/  (____)(____)
 -base working version
--Driver- allow Trainer to choose Pokemon
+-Trainer- allow Trainer to choose Pokemon DONE
 -Some sort of a map that can be traveled
--Trainer- be able to use potions
+-Trainer- be able to use potions DONE
+-Trainer- shop()
 
 
  ____  _  _  ____  ____    __      ____  ____    __   ____  __  __  ____  ____  ___ 
