@@ -79,7 +79,8 @@ Ling:
  (__)(_/  (__)(___/    (__)(_/  (__)\___/
 
 Arpita:
-
+-worked on Pokemon.java
+-laptop broke; lost all data (uncommitted)
 Ling:
 -added test cases for money in Trainer
 -changed the starting stats for Potion and Pokeball in Trainer
@@ -90,7 +91,7 @@ Ling:
  (__)(_/  (__) (_/(_/  (__)\___/
 
 Arpita:
-
+-fixed up CSV files
 Ling:
 -added throwingPokeball() to Trainer. It allows the Trainer to throw a Pokeball
 -added blinkingPokeball() to Trainer. Calculates the success rates and return whether you caught the Pokemon or not
@@ -103,7 +104,8 @@ Ling:
  (__)(_/  (____)\___/(_/  (__)\___/
 
 Arpita:
-
+-Pokemon.java - set-up for CSV usage; re-did all lost changes (1/15-1/18)
+-CSVMaster.java - CSVtoArray()
 Ling:
 -created Driver class
 -Trainer- started on usePotion()
@@ -114,7 +116,9 @@ Ling:
  (__)(_/  (____)(__)(_/  (__)\___/
 
 Arpita:
-
+-Pokemon.java- implemented CSV (stats, evolve); levelUp(); evolve()
+-CSVMaster.java- singleLine(); searchCSV()
+-updated CSV files
 Ling:
 -Trainer- Finished usePotions()
 -Trainer- addressed different cases in throwPokeball() and chooseStarter()
