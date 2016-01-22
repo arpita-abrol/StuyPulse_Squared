@@ -1,0 +1,22 @@
+Team lingering_pirates- Arpita Abrol and Ling Cheng
+APCS1 pd10
+HW58 -- Checking In
+2016-01-21
+
+Obstacles Overcome (and how!)
+-There were problems with pushing files to GitHub and merging files, and files were deleted. 
+-My partner and I both had backup files in case it happens again.
+-For a while things were going slowly since the CSV files were taking a while to be prepared and they were needed to test the methods in order to proceed.
+-We used temperary numbers and methods to test existing methods and changed the methods to match the new CSV files later.
+
+Unresolved Issues
+-We might not be able to do everything we wanted since there isn't enough time.
+
+Cool Stuff Learned (conceptual and/or practical)
+-How to use CSV files in Java
+
+Mid-development Design Changes (and why!)
+-Might have to decrease the maps/gym leaders/ quests since we don't have as much time as we would like
+
+Lessons Learned (...which you might apply to future projects, CS or otherwise)
+-Always communicate with your partner to make sure when needs to be done and confirm if there are any changes in existing files

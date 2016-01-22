@@ -101,33 +101,47 @@ Constructors:
 
 Methods:
 Accessors
--private String getName()		//returns your name
--private ArrayList getPokeOnMe()	//returns ArrayList of all the Pokemon you're carrying
--private int getNumPokeOnMe()		//returns the number of Pokemon you're carrying
--private ArrayList getPokeInLab()	//returns ArrayList of all the Pokemon in your lab
--private int getNumPokeInLab()		//returns the number of Pokemon in your lab
--private String getPotions()		//returns string of all your potions
--private String getPokeballs()		//returns string of all your Pokeballs
--private int getMoney()			//returns amount of money you have
+-public String getTrainerName()		//returns your name
+-public ArrayList<Pokemon> getPokeOnMe()	//returns ArrayList of all the Pokemon you're carrying
+-public int getNumPokeOnMe()			//returns the number of Pokemon you're carrying
+-public ArrayList<Pokemon> getPokeInLab()	//returns ArrayList of all the Pokemon in your lab
+-public int getNumPokeInLab()			//returns the number of Pokemon in your lab
+-public ArrayList getPotions()			//returns ArrayList of all your potions
+-public String getPotionsStr()			//returns string of all your potions
+-public ArrayList getPokeballs()		//returns ArrayList of all your Pokeballs
+-public String getPokeballsStr()		//returns string of all your Pokeballs
+-public int getMoney()				//returns amount of money you have
+-public String getName(ArrayList arr, int choice)   //returns the name of a potion/pokeball given the number(1-4)
+-public String getAmount(ArrayList arr, int choice) //returns the amount of a potion/pokeball you have given the number(1-4)
+
 Mutators
--private void setPotions(int name, int num)	//increases the Potion at name-1 (name of potion) by num. 
-						The trainer will be shown 1: Potion 2: Super Potion 3: Hyper Potion 4: Full Potion and he/she will
+-public void setPotions(int name, int num)	//increases the Potion at name-1 (name of potion) by num. 
+						The trainer will be shown 1: Potion 2: Super Potion 3: Hyper Potion 4: Max Potion and he/she will
 						choose a number(name) and amount(num).
--private voidset Pokeballs(int name, int num)	//increases the Pokeball at name-1 (name of Pokeball) by num. 
+-public voidset Pokeballs(int name, int num)	//increases the Pokeball at name-1 (name of Pokeball) by num. 
 						The trainer will be shown 1: Pokeball 2: Great Ball 3: Ultra Ball 4: Master Ball and he/she will
 						choose a number(name) and amount(num).
--private void setMoney(int newMoney)		//changes PokeDollars to newMoney
+-public void setMoney(int newMoney)		//changes PokeDollars to newMoney
+
 Others
--private void createPokeballs()				//gives Trainer basic Pokeball stats
--private void createPotions()				//gives Trainer basic Potion stats
--private void throwPokeball(Pokemon pokemonToCatch)	//allows you to throw one of your Pokeballs and catch the Pokemon
+-public void createPokeballs()				//gives Trainer basic Pokeball stats
+-public void createPotions()				//gives Trainer basic Potion stats
+-public void throwPokeball(Pokemon pokemonToCatch)	//allows you to throw one of your Pokeballs and catch the Pokemon
 							//calls blinkingPokeball after Pokeball is thrown
--private Boolean blinkingPokeball			//calculates the rate of success of catching the Pokemon
+-public Boolean blinkingPokeball			//calculates the rate of success of catching the Pokemon
 (Pokemon pokemonToCatch, int pokeball)			//if successfull, returns true
--private void catchPokemon(Pokemon newPokemon)		//send newly caught Pokemon to backpack or lab
--private void chooseStarter()				//allows you to choose 1 of 3 starter Pokemon and send it to your bag
--private void fight()					..IN PROGRESS
--private void usePotion()				..IN PROGRESS
+-public void catchPokemon(Pokemon newPokemon)		//send newly caught Pokemon to backpack or lab
+-public void chooseStarter()				//allows you to choose 1 of 3 starter Pokemon and send it to your bag
+-public String checkBag()				//returns string of your Potions, Pokeballs, and money
+-public void usePotions(Pokemon pokemon)		//allows you to choose a potion to use on pokemon
+-public int addHP(int choice)				//returns the HP the Pokemon will add depending on the potion#
+-public Boolean isNum(String str)			//returns whether input is 1, 2, 3, or 4
+-public void buyPotions()				//takes you to the Potion shop and lets you buy potions
+-public Boolean canAfford(int cost, int amount)		//returns whether you can buy something based on the cost, how much you're buying and how much money you have
+-public void buyPotions()				..IN PROGRESS
+-public void buyPokeballs()				..IN PROGRESS
+-public void fight()					..IN PROGRESS
+
 
 
    __    ____  _  _  ____  _  _  ____  __  __  ____  ____  __  __  _____  ____  ____     ____   __  _  _  __   
