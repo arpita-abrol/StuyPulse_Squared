@@ -122,7 +122,9 @@ Arpita:
 Ling:
 -Trainer- Finished usePotions()
 -Trainer- addressed different cases in throwPokeball() and chooseStarter()
--Trainer- added getName(), getAmount(), addHP(), and isNum()
+-Trainer- added getName(), getAmount(), addHP(), canAfford() and isNum()
+-Trainer- started on buyPotions and shop()
+-Trainer&Pokemon- changed both a bit to match each other
 
 
   __    _  ___   ___     _  __   _  
