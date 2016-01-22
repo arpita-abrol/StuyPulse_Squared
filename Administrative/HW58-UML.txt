@@ -1,47 +1,38 @@
- _       _________ _        _______  _______  _______ _________ _        _______       _______ _________ _______  _______ _________ _______  _______ 
-( \      \__   __/( (    /|(  ____ \(  ____ \(  ____ )\__   __/( (    /|(  ____ \     (  ____ )\__   __/(  ____ )(  ___  )\__   __/(  ____ \(  ____ \
-| (         ) (   |  \  ( || (    \/| (    \/| (    )|   ) (   |  \  ( || (    \/     | (    )|   ) (   | (    )|| (   ) |   ) (   | (    \/| (    \/
-| |         | |   |   \ | || |      | (__    | (____)|   | |   |   \ | || |           | (____)|   | |   | (____)|| (___) |   | |   | (__    | (_____ 
-| |         | |   | (\ \) || | ____ |  __)   |     __)   | |   | (\ \) || | ____      |  _____)   | |   |     __)|  ___  |   | |   |  __)   (_____  )
-| |         | |   | | \   || | \_  )| (      | (\ (      | |   | | \   || | \_  )     | (         | |   | (\ (   | (   ) |   | |   | (            ) |
-| (____/\___) (___| )  \  || (___) || (____/\| ) \ \_____) (___| )  \  || (___) |     | )      ___) (___| ) \ \__| )   ( |   | |   | (____/\/\____) |
-(_______/\_______/|/    )_)(_______)(_______/|/   \__/\_______/|/    )_)(_______)_____|/       \_______/|/   \__/|/     \|   )_(   (_______/\_______)
-                                                                                (_____)                                                              
+//Team lingering_pirates - Arpita Abrol, Ling Cheng
+//APCS1 pd10
+//HW58 -- Checking In
+//2015-01-22
 
 
+lingering_pirates                                                                                (_____)                                                              
 APCS1 Final Project
-
-
 POKEMON UML Diagram
 
 
- ____  ____  ____  _  _  ____  ____     ____   __  _  _  __     
-(  _ \(  _ \(_  _)( \/ )( ___)(  _ \   (_  _) /__\( \/ )/__\  ()
- )(_) ))   / _)(_  \  /  )__)  )   /  .-_)(  /(__)\\  //(__)\   
-(____/(_)\_)(____)  \/  (____)(_)\_)()\____)(__)(__)\/(__)(__)()
+PokemonDriver.java
 Summary: runs the game
 
 Status: Haven't started
 
 
 
- ____  _____  _  _  ____  __  __  _____  _  _     ____   __  _  _  __     
-(  _ \(  _  )( )/ )( ___)(  \/  )(  _  )( \( )   (_  _) /__\( \/ )/__\  ()
- )___/ )(_)(  )  (  )__)  )    (  )(_)(  )  (   .-_)(  /(__)\\  //(__)\   
-(__)  (_____)(_)\_)(____)(_/\/\_)(_____)(_)\_)()\____)(__)(__)\/(__)(__)()
+Pokemon.java
 Summary: create pokemon, determine what Pokemon can do
 
-Status: in-progress
+Status: in-progress - main part left is moves
 
 Instance Vars:
 -private String _name;     //pokemon name
 -private String _type;     //pokemon type
 -private int _level;       //level of pokemon
--private int _attack;      //pokemon attack--determines attack strength
--private int _defense;     //pokemon defense--determines damage taken
--private int _HP;          //pokemon HP--determines max damage
--private int _speed;       //pokemon speed--determines first attacker
--private ArrayList<Objects>  _moves;  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
+-private int _num;         //pokedex number
+-private int[] _attack = new int[2];      //pokemon attack--determines attack strength
+-private int[] _defense = new int[2];     //pokemon defense--determines damage taken
+-private int[] _HP = new int[2];          //pokemon HP--determines max damage
+-private int[] _speed = new int[2];       //pokemon speed--determines first attacker
+-private int[] _exp = new int[2];         //pokemon exp--determines current exp/needed exp
+-private int _numMoves;                   //number of moves pokemon has (max 4)
+-private Objects[][] _moves = new Objects[4][4];  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
 
 Methods: 
 Constructors:
@@ -50,19 +41,56 @@ Constructors:
 - public Pokemon( String name, int level, ArrayList<Objects> moveList )
 Accessors: 
 - public String getName()
-- public String getType(
+- public String getType()
 - public int getLevel()
+- public int getNum()
+- public int getAttackT()
 - public int getAttack()
+- public int getDefenseT()
 - public int getDefense()
+- public int getHPT()
 - public int getHP()
+- public int getSpeedT()
 - public int getSpeed()
+- public int getExpT()
+- public int getExp()
+- public String getMove1()
+- public int getPower1()
+- public String getMove2()
+- public int getPower2()
+- public String getMove3()
+- public int getPower3()
+- public String getMove4()
+- public int getPower4()
+- public int getNumMoves()
 Mutators:
+- public void setName( String newName )
 - public void setLevel( int newLevel )
+- public void setNum( int newNum )
+- public void setAttackT( int newAttack )
 - public void setAttack( int newAttack )
+- public void setDefenseT( int newDefense )
 - public void setDefense( int newDefense )
+- public void setHPT( int newHP )
 - public void setHP( int newHP )
-- public void setSpeed( int newSpeed 
-- public String evolve()
+- public void setSpeedT( int newSpeed )
+- public void setSpeed( int newSpeed )
+- public void setExpT( int newExp )
+- public void setExp( int newExp )
+- public void setMoves( Object[][] newMoves )
+- public void setMove1( int newMove )
+- public void setPower1()
+- public void setMove2( int newMove )
+- public void setPower2()
+- public void setMove3( int newMove )
+- public void setPower3()
+- public void setMove4( int newMove )
+- public void setPower4()
+- public void setNumMoves( int newNumMoves )
+Other methods:
+- public void randomMove()
+- public void levelUp()
+- public void evolve()
 - public boolean isAlive()
 - public int attack( Pokemon opp )
 - public String about( String pokemonName )
@@ -70,27 +98,25 @@ Mutators:
 
 
 
-
- ____  ____    __    ____  _  _  ____  ____     ____   __  _  _  __     
-(_  _)(  _ \  /__\  (_  _)( \( )( ___)(  _ \   (_  _) /__\( \/ )/__\  ()
-  )(   )   / /(__)\  _)(_  )  (  )__)  )   /  .-_)(  /(__)\\  //(__)\   
- (__) (_)\_)(__)(__)(____)(_)\_)(____)(_)\_)()\____)(__)(__)\/(__)(__)()
+Trainer.java
 Summary: Creates your character. You start out with basic stats (money, Pokeballs, Potions). 
 As you catch more Pokemon, the number of Pokemon you own and inventory will increase. 
-Actions include throwing Pokeball
+Actions include throwing Pokeball, buying supplies, 
 
 Status: 
 -accessors and mutators are done
 -need to work on a throw Pokeball method DONE
--use potion method HAVEN'T STARTED
+-use potion method DONE
 -moving on map HAVEN'T STARTED
+-buyPotions(), buyPokeballs(), shop() IN PROGRESS
+-seeStats() HAVEN'T STARTED YET
 
 Instance vars:
 -String TrainerName 			//your name
 -ArrayList<Pokemon> onMePokemon 	//the Pokemon you currently can fight with (6 max, start with 0)
 -ArrayList<Pokemon> inLabPokemon 	//all the Pokemon you caught that aren't on you (start with 0)
 -ArrayList Pokeballs			//all the Pokeballs you have (starts with [Pokeball , 5, Great Ball , 0, Ultra Ball , 0, Master Ball , 0])
--ArrayList Potions			//all the Potions you have (starts with [Potion , 10, Super Potion , 5, Hyper Potion , 5, Full Potion , 0])
+-ArrayList Potions			//all the Potions you have (starts with [Potion , 10, Super Potion , 5, Hyper Potion , 5, Max Potion , 0])
 -int PokeDollars			//all the money you have (start with 500)
 -int numPokeOnMe			//number of Pokemon you are carrying with you (max 6, start with 0)
 -int numPokeInLab			//number of Pokemon you have in your lab (start with 0)
@@ -144,10 +170,7 @@ Others
 
 
 
-   __    ____  _  _  ____  _  _  ____  __  __  ____  ____  __  __  _____  ____  ____     ____   __  _  _  __   
-  /__\  (  _ \( \/ )( ___)( \( )(_  _)(  )(  )(  _ \( ___)(  \/  )(  _  )(  _ \( ___)   (_  _) /__\( \/ )/__\  
- /(__)\  )(_) )\  /  )__)  )  (   )(   )(__)(  )   / )__)  )    (  )(_)(  )(_) ))__)   .-_)(  /(__)\\  //(__)\ 
-(__)(__)(____/  \/  (____)(_)\_) (__) (______)(_)\_)(____)(_/\/\_)(_____)(____/(____)()\____)(__)(__)\/(__)(__)
+AdventureMode.java
 Summary: 'mini-game'- go through and battle pokemon and other trainers
 
 Status: Mapping out the towns
@@ -156,7 +179,7 @@ Insance vars:
 - private int _town1
 - private int _town2
 - private int _maxMove
-- private int _move
+- private int _currentMove
 
 Methods:
 - public String forward()
@@ -164,10 +187,7 @@ Methods:
 
 
 
-  ___  _  _  __  __     ____   __  _  _  __     
- / __)( \/ )(  \/  )   (_  _) /__\( \/ )/__\  ()
-( (_-. \  /  )    (   .-_)(  /(__)\\  //(__)\   
- \___/ (__) (_/\/\_)()\____)(__)(__)\/(__)(__)()
+Gym.java
 Summary: create gyms
 
 Status: in progress
@@ -182,14 +202,14 @@ Methods:
 - public String battleHenchmen()
 - public String battleLeader()
 
+Note: hardcode v. CSV?
 
- ____  _____  _    _  _  _     ____   __  _  _  __   
-(_  _)(  _  )( \/\/ )( \( )   (_  _) /__\( \/ )/__\  
-  )(   )(_)(  )    (  )  (   .-_)(  /(__)\\  //(__)\ 
- (__) (_____)(__/\__)(_)\_)()\____)(__)(__)\/(__)(__)
+
+
+Town.java
 Summary: creates and control towns
 
-Statue: in progress
+Status: in progress
 
 Insance vars:
 - private String _name
@@ -202,6 +222,37 @@ Methods:
 - public String gymBattle( int townNum )
 - public String toString()
 
+
+
+CSVMaster.java
+Summary: used for ArrayLists of CSVS
+
+Status: Done, until more CSV files need to be added
+
+Methods:
+- CSVtoArray()
+- singleLine()
+- searchCSV()
+
+
+
+CSV FILES:
+status: various; some complete, some in-progress
+
+- PokemonEvolution.csv
+- PokemonMoves.csv
+- PokemonStats.csv
+- Moves.csv
+- Adventure0.csv
+- Adventure1.csv
+- Adventure2.csv
+- Adventure3.csv
+- Adventure4.csv
+- Adventure5.csv
+- Adventure6.csv
+- Adventure7.csv
+- Adventure8.csv
+- Gyms.csv
 
 
 
