@@ -361,7 +361,7 @@ public class Trainer{
     public static void main(String[] args){
 	Trainer test= new Trainer("Ling");
 	
-	/*System.out.println("Your name is Trainer "+test.getTrainerName());
+	System.out.println("Your name is Trainer "+test.getTrainerName());
 	System.out.println("You have "+test.getNumPokeOnMe()+" Pokemon on you");
 	System.out.println("You have a total of "+(test.getNumPokeOnMe()+test.getNumPokeInLab()) + " Pokemon");	
 	System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
@@ -394,12 +394,12 @@ public class Trainer{
 
 	test.usePotions(test.getPokeOnMe().get(0));
 	System.out.println(test.getPokeOnMe().get(0).getHP());
-	*/
+	
 	/*System.out.println("Should be Potions: "+test.getName(test.getPotions(), 1));
 	  System.out.println("Should be 20: "+test.getAmount(test.getPotions(), 1));*/
 
 	test.buyPotions();
-	test.checkBag();
+	System.out.println(test.checkBag());
     }
     
 
