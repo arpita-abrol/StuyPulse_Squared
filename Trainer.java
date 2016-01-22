@@ -360,7 +360,53 @@ public class Trainer{
 	    }
 	}
     }
-
+    public void buyPokeballs(){
+	System.out.println("Which pokeball would you like to buy?");
+	System.out.println("Name      \tRate Success   \tCost");
+	System.out.println("1: Pokeball\t1x          \t200PokeDollars");
+	System.out.println("2: Great Ball\t1.5x     \t600PokeDollars");
+	System.out.println("3: Ultra Ball\t2x          \t1200PokeDollars");
+	System.out.println("4: Exit Shop");
+	String choiceStr= Keyboard.readString();
+	
+	if (choiceStr.equals("4")){
+	    System.out.println("shop here");//shop();
+	}else{
+	    if (isNum(choiceStr)){
+		int choice= Integer.parseInt(choiceStr);
+		System.out.println("How many "+getName(Pokeballs, choice)+" would you like to buy?");
+		int amount=Keyboard.readInt();
+		if (choice==1){
+		    if (canAfford(300, amount)){
+			setPokeballs(1, amount);
+			setMoney(getMoney()-(200*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPokeballs();
+		    }
+		}else if(choice==2){
+		    if (canAfford(700, amount)){
+			setPokeballs(2, amount);
+			setMoney(getMoney()-(600*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPokeballs();
+		    }
+		}else if(choice==3){
+		    if (canAfford(1200, amount)){
+			setPokeballs(3, amount);
+			setMoney(getMoney()-(1200*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPokeballs();
+		    }
+		}
+	    }else{
+		System.out.println("Please enter a number between 1-4 inclusive");
+		buyPokeballs();
+	    }
+	}
+    }
     
     public Boolean canAfford(int cost, int amount){
 	    int totalCost= cost*amount;
@@ -410,6 +456,9 @@ public class Trainer{
 	  System.out.println("Should be 20: "+test.getAmount(test.getPotions(), 1));*/
 	
 	test.buyPotions();
+	System.out.println(test.checkBag());
+
+	test.buyPokeballs();
 	System.out.println(test.checkBag());
 	    
     }
