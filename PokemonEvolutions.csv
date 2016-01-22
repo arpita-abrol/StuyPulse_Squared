@@ -1,154 +1,152 @@
-Num,Pokemon,Evolution,Evolves At,Evolves Into
-1,Bulbasaur,true,16,Ivysaur
-2,Ivysaur,true,32,Venusaur
-3,Venusaur,false,999,--
-4,Charmander,true,16,Charmeleon
-5,Charmeleon,true,36,Charizard
-6,Charizard,false,999,--
-7,Squirtle,true,16,Wartortle
-8,Wartortle,true,36,Blastoise
-9,Blastoise,false,999,--
-10,Caterpie,true,7,Metapod
-11,Metapod,true,10,Butterfree
-12,Butterfree,false,999,--
-13,Weedle,true,7,Kakuna
-14,Kakuna,true,10,Beedrill
-15,Beedrill,false,999,--
-16,Pidgey,true,18,Pidgeotto
-17,Pidgeotto,true,36,Pidgeot
-18,Pidgeot,false,999,--
-19,Rattata,true,20,Ratticate
-20,Raticate,false,999,--
-21,Spearow,true,20,Fearow
-22,Fearow,false,999,--
-23,Ekans,true,22,Arbok
-24,Arbok,false,999,--
-25,Pikachu,true,Thunderstone,Raichu
-26,Raichu,false,999,--
-27,Sandshrew,true,22,Sandslash
-28,Sandslash,false,999,--
-29,Nidoran F,true,16,Nidorina
-30,Nidorina,true,Moon Stone,Nidoqueen
-31,Nidoqueen,false,999,--
-32,Nidoran M,true,16,Nidorino
-33,Nidorino,true,Moon Stone,Nidoking
-34,Nidoking,false,999,--
-35,Clefairy,true,Moon Stone,Clefable
-36,Clefable,false,999,--
-37,Vulpix,true,Fire Stone,Ninetales
-38,Ninetales,false,999,--
-39,Jigglypuff,true,Moon Stone,Wigglytuff
-40,Wigglytuff,false,999,--
-41,Zubat,true,22,Golbat
-42,Golbat,false,999,--
-43,Oddish,true,21,Gloom
-44,Gloom,true,Leaf Stone,Vileplume
-45,Vileplume,false,999,--
-46,Paras,true,24,Parasect
-47,Parasect,false,999,--
-48,Venonat,true,31,Venemoth
-49,Venomoth,false,999,--
-50,Diglett,true,26,Dugtrio
-51,Dugtrio,false,999,--
-52,Meowth,true,28,Persian
-53,Persian,false,999,--
-54,Psyduck,true,33,Golduck
-55,Golduck,false,999,--
-56,Mankey,true,28,Primeape
-57,Primeape,false,999,--
-58,Growlithe,true,Fire Stone,Arcanine
-59,Arcanine,false,999,--
-60,Poliwag,true,25,Poliwhirl
-61,Poliwhirl,true,Water Stone,Poliwrath
-62,Poliwrath,false,999,--
-63,Abra,true,16,Kadabra
-64,Kadabra,true,Trade,Alakazam
-65,Alakazam,false,999,--
-66,Machop,true,28,Machoke
-67,Machoke,true,Trade,Machamp
-68,Machamp,false,999,--
-69,Bellsprout,true,21,Weepinbell
-70,Weepinbell,true,Leaf Stone,Victreebell
-71,Victreebel,false,999,--
-72,Tentacool,true,30,Tentacruel
-73,Tentacruel,false,999,--
-74,Geodude,true,25,Graveller
-75,Graveler,true,Trade,Golem
-76,Golem,false,999,--
-77,Ponyta,true,40,Rapidash
-78,Rapidash,false,999,--
-79,Slowpoke,true,37,Slowbro
-80,Slowbro,false,999,--
-81,Magnemite,true,30,Magneton
-82,Magneton,false,999,--
-83,Farfetch'd,false,999,--
-84,Doduo,true,31,Dodrio
-85,Dodrio,false,999,--
-86,Seel,true,34,Dewgong
-87,Dewgong,false,999,--
-88,Grimer,true,38,Muk
-89,Muk,false,999,--
-90,Shellder,true,Water Stone,Cloyster
-91,Cloyster,false,999,--
-92,Gastly,true,25,Haunter
-93,Haunter,true,Trade,Gengar
-94,Gengar,false,999,--
-95,Onix,false,999,--
-96,Drowzee,true,26,Hypno
-97,Hypno,false,999,--
-98,Krabby,true,28,Kingler
-99,Kingler,false,999,--
-100,Voltorb,true,30,Electrode
-101,Electrode,false,999,--
-102,Exeggcute,true,Leaf Stone,Exeggutor
-103,Exeggutor,false,999,--
-104,Cubone,true,28,Marowak
-105,Marowak,false,999,--
-106,Hitmonlee,false,999,--
-107,Hitmonchan,false,999,--
-108,Lickitung,false,999,
-109,Koffing,true,35,Weezing
-110,Weezing,false,999,--
-111,Rhyhorn,true,42,Rhydon
-112,Rhydon,false,999,
-113,Chansey,false,999,
-114,Tangela,false,999,
-115,Kangaskhan,false,999,--
-116,Horsea,true,32,Seadra
-117,Seadra,false,999,--
-118,Goldeen,true,33,Seaking
-119,Seaking,false,999,--
-120,Staryu,true,Water Stone,Starmie
-121,Starmie,false,999,--
-122,Mr. Mime,false,999,--
-123,Scyther,false,999,--
-124,Jynx,false,999,--
-125,Electabuzz,false,999,--
-126,Magmar,false,999,--
-127,Pinsir,false,999,--
-128,Tauros,false,999,--
-129,Magikarp,true,20,Gyarados
-130,Gyarados,false,999,--
-131,Lapras,false,999,--
-132,Ditto,false,999,--
-133,Eevee,true,Water Stone,Vaporeon
-133,Eevee,true,Thunder Stone,Jolteon
-133,Eevee,true,Fire Stone,Flareon
-134,Vaporeon,false,999,--
-135,Jolteon,false,999,--
-136,Flareon,false,999,--
-137,Porygon,false,999,--
-138,Omanyte,true,40,Omastar
-139,Omastar,false,999,--
-140,Kabuto,true,40,Kabutops
-141,Kabutops,false,999,--
-142,Aerodactyl,false,999,--
-143,Snorlax,false,999,--
-144,Articuno,false,999,--
-145,Zapdos,false,999,--
-146,Moltres,false,999,--
-147,Dratini,true,30,Dragonair
-148,Dragonair,true,55,Dragonite
-149,Dragonite,false,999,--
-150,Mewtwo,false,999,--
-151,Mew,false,999,--
+Num,Pokemon,Evolution,Evolves At,Evolves Into,,,,,
+1,Bulbasaur,true,16,Ivysaur,,,,,
+2,Ivysaur,true,32,Venusaur,,,,,
+3,Venusaur,false,999,--,,,,,
+4,Charmander,true,16,Charmeleon,,,,,
+5,Charmeleon,true,36,Charizard,,,,,
+6,Charizard,false,999,--,,,,,
+7,Squirtle,true,16,Wartortle,,,,,
+8,Wartortle,true,36,Blastoise,,,,,
+9,Blastoise,false,999,--,,,,,
+10,Caterpie,true,7,Metapod,,,,,
+11,Metapod,true,10,Butterfree,,,,,
+12,Butterfree,false,999,--,,,,,
+13,Weedle,true,7,Kakuna,,,,,
+14,Kakuna,true,10,Beedrill,,,,,
+15,Beedrill,false,999,--,,,,,
+16,Pidgey,true,18,Pidgeotto,,,,,
+17,Pidgeotto,true,36,Pidgeot,,,,,
+18,Pidgeot,false,999,--,,,,,
+19,Rattata,true,20,Ratticate,,,,,
+20,Raticate,false,999,--,,,,,
+21,Spearow,true,20,Fearow,,,,,
+22,Fearow,false,999,--,,,,,
+23,Ekans,true,22,Arbok,,,,,
+24,Arbok,false,999,--,,,,,
+25,Pikachu,true,-1,Raichu,Thunderstone,,,,
+26,Raichu,false,999,--,,,,,
+27,Sandshrew,true,22,Sandslash,,,,,
+28,Sandslash,false,999,--,,,,,
+29,Nidoran F,true,16,Nidorina,,,,,
+30,Nidorina,true,-1,Nidoqueen,Moon Stone,,,,
+31,Nidoqueen,false,999,--,,,,,
+32,Nidoran M,true,16,Nidorino,,,,,
+33,Nidorino,true,-1,Nidoking,Moon Stone,,,,
+34,Nidoking,false,999,--,,,,,
+35,Clefairy,true,-1,Clefable,Moon Stone,,,,
+36,Clefable,false,999,--,,,,,
+37,Vulpix,true,-1,Ninetales,Fire Stone,,,,
+38,Ninetales,false,999,--,,,,,
+39,Jigglypuff,true,-1,Wigglytuff,Moon Stone,,,,
+40,Wigglytuff,false,999,--,,,,,
+41,Zubat,true,22,Golbat,,,,,
+42,Golbat,false,999,--,,,,,
+43,Oddish,true,21,Gloom,,,,,
+44,Gloom,true,-1,Vileplume,Leaf Stone,,,,
+45,Vileplume,false,999,--,,,,,
+46,Paras,true,24,Parasect,,,,,
+47,Parasect,false,999,--,,,,,
+48,Venonat,true,31,Venemoth,,,,,
+49,Venomoth,false,999,--,,,,,
+50,Diglett,true,26,Dugtrio,,,,,
+51,Dugtrio,false,999,--,,,,,
+52,Meowth,true,28,Persian,,,,,
+53,Persian,false,999,--,,,,,
+54,Psyduck,true,33,Golduck,,,,,
+55,Golduck,false,999,--,,,,,
+56,Mankey,true,28,Primeape,,,,,
+57,Primeape,false,999,--,,,,,
+58,Growlithe,true,-1,Arcanine,Fire Stone,,,,
+59,Arcanine,false,999,--,,,,,
+60,Poliwag,true,25,Poliwhirl,,,,,
+61,Poliwhirl,true,-1,Poliwrath,Water Stone,,,,
+62,Poliwrath,false,999,--,,,,,
+63,Abra,true,16,Kadabra,,,,,
+64,Kadabra,true,-3,Alakazam,Trade,,,,
+65,Alakazam,false,999,--,,,,,
+66,Machop,true,28,Machoke,,,,,
+67,Machoke,true,-3,Machamp,Trade,,,,
+68,Machamp,false,999,--,,,,,
+69,Bellsprout,true,21,Weepinbell,,,,,
+70,Weepinbell,true,-1,Victreebell,Leaf Stone,,,,
+71,Victreebel,false,999,--,,,,,
+72,Tentacool,true,30,Tentacruel,,,,,
+73,Tentacruel,false,999,--,,,,,
+74,Geodude,true,25,Graveller,,,,,
+75,Graveler,true,-3,Golem,Trade,,,,
+76,Golem,false,999,--,,,,,
+77,Ponyta,true,40,Rapidash,,,,,
+78,Rapidash,false,999,--,,,,,
+79,Slowpoke,true,37,Slowbro,,,,,
+80,Slowbro,false,999,--,,,,,
+81,Magnemite,true,30,Magneton,,,,,
+82,Magneton,false,999,--,,,,,
+83,Farfetch'd,false,999,--,,,,,
+84,Doduo,true,31,Dodrio,,,,,
+85,Dodrio,false,999,--,,,,,
+86,Seel,true,34,Dewgong,,,,,
+87,Dewgong,false,999,--,,,,,
+88,Grimer,true,38,Muk,,,,,
+89,Muk,false,999,--,,,,,
+90,Shellder,true,-1,Cloyster,Water Stone,,,,
+91,Cloyster,false,999,--,,,,,
+92,Gastly,true,25,Haunter,,,,,
+93,Haunter,true,-3,Gengar,Trade,,,,
+94,Gengar,false,999,--,,,,,
+95,Onix,false,999,--,,,,,
+96,Drowzee,true,26,Hypno,,,,,
+97,Hypno,false,999,--,,,,,
+98,Krabby,true,28,Kingler,,,,,
+99,Kingler,false,999,--,,,,,
+100,Voltorb,true,30,Electrode,,,,,
+101,Electrode,false,999,--,,,,,
+102,Exeggcute,true,-1,Exeggutor,Leaf Stone,,,,
+103,Exeggutor,false,999,--,,,,,
+104,Cubone,true,28,Marowak,,,,,
+105,Marowak,false,999,--,,,,,
+106,Hitmonlee,false,999,--,,,,,
+107,Hitmonchan,false,999,--,,,,,
+108,Lickitung,false,999,,,,,,
+109,Koffing,true,35,Weezing,,,,,
+110,Weezing,false,999,--,,,,,
+111,Rhyhorn,true,42,Rhydon,,,,,
+112,Rhydon,false,999,,,,,,
+113,Chansey,false,999,,,,,,
+114,Tangela,false,999,,,,,,
+115,Kangaskhan,false,999,--,,,,,
+116,Horsea,true,32,Seadra,,,,,
+117,Seadra,false,999,--,,,,,
+118,Goldeen,true,33,Seaking,,,,,
+119,Seaking,false,999,--,,,,,
+120,Staryu,true,-1,Starmie,Water Stone,,,,
+121,Starmie,false,999,--,,,,,
+122,Mr. Mime,false,999,--,,,,,
+123,Scyther,false,999,--,,,,,
+124,Jynx,false,999,--,,,,,
+125,Electabuzz,false,999,--,,,,,
+126,Magmar,false,999,--,,,,,
+127,Pinsir,false,999,--,,,,,
+128,Tauros,false,999,--,,,,,
+129,Magikarp,true,20,Gyarados,,,,,
+130,Gyarados,false,999,--,,,,,
+131,Lapras,false,999,--,,,,,
+132,Ditto,false,999,--,,,,,
+133,Eevee,true,-3,Vaporeon,Water Stone,Jolteon,Thunder Stone,Flareon,Fire Stone
+134,Vaporeon,false,999,--,,,,,
+135,Jolteon,false,999,--,,,,,
+136,Flareon,false,999,--,,,,,
+137,Porygon,false,999,--,,,,,
+138,Omanyte,true,40,Omastar,,,,,
+139,Omastar,false,999,--,,,,,
+140,Kabuto,true,40,Kabutops,,,,,
+141,Kabutops,false,999,--,,,,,
+142,Aerodactyl,false,999,--,,,,,
+143,Snorlax,false,999,--,,,,,
+144,Articuno,false,999,--,,,,,
+145,Zapdos,false,999,--,,,,,
+146,Moltres,false,999,--,,,,,
+147,Dratini,true,30,Dragonair,,,,,
+148,Dragonair,true,55,Dragonite,,,,,
+149,Dragonite,false,999,--,,,,,
+150,Mewtwo,false,999,--,,,,,
+151,Mew,false,999,--,,,,,

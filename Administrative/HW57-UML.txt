@@ -1,0 +1,198 @@
+ _       _________ _        _______  _______  _______ _________ _        _______       _______ _________ _______  _______ _________ _______  _______ 
+( \      \__   __/( (    /|(  ____ \(  ____ \(  ____ )\__   __/( (    /|(  ____ \     (  ____ )\__   __/(  ____ )(  ___  )\__   __/(  ____ \(  ____ \
+| (         ) (   |  \  ( || (    \/| (    \/| (    )|   ) (   |  \  ( || (    \/     | (    )|   ) (   | (    )|| (   ) |   ) (   | (    \/| (    \/
+| |         | |   |   \ | || |      | (__    | (____)|   | |   |   \ | || |           | (____)|   | |   | (____)|| (___) |   | |   | (__    | (_____ 
+| |         | |   | (\ \) || | ____ |  __)   |     __)   | |   | (\ \) || | ____      |  _____)   | |   |     __)|  ___  |   | |   |  __)   (_____  )
+| |         | |   | | \   || | \_  )| (      | (\ (      | |   | | \   || | \_  )     | (         | |   | (\ (   | (   ) |   | |   | (            ) |
+| (____/\___) (___| )  \  || (___) || (____/\| ) \ \_____) (___| )  \  || (___) |     | )      ___) (___| ) \ \__| )   ( |   | |   | (____/\/\____) |
+(_______/\_______/|/    )_)(_______)(_______/|/   \__/\_______/|/    )_)(_______)_____|/       \_______/|/   \__/|/     \|   )_(   (_______/\_______)
+                                                                                (_____)                                                              
+
+
+APCS1 Final Project
+
+
+POKEMON UML Diagram
+
+
+ ____  ____  ____  _  _  ____  ____     ____   __  _  _  __     
+(  _ \(  _ \(_  _)( \/ )( ___)(  _ \   (_  _) /__\( \/ )/__\  ()
+ )(_) ))   / _)(_  \  /  )__)  )   /  .-_)(  /(__)\\  //(__)\   
+(____/(_)\_)(____)  \/  (____)(_)\_)()\____)(__)(__)\/(__)(__)()
+Summary: runs the game
+
+Status: Haven't started
+
+
+
+ ____  _____  _  _  ____  __  __  _____  _  _     ____   __  _  _  __     
+(  _ \(  _  )( )/ )( ___)(  \/  )(  _  )( \( )   (_  _) /__\( \/ )/__\  ()
+ )___/ )(_)(  )  (  )__)  )    (  )(_)(  )  (   .-_)(  /(__)\\  //(__)\   
+(__)  (_____)(_)\_)(____)(_/\/\_)(_____)(_)\_)()\____)(__)(__)\/(__)(__)()
+Summary: create pokemon, determine what Pokemon can do
+
+Status: in-progress
+
+Instance Vars:
+-private String _name;     //pokemon name
+-private String _type;     //pokemon type
+-private int _level;       //level of pokemon
+-private int _attack;      //pokemon attack--determines attack strength
+-private int _defense;     //pokemon defense--determines damage taken
+-private int _HP;          //pokemon HP--determines max damage
+-private int _speed;       //pokemon speed--determines first attacker
+-private ArrayList<Objects>  _moves;  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
+
+Methods: 
+Constructors:
+- public Pokemon( String name )
+- public Pokemon( String name, int level )
+- public Pokemon( String name, int level, ArrayList<Objects> moveList )
+Accessors: 
+- public String getName()
+- public String getType(
+- public int getLevel()
+- public int getAttack()
+- public int getDefense()
+- public int getHP()
+- public int getSpeed()
+Mutators:
+- public void setLevel( int newLevel )
+- public void setAttack( int newAttack )
+- public void setDefense( int newDefense )
+- public void setHP( int newHP )
+- public void setSpeed( int newSpeed 
+- public String evolve()
+- public boolean isAlive()
+- public int attack( Pokemon opp )
+- public String about( String pokemonName )
+- public String toString()
+
+
+
+
+ ____  ____    __    ____  _  _  ____  ____     ____   __  _  _  __     
+(_  _)(  _ \  /__\  (_  _)( \( )( ___)(  _ \   (_  _) /__\( \/ )/__\  ()
+  )(   )   / /(__)\  _)(_  )  (  )__)  )   /  .-_)(  /(__)\\  //(__)\   
+ (__) (_)\_)(__)(__)(____)(_)\_)(____)(_)\_)()\____)(__)(__)\/(__)(__)()
+Summary: Creates your character. You start out with basic stats (money, Pokeballs, Potions). 
+As you catch more Pokemon, the number of Pokemon you own and inventory will increase. 
+Actions include throwing Pokeball
+
+Status: 
+-accessors and mutators are done
+-need to work on a throw Pokeball method DONE
+-use potion method HAVEN'T STARTED
+-moving on map HAVEN'T STARTED
+
+Instance vars:
+-String TrainerName 			//your name
+-ArrayList<Pokemon> onMePokemon 	//the Pokemon you currently can fight with (6 max, start with 0)
+-ArrayList<Pokemon> inLabPokemon 	//all the Pokemon you caught that aren't on you (start with 0)
+-ArrayList Pokeballs			//all the Pokeballs you have (starts with [Pokeball , 5, Great Ball , 0, Ultra Ball , 0, Master Ball , 0])
+-ArrayList Potions			//all the Potions you have (starts with [Potion , 10, Super Potion , 5, Hyper Potion , 5, Full Potion , 0])
+-int PokeDollars			//all the money you have (start with 500)
+-int numPokeOnMe			//number of Pokemon you are carrying with you (max 6, start with 0)
+-int numPokeInLab			//number of Pokemon you have in your lab (start with 0)
+
+Constructors:
+-public Trainer()		//sets name to "Pokemon Trainer", empty onMePokemon, empty inLabPokemon, gives starting Pokeballs and Potions, and 500 PokeDollars
+-public Trainer(String Name)	//same as above but sets your name to Name
+
+Methods:
+Accessors
+-private String getName()		//returns your name
+-private ArrayList getPokeOnMe()	//returns ArrayList of all the Pokemon you're carrying
+-private int getNumPokeOnMe()		//returns the number of Pokemon you're carrying
+-private ArrayList getPokeInLab()	//returns ArrayList of all the Pokemon in your lab
+-private int getNumPokeInLab()		//returns the number of Pokemon in your lab
+-private String getPotions()		//returns string of all your potions
+-private String getPokeballs()		//returns string of all your Pokeballs
+-private int getMoney()			//returns amount of money you have
+Mutators
+-private void setPotions(int name, int num)	//increases the Potion at name-1 (name of potion) by num. 
+						The trainer will be shown 1: Potion 2: Super Potion 3: Hyper Potion 4: Full Potion and he/she will
+						choose a number(name) and amount(num).
+-private voidset Pokeballs(int name, int num)	//increases the Pokeball at name-1 (name of Pokeball) by num. 
+						The trainer will be shown 1: Pokeball 2: Great Ball 3: Ultra Ball 4: Master Ball and he/she will
+						choose a number(name) and amount(num).
+-private void setMoney(int newMoney)		//changes PokeDollars to newMoney
+Others
+-private void createPokeballs()				//gives Trainer basic Pokeball stats
+-private void createPotions()				//gives Trainer basic Potion stats
+-private void throwPokeball(Pokemon pokemonToCatch)	//allows you to throw one of your Pokeballs and catch the Pokemon
+							//calls blinkingPokeball after Pokeball is thrown
+-private Boolean blinkingPokeball			//calculates the rate of success of catching the Pokemon
+(Pokemon pokemonToCatch, int pokeball)			//if successfull, returns true
+-private void catchPokemon(Pokemon newPokemon)		//send newly caught Pokemon to backpack or lab
+-private void chooseStarter()				//allows you to choose 1 of 3 starter Pokemon and send it to your bag
+-private void fight()					..IN PROGRESS
+-private void usePotion()				..IN PROGRESS
+
+
+   __    ____  _  _  ____  _  _  ____  __  __  ____  ____  __  __  _____  ____  ____     ____   __  _  _  __   
+  /__\  (  _ \( \/ )( ___)( \( )(_  _)(  )(  )(  _ \( ___)(  \/  )(  _  )(  _ \( ___)   (_  _) /__\( \/ )/__\  
+ /(__)\  )(_) )\  /  )__)  )  (   )(   )(__)(  )   / )__)  )    (  )(_)(  )(_) ))__)   .-_)(  /(__)\\  //(__)\ 
+(__)(__)(____/  \/  (____)(_)\_) (__) (______)(_)\_)(____)(_/\/\_)(_____)(____/(____)()\____)(__)(__)\/(__)(__)
+Summary: 'mini-game'- go through and battle pokemon and other trainers
+
+Status: Mapping out the towns
+
+Insance vars:
+- private int _town1
+- private int _town2
+- private int _maxMove
+- private int _move
+
+Methods:
+- public String forward()
+- public String battle()
+
+
+
+  ___  _  _  __  __     ____   __  _  _  __     
+ / __)( \/ )(  \/  )   (_  _) /__\( \/ )/__\  ()
+( (_-. \  /  )    (   .-_)(  /(__)\\  //(__)\   
+ \___/ (__) (_/\/\_)()\____)(__)(__)\/(__)(__)()
+Summary: create gyms
+
+Status: in progress
+
+Insance vars:
+-String _gymLeader
+-String[][] _pokemon
+-int _henchmen
+-boolean _defeated
+
+Methods:
+- public String battleHenchmen()
+- public String battleLeader()
+
+
+ ____  _____  _    _  _  _     ____   __  _  _  __   
+(_  _)(  _  )( \/\/ )( \( )   (_  _) /__\( \/ )/__\  
+  )(   )(_)(  )    (  )  (   .-_)(  /(__)\\  //(__)\ 
+ (__) (_____)(__/\__)(_)\_)()\____)(__)(__)\/(__)(__)
+Summary: creates and control towns
+
+Statue: in progress
+
+Insance vars:
+- private String _name
+- private int _townNum
+
+Methods:
+- public String shop()
+- public String heal()
+- public String changePokemon()
+- public String gymBattle( int townNum )
+- public String toString()
+
+
+
+
+
+
+Thoughts/ideas: 
+-make trainer an abstact file, and have four subs: your character, gym leaders, henchmen, and random trainers
+-hardcode gym leaders into towns, abstract
