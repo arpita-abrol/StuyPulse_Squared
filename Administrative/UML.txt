@@ -140,6 +140,8 @@ Others
 -public Boolean isNum(String str)			//returns whether input is 1, 2, 3, or 4
 -public void buyPotions()				//takes you to the Potion shop and lets you buy potions
 -public Boolean canAfford(int cost, int amount)		//returns whether you can buy something based on the cost, how much you're buying and how much money you have
+-public void buyPotions()				..IN PROGRESS
+-public void buyPokeballs()				..IN PROGRESS
 -public void fight()					..IN PROGRESS
 
 
