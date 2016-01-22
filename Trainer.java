@@ -265,9 +265,9 @@ public class Trainer{
 	
 		setPotions(choice, -1);
 		if (choice== 4)
-		    pokemon.setHP(pokemon.getHP());
+		    pokemon.setHPT(pokemon.getHP());
 		else
-		    pokemon.setHP(pokemon.getHPT()+addHP(choice));
+		    pokemon.setHPT(pokemon.getHPT()+addHP(choice));
 	    }
 	}
     }
@@ -324,26 +324,35 @@ public class Trainer{
 		if (choice==1){
 		    if (canAfford(300, amount)){
 			setPotions(1, amount);
-			setMoney(getMoney()-300*amount);
+			setMoney(getMoney()-(300*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPotions();
 		    }
 		}else if(choice==2){
 		    if (canAfford(700, amount)){
 			setPotions(2, amount);
-			setMoney(getMoney()-700*amount);
+			setMoney(getMoney()-(700*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPotions();
 		    }
 		}else if(choice==3){
 		    if (canAfford(1200, amount)){
 			setPotions(3, amount);
-			setMoney(getMoney()-1200*amount);
+			setMoney(getMoney()-(1200*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPotions();
 		    }
 		}else if(choice==4){
 		    if (canAfford(2500, amount)){
 			setPotions(4, amount);
-			setMoney(getMoney()-2500*amount);
+			setMoney(getMoney()-(2500*amount));
+		    }else{
+			System.out.println("Sorry you can't afford this");
+			buyPotions();
 		    }
-		}else{
-		    System.out.println("Please enter a number between 1-5 inclusive");
-		    buyPotions();
 		}
 	    }else{
 		System.out.println("Please enter a number between 1-5 inclusive");
@@ -351,9 +360,11 @@ public class Trainer{
 	    }
 	}
     }
-	public Boolean canAfford(int cost, int amount){
+
+    
+    public Boolean canAfford(int cost, int amount){
 	    int totalCost= cost*amount;
-	return getMoney()> totalCost;
+	return getMoney()>= totalCost;
     }
     //================================================
 
@@ -397,9 +408,10 @@ public class Trainer{
 	
 	/*System.out.println("Should be Potions: "+test.getName(test.getPotions(), 1));
 	  System.out.println("Should be 20: "+test.getAmount(test.getPotions(), 1));*/
-
+	
 	test.buyPotions();
 	System.out.println(test.checkBag());
+	    
     }
     
 
