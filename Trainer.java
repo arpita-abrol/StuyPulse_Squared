@@ -163,7 +163,7 @@ public class Trainer{
 	
 		setPokeballs(PokeChoice, -1);
 		if (blinkingPokeball(pokemonToCatch, PokeChoice)){
-		    System.out.println("You caught a  "+pokemonToCatch.getName()+"!");
+		    System.out.println("You caught a "+pokemonToCatch.getName()+"!");
 		    catchPokemon(pokemonToCatch);
 		}else{
 		    System.out.println("Awww. "+ pokemonToCatch.getName()+ " escaped from the pokeball.");
@@ -174,9 +174,9 @@ public class Trainer{
     
     //calculates the possibility of catching the Pokemon
     public Boolean blinkingPokeball(Pokemon pokemonToCatch, int pokeball){
-	//System.out.println("Your original chance of failing: " + ((pokemonToCatch.getHP()+0.00)/pokemonToCatch.getMaxHP()));*/
+	//System.out.println("Your original chance of failing: " + ((pokemonToCatch.getHPT()+0.00)/pokemonToCatch.getMaxHP()));*/
 	
-	double chanceFail= (pokemonToCatch.getHP()*3.0)/(pokemonToCatch.getMaxHP()*2.0);
+	double chanceFail= (pokemonToCatch.getHPT()*3.0)/(pokemonToCatch.getHP()*2.0);
 	//System.out.println("Your chance of failing after adjustment: "+ chanceFail);
 	
 	if (pokeball==1)
@@ -221,29 +221,24 @@ public class Trainer{
 	System.out.println("1: Charmander");
 	System.out.println("2: Squirtle");
 	System.out.println("3: Bulbsaur");
-	String choiceStr = Keyboard.readString();
-	
-	if ("123".indexOf(choiceStr)==-1){
+	String choice = Keyboard.readString();
+
+	Pokemon starter;
+	if (choice.equals("1")){
+	    starter= new Pokemon("Charmander");
+	    catchPokemon(starter);}
+	else if (choice.equals("2")){
+	    starter= new Pokemon("Squirtle");
+	    catchPokemon(starter);}
+	else if (choice.equals("3")){
+	    starter= new Pokemon("Bulbsaur");
+	    catchPokemon(starter);}
+	else{
 	    System.out.println("Please enter a number between 1-3 inclusive");
 	    chooseStarter();
-	}else{
-	
-	    int choice= Integer.parseInt(choiceStr);
-	    if (!(choice > 0 && choice < 4)){
-		System.out.println("Please enter a number between 1-3 inclusive");
-		chooseStarter();
-	    }else{
-		Pokemon starter;
-		if (choice == 1)
-		    starter= new Pokemon("Charmander");
-		else if (choice == 2)
-		    starter= new Pokemon("Squirtle");
-		else 
-		    starter= new Pokemon("Bulbsaur");
-		catchPokemon(starter);
-	    }
 	}
     }
+
     
     //1= potion 20HP, 2= Super Potion 50HP, 3= Hyper Potion 200HP, 4= Full Potion
     public void usePotions(Pokemon pokemon){
@@ -270,9 +265,9 @@ public class Trainer{
 	
 		setPotions(choice, -1);
 		if (choice== 4)
-		    pokemon.setHP(pokemon.getMaxHP());
+		    pokemon.setHP(pokemon.getHP());
 		else
-		    pokemon.setHP(pokemon.getHP()+addHP(choice));
+		    pokemon.setHP(pokemon.getHPT()+addHP(choice));
 	    }
 	}
     }
@@ -292,6 +287,74 @@ public class Trainer{
 	return "1234".indexOf(str) != -1;
     }
 
+    /*public void shop(){
+	checkBag();
+	System.out.println("Where would you like to go?");
+	System.out.println("1: Potion Shop\n2: Pokeball Shop\n3: Exit");
+	String choice= Keyboard.readString();
+	if (choice.equals("1")){
+	    
+	}else if(choice.equals("2")){
+
+	}else if(choice.equals("3")){
+	    return;
+	}else{
+	    System.out.println("Please enter a number between 1-3 inclusive");
+	    shop();
+	}
+	}*/
+
+    public void buyPotions(){
+	System.out.println("Which potion would you like to buy?");
+	System.out.println("Name\tHealing\tCost");
+	System.out.println("1: Potion\t20HP\t300PokeDollars");
+	System.out.println("2: Super Potion\t50HP\t700PokeDollars");
+	System.out.println("3: Hyper Potion\t200HP\t1200PokeDollars");
+	System.out.println("4: Max Potion\tMaxHP\t2500PokeDollars");
+	System.out.println("5: Exit Shop");
+	String choiceStr= Keyboard.readString();
+	
+	if (choiceStr.equals("5")){
+	    System.out.println("shop here");//shop();
+	}else{
+	    if (isNum(choiceStr)){
+		int choice= Integer.parseInt(choiceStr);
+		System.out.println("How many "+getName(Potions, choice)+" would you like to buy?");
+		int amount=Keyboard.readInt();
+		if (choice==1){
+		    if (canAfford(300, amount)){
+			setPotions(1, amount);
+			setMoney(getMoney()-300*amount);
+		    }
+		}else if(choice==2){
+		    if (canAfford(700, amount)){
+			setPotions(2, amount);
+			setMoney(getMoney()-700*amount);
+		    }
+		}else if(choice==3){
+		    if (canAfford(1200, amount)){
+			setPotions(3, amount);
+			setMoney(getMoney()-1200*amount);
+		    }
+		}else if(choice==4){
+		    if (canAfford(2500, amount)){
+			setPotions(4, amount);
+			setMoney(getMoney()-2500*amount);
+		    }
+		}else{
+		    System.out.println("Please enter a number between 1-5 inclusive");
+		    buyPotions();
+		}
+	    }else{
+		System.out.println("Please enter a number between 1-5 inclusive");
+		buyPotions();
+	    }
+	}
+    }
+	public Boolean canAfford(int cost, int amount){
+	    int totalCost= cost*amount;
+	return getMoney()> totalCost;
+    }
     //================================================
 
     
@@ -318,9 +381,9 @@ public class Trainer{
 	
 
 	Pokemon test2= new Pokemon("Eevee");
-	test2.setHP(1);
-	test2.setMaxHP(3);
-	System.out.println("Testing thow Pokeball================");
+	test2.setHPT(1);
+	test2.setHP(3);
+	System.out.println("Testing how Pokeball================");
 	test.throwPokeball(test2);
 	System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
 	//System.out.println("The name of your first Pokemon is "+test.getPokeOnMe().get(0).getName());

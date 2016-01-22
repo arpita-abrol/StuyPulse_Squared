@@ -26,9 +26,9 @@ public class Pokemon {
 	//_type = ; //GET FROM CSV
 	_level = 1;
 	//_num = ; //get from csv
-	//int[] _attack = ; //GET FROM CSV
-	//int[] _defense = ; //GET FROM CSV
-	//int[] _HP = ; //GET FROM CSV
+	_attack = new int[2]; //GET FROM CSV
+	_defense = new int[2]; //GET FROM CSV
+	_HP = new int[2]; //GET FROM CSV
 	//int[] _speed = ; //GET FROM CSV
         int[] _exp = {0, (_level*_level*_level)};
 	//Objects[][] _moves = {} {};MOVE-GETTER FUNCTION
@@ -205,7 +205,7 @@ public class Pokemon {
 
     public String toString() {
 	String fin = _name;
-	fin += "\tLevel: " + _level + "\nAttack: " + _attack[0] + "\tDefense: " + _defense[0];
+	fin += "\nLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
 	return fin;
     }
 
