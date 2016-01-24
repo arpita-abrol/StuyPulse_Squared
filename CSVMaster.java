@@ -9,7 +9,7 @@ public class CSVMaster {
     public static ArrayList<String> pokeStats = CSVtoArray( "PokemonStats.csv" );
     public static ArrayList<String> pokeMoves = CSVtoArray( "PokemonMoves.csv" );
     public static ArrayList<String> pokeEvolutions = CSVtoArray( "PokemonEvolutions.csv" );
-    //public static ArrayList<String> moves = CSVtoArray( "Moves.csv" );
+    public static ArrayList<String> moves = CSVtoArray( "Moves.csv" );
     //public ArrayList<String> adventure0 = CSVtoArray( "PalletPokemon.csv" );
 
 
@@ -41,7 +41,6 @@ public class CSVMaster {
 	return arr;
     }
 
-
     //search a CSV file for a pokemon
     public static int searchCSV( String pokemon, ArrayList list ) {
 	for( int x = 1; x < list.size(); x++ ) {
@@ -63,11 +62,13 @@ public class CSVMaster {
     }
 
 
-    /* 
+    
     public static void main( String[]args ) {
-	System.out.println( pokeStats.get(151) );
-	System.out.println( singleLine( pokeStats.get(44) )[0] );
-	System.out.println( searchCSV( "Mew", pokeStats ) );
+	//System.out.println( pokeMoves.get(44) );
+	System.out.println(singleLine( moves.get(44))[2] );
+	int num = CSVMaster.searchCSV( "Tackle", CSVMaster.moves, 0 );
+	System.out.println( num);
+	System.out.println( CSVMaster.singleLine( CSVMaster.moves.get(num) )[2] );
     }
-    */
+    
 }

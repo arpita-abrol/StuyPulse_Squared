@@ -16,7 +16,7 @@ public class Pokemon {
     private int[] _speed = new int[2];       //pokemon speed--determines first attacker
     private int[] _exp = new int[2];        //pokemon exp--determines current exp/needed exp
     private int _numMoves;    //number of moves pokemon has (max 4)
-    private Objects[][]  _moves = new Objects[4][4];  //pokemon moves [move1,move2,move3,move4][power1,power2,power3,power4]
+    private String[][]  _moves = new String[4][2];  //pokemon moves [[m1,p1][m2,p2][m3,p3][m4,p4]]
 
 
 
@@ -33,8 +33,7 @@ public class Pokemon {
         setHP(Integer.parseInt(data[2]));
         setSpeed(Integer.parseInt(data[5]));
 	setExp();
-	//Objects[][] _moves = {} {};MOVE-GETTER FUNCTION
-	///_numMoves = 
+	setRandomMoves()
     }
     
     public Pokemon( String name, int level ) {
@@ -45,8 +44,7 @@ public class Pokemon {
 	setHP( getHP() + (int)(Math.random()*3*level) );
 	setSpeed( getSpeed() + (int)(Math.random()*2*level) );
 	setExp();
-	//MOVE-GETTER FUNCTION
-	//_numMoves
+	setRandomMoves()
     }
 
     public Pokemon( String name, int level, ArrayList<Objects> moveList ) {
@@ -111,6 +109,26 @@ public class Pokemon {
 
     public int getExp() {
 	return _exp[1];
+    }
+
+    public int getNumMoves() {
+	return _numMoves;
+    }
+
+    public String getMove( int move ) {
+	return "" + _moves[move][0];
+    }
+
+    public int getPower( int move ) {
+	return Integer.parseInt(_moves[move][1]);
+    }
+
+    public String getAllMoves() {
+	String fin = "";
+	for( int x = 0; x < getNumMoves()-1; x++ ) {
+	    fin += getMove(x) + "\t" + getPower(x) + "\n";
+	}
+	return fin;
     }
 
     
@@ -182,9 +200,42 @@ public class Pokemon {
 	}
     }
 
+    public void setNumMoves( int num ) {
+	_numMoves = num;
+    }
+
+    public void setMove( int move, String m1 ) {
+	_moves[move][0] = m1;
+	_moves[move][1] = "" + findPower(m1);
+    }
+
+    //randomly chooses 4 moves out of all possible moves
+    public void setRandomMoves() {
+	ArrayList<String> possibleMoves = new ArrayList<String>();
+        String m = CSVMaster.singleLine( CSVMaster.pokeMoves.get(getNum()))[2];
+	String[] born = m.split("1");
+	for( int x = 0; x < born.length; x++ ) {
+	    possibleMoves.add(born[x]);
+	}
+	for( int x = 1; x <= getLevel(); x++ ) {
+	    String move = CSVMaster.singleLine( CSVMaster.pokeMoves.get(getNum()))[x+2] ;
+	    if( move.length() > 1 ) {
+		possibleMoves.add(move);
+	    }
+	}
+	//System.out.println(possibleMoves);
+	if( possibleMoves.size() <= 4 ) {
+	    setNumMoves( possibleMoves.size() );
+	    for( int x = 0; x < possibleMoves.size()-1; x++ ) {
+		setMove( x, possibleMoves.get(x) );
+	    }
+	}
+    }
+
 
     //other methods
-		   
+
+    //levels up pokemon 
     public void levelUp() {
 	if( getLevel() < 100 ) {
 	    _level += 1;
@@ -198,6 +249,7 @@ public class Pokemon {
 	}
     }
 
+    //evolves pokemon if possible
     public void evolve() {
 	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
 	if( data[2].equals("true") ) {
@@ -227,6 +279,12 @@ public class Pokemon {
     public boolean isAlive() {
 	return( getHPT() > 0 );
     }
+
+    //finds the power of a selected move
+    public int findPower( String move ) {
+	int num = CSVMaster.searchCSV( move, CSVMaster.moves, 0 );
+	return Integer.parseInt(CSVMaster.singleLine( CSVMaster.moves.get(num) )[2]);
+    }
     
     //attack another pokemon
     public int attack( Pokemon opp ) {
@@ -249,10 +307,12 @@ public class Pokemon {
 
     //for testing purposes only
     public static void main( String[]args ) {
-	Pokemon sample = new Pokemon("Bulbasaur",20);
+	Pokemon sample = new Pokemon("Bulbasaur",14);
 	System.out.println( sample );
 	sample.setExpT(10000);
 	System.out.println( sample );
+	sample.setRandomMoves();
+	System.out.println( sample.getAllMoves());
     }
 	    
 
