@@ -47,9 +47,9 @@ public class Pokemon {
 	setRandomMoves();
     }
 
-    public Pokemon( String name, int level, ArrayList<Objects> moveList ) {
+    public Pokemon( String name, int level, String[] moveList ) {
 	this( name, level );
-	//MOVE-GETTER FUNCTION
+	setGivenMoves(moveList);
     }
 		   
 
@@ -199,9 +199,28 @@ public class Pokemon {
 	//System.out.println( "NUM" + _numMoves );
     }
 
+    //assigns a pokemon a move
     public void setMove( int move, String m1 ) {
 	_moves[move][0] = m1;
 	_moves[move][1] = "" + findPower(m1);
+    }
+
+    //removes a move
+    public void removeMove( int move ) {
+	_moves[move][0] = null;
+	_moves[move][1] = null;
+    }
+
+    //gives pokemon moves in array
+    public void setGivenMoves( String[] moves ) {
+	setNumMoves(0);
+	for( int x = 0; x < 4; x++ ) {
+	    removeMove(x);
+	}
+	for( int x = 0; x < moves.length; x++ ) {
+	    setMove( x, moves[x] );
+	    setNumMoves( getNumMoves() + 1 );
+	}
     }
 
     //randomly chooses 4 moves out of all possible moves
@@ -332,7 +351,8 @@ public class Pokemon {
     
     //for testing purposes only
     public static void main( String[]args ) {
-	Pokemon sample = new Pokemon("Bulbasaur",35);
+	String[] pokeMoves = {"Tackle","Poison Powder"};
+	Pokemon sample = new Pokemon("Bulbasaur",35,pokeMoves);
 	//System.out.println( sample.getNumMoves() );
 	System.out.println( sample );
 	//sample.setExpT(10000);
