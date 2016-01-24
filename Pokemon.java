@@ -1,5 +1,5 @@
 /*
- */
+*/
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class Pokemon {
     private int[] _HP = new int[2];          //pokemon HP--determines max damage
     private int[] _speed = new int[2];       //pokemon speed--determines first attacker
     private int[] _exp = new int[2];        //pokemon exp--determines current exp/needed exp
-    private int _numMoves;    //number of moves pokemon has (max 4)
+    private int _numMoves = 0;    //number of moves pokemon has (max 4)
     private String[][]  _moves = new String[4][2];  //pokemon moves [[m1,p1][m2,p2][m3,p3][m4,p4]]
 
 
@@ -33,7 +33,7 @@ public class Pokemon {
         setHP(Integer.parseInt(data[2]));
         setSpeed(Integer.parseInt(data[5]));
 	setExp();
-	setRandomMoves()
+	setRandomMoves();
     }
     
     public Pokemon( String name, int level ) {
@@ -44,13 +44,12 @@ public class Pokemon {
 	setHP( getHP() + (int)(Math.random()*3*level) );
 	setSpeed( getSpeed() + (int)(Math.random()*2*level) );
 	setExp();
-	setRandomMoves()
+	setRandomMoves();
     }
 
     public Pokemon( String name, int level, ArrayList<Objects> moveList ) {
 	this( name, level );
 	//MOVE-GETTER FUNCTION
-	//_numMoves
     }
 		   
 
@@ -119,17 +118,11 @@ public class Pokemon {
 	return "" + _moves[move][0];
     }
 
-    public int getPower( int move ) {
-	return Integer.parseInt(_moves[move][1]);
+    public String getPower( int move ) {
+	return _moves[move][1];
     }
 
-    public String getAllMoves() {
-	String fin = "";
-	for( int x = 0; x < getNumMoves()-1; x++ ) {
-	    fin += getMove(x) + "\t" + getPower(x) + "\n";
-	}
-	return fin;
-    }
+
 
     
     //mutators
@@ -202,6 +195,8 @@ public class Pokemon {
 
     public void setNumMoves( int num ) {
 	_numMoves = num;
+	if( _numMoves > 4 ) { _numMoves = 4; }
+	//System.out.println( "NUM" + _numMoves );
     }
 
     public void setMove( int move, String m1 ) {
@@ -223,11 +218,31 @@ public class Pokemon {
 		possibleMoves.add(move);
 	    }
 	}
-	//System.out.println(possibleMoves);
+	//give pokemon moves
 	if( possibleMoves.size() <= 4 ) {
-	    setNumMoves( possibleMoves.size() );
 	    for( int x = 0; x < possibleMoves.size()-1; x++ ) {
 		setMove( x, possibleMoves.get(x) );
+		setNumMoves( getNumMoves() + 1 );
+	    }
+	}
+	else {
+	    ArrayList<Integer> current = new ArrayList<Integer>();
+	    for( int x = 0; x < 4; ) {
+		int y = (int)(Math.random() * possibleMoves.size()-1);
+		boolean contain = false;
+		for ( int z = 0; z < current.size(); z++ ) {
+		    if( current.get(z).equals(y) ) {
+			contain = true;
+		    }
+		}
+		if(!contain && !(possibleMoves.get(y).equals(null))) {
+		    //System.out.println( x + possibleMoves.get(y) );
+		    setMove( x, possibleMoves.get(y) );
+		    setNumMoves( getNumMoves() + 1 );
+		    x += 1;
+		    //System.out.println( getAllMoves());
+		    current.add(y);
+		}
 	    }
 	}
     }
@@ -298,6 +313,14 @@ public class Pokemon {
 	return "";
     }
 
+    public String getAllMoves() {
+	String fin = "";
+	for( int x = 0; x < getNumMoves(); x++ ) {
+	    fin += getMove(x) + "\t" + getPower(x) + "\n";
+	}
+	return fin;
+    }
+
     public String toString() {
 	String fin = "\n"+_name;
 	fin += "\tLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
@@ -305,14 +328,15 @@ public class Pokemon {
     }
 
 
+
+    
     //for testing purposes only
     public static void main( String[]args ) {
-	Pokemon sample = new Pokemon("Bulbasaur",14);
+	Pokemon sample = new Pokemon("Bulbasaur",35);
+	//System.out.println( sample.getNumMoves() );
 	System.out.println( sample );
-	sample.setExpT(10000);
-	System.out.println( sample );
-	sample.setRandomMoves();
-	System.out.println( sample.getAllMoves());
+	//sample.setExpT(10000);
+	System.out.println( sample.getAllMoves() + "\n" + sample.getMove(0));
     }
 	    
 

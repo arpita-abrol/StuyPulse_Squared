@@ -6,17 +6,10 @@ Acupressure,normal ,-1,-100,Randomly raises one of the user's stats by two stage
 Aerial Ace,flying ,60,1000,"Cannot miss, regardless of Accuracy or Evasiveness. "
 Aeroblast,flying ,100,95,High Critical-Hit ratio. 
 Agility,psychic ,-1,-100,Raises the user's Speed by two stages. 
-Air Cutter,flying ,55,95,High Critical-Hit ratio. 
-Air Slash,flying ,75,95,May cause flinching. 
 Amnesia,psychic ,-1,-100,Raises user's Special Defense by two stages. 
 Ancientpower,rock ,60,100,Might raise all of the user's stats by one stage. 
-Aqua Jet,water ,40,100,User goes first. 
-Aqua Ring,water ,-1,-100,Restores a little HP each turn. 
-Aqua Tail,water ,90,90,No Added Effect
 Arm Thrust,fighting ,15,100,Hits 2-5 times. 
 Aromatherapy,grass ,-1,-100,Cures all status problems in your party. 
-Assist,normal ,-1,-100,"In a Double Battle, user randomly attacks with a partner's move. "
-Assurance,dark ,50,100,Power doubles if opponent already took damage in the same turn. 
 Astonish,ghost ,30,100,May cause flinching. 
 Attack Order,bug ,90,100,High Critical-Hit ratio. 
 Attract,normal ,-1,100,"If opponent is the opposite gender, it's less likely to attack. "
@@ -25,7 +18,6 @@ Aurora Beam,ice ,65,100,Might lower opponent's Attack.
 Avalanche,ice ,60,100,Power doubles if user took damage first. 
 Barrage,normal ,15,85,Hits 2-5 times. 
 Barrier,psychic ,-1,-100,Raises user's Defense by two stages. 
-Baton Pass,normal ,-1,-100,Allows user to switch but gives stat changes to the new Pokemon. 
 Beat Up,dark ,10,100,Each Pokemon in your party attacks. 
 Belly Drum,normal ,-1,-100,"User loses 50% of its max HP, but Attack raises to maximum. "
 Bide,normal ,-1,-100,User takes damage for two turns and strikes back double on 3rd. 
@@ -48,7 +40,6 @@ Bubblebeam,water ,65,100,May lower opponent's Speed by one stage.
 Bug Bite,bug ,60,100,Receives the effect from the opponent's held berry. 
 Bug Buzz,bug ,90,100,May lower opponent's Special Defense by one stage. 
 Bulk Up,fighting ,-1,-100,Increases user's Attack and Defense by one stage. 
-Bullet Punch,steel ,40,100,User goes first. 
 Bullet Seed,grass ,10,100,Hits 2-5 times. 
 Calm Mind,psychic ,-1,-100,Increases user's Special Attack and Special Defense by one stage. 
 Camouflage,normal ,-1,-100,Changes user's type according to the location. 
@@ -89,22 +80,13 @@ Discharge,electric ,80,100,May cause paralysis.
 Dive,water ,80,100,"Dives down for the first turn, attacks on the second turn. "
 Dizzy Punch,normal ,70,100,May cause confusion. 
 Doom Desire,normal ,120,85,Damage occurs 2 turns later. 
-Double Hit,normal ,35,90,Hits twice. 
 Double Kick,fighting ,30,100,Hits twice. 
 Double Team,normal ,-1,-100,Increases user's Evasiveness by one stage. 
-Double-Edge,normal ,120,100,User receives recoil damage equal to 1/8th the damage inflicted. 
-Doubleslap,normal ,15,85,Hits 2-5 times. 
-Draco Meteor,dragon ,140,90,Decreases user's Special Attack by 2 stages. 
-Dragon Claw,dragon ,80,100,No Added Effect
-Dragon Dance,dragon ,-1,-100,Increases user's Attack and Speed by one stage each. 
-Dragon Pulse,dragon ,90,100,No Added Effect
+Double Edge,normal ,120,100,User receives recoil damage equal to 1/8th the damage inflicted. 
+Double Slap,normal ,15,85,Hits 2-5 times. 
 Dragon Rage,dragon ,-1,100,Always inflicts 40 HP. 
-Dragon Rush,dragon ,100,75,May cause flinching. 
-Dragonbreath,dragon ,60,100,May cause paralysis. 
-Drain Punch,fighting ,60,100,User recovers half of the damage inflicted on opponent. 
 Dream Eater,psychic ,100,100,Can only be used on a sleeping target. User recovers half of the damage inflicted on opponent. 
 Drill Peck,flying ,80,100,No Added Effect
-Dynamicpunch,fighting ,100,50,"Causes confusion, if it hits. "
 Earth Power,ground ,90,100,May decrease opponent's Special Defense by on stage. 
 Earthquake,ground ,100,100,Power is doubled if opponent is underground from using Dig. 
 Egg Bomb,normal ,100,75,No Added Effect
@@ -123,7 +105,6 @@ Faint Attack,dark ,60,1000,"Cannot miss, regardless of Accuracy or Evasiveness. 
 Fake Out,normal ,40,100,"Can only be used in first turn. User goes first, foe flinches. "
 Fake Tears,dark ,-1,100,Decreases opponent's Special Defense by two stages. 
 False Swipe,normal ,40,100,Always leaves opponent with at least 1 HP. 
-Featherdance,flying ,-1,100,Decreases opponent't Attack by two stages. 
 Feint,normal ,50,100,Only hits if opponent uses Protect or Detect in the same turn. 
 Fire Blast,fire ,120,85,May cause a burn. 
 Fire Fang,fire ,65,95,May cause a burn or flinching. 
@@ -141,7 +122,6 @@ Fling,dark ,-1,100,Power depends on held item.
 Fly,flying ,90,95,"Flies up on the first turn, attacks on the second turn. "
 Focus Blast,fighting ,120,70,May decrease opponent's Special Defense by one stage. 
 Focus Energy,normal ,-1,-100,Increases Critical-Hit ratio by one stage 
-Focus Punch,fighting ,150,100,"Pokemon waits on the first turn, attacks on the second. If the Pokemon is hit between this, the Pokemon flinches instead of attacking. "
 Follow Me,normal ,-1,-100,"In Double Battle, the user takes all the attacks. "
 Force Palm,fighting ,60,100,May cause paralysis. 
 Foresight,normal ,-1,-100,"Resets opponent's Evasiveness, Normal-type and Fighting-type attacks can now hit Ghosts, and Ghost-type attacks hit Normal. "
@@ -155,8 +135,6 @@ Gastro Acid,poison ,-1,100,Cancels out the effect of the opponent's Ability.
 Giga Drain,grass ,60,100,User recovers 50% of the damage inflicted on the opponent. 
 Giga Impact,normal ,150,90,User cannot move in the following turn. 
 Glare,normal ,-1,75,"Causes paralysis, if it hits. "
-Grass Knot,grass ,-1,100,"The heavier the opponent, the stronger the attack. "
-Grasswhistle,grass ,-1,55,"Puts opponent to sleep, if it hits. "
 Growl,normal ,-1,100,Decreases opponent's Attack by one stage. 
 Growth,normal ,-1,-100,Increases user's Special Attack by one stage. 
 Grudge,ghost ,-1,-100,"If the users faints after using this move, the PP for the opponent's last move is depleted. "
@@ -182,13 +160,9 @@ Hydro Cannon,water ,150,90,User cannot move in the following turn.
 Hydro Pump,water ,120,80,No Added Effect
 Hyper Beam,normal ,150,90,User cannot move on the following turn. 
 Hyper Fang,normal ,80,90,May cause flinching. 
-Hyper Voice,normal ,90,100,No Added Effect
 Hypnosis,psychic ,-1,70,"Put opponent to sleep, if it hits. "
-Ice Ball,ice ,30,90,An attack lasting for 5 turns that grows in power. 
 Ice Beam,ice ,95,100,May cause freezing. 
-Ice Fang,ice ,65,95,May cause freezing and flinching. 
 Ice Punch,ice ,75,100,May cause freezing. 
-Ice Shard,ice ,40,100,User attacks first. 
 Icicle Spear,ice ,10,100,Hits 2-5 times. 
 Icy Wind,ice ,55,95,Decreases opponent's Speed by one stage. 
 Imprison,psychic ,-1,-100,Opponent is unable to use moves that the user also knows. 
@@ -215,7 +189,6 @@ Lovely Kiss,normal ,-1,75,"Puts the opponent to sleep, if it hits. "
 Low Kick,fighting ,-1,100,"The heavier the opponent, the stronger the attack. "
 Lucky Chant,normal ,-1,-100,Opponent cannot land Critical Hits for 5 turns. 
 Luster Purge,psychic ,70,100,May decrease opponent's Special Defense by one stage. 
-Mach Punch,fighting ,40,100,User goes first. 
 Magma Storm,fire ,120,70,Opponent cannot escape/switch. 
 Magnet Bomb,steel ,60,1000,"Cannot miss, regardless of Accuracy or Evasiveness. "
 Magnet Rise,steel ,-1,-100,Changes user's Ability to Levitate. 
@@ -245,14 +218,7 @@ Mist,ice ,-1,-100,User's stats cannot be changed for a period of time.
 Mist Ball,psychic ,70,100,Likely to decrease opponent's Special Attack by one stage. 
 Moonlight,normal ,-1,-100,User recovers HP. Amount varies with the weather. 
 Morning Sun,normal ,-1,-100,User recovers HP. Amount varies with the weather. 
-Mud Bomb,ground ,65,85,May decrease opponent's Accuracy by one stage. 
-Mud Shot,ground ,55,95,Decreases opponent's Speed by one stage. 
-Mud Sport,ground ,-1,-100,Weakens the power of Electric-type moves. 
-Muddy Water,water ,95,85,May decrease opponent's Accuracy by one stage. 
-Mud-Slap,ground ,20,100,Lowers opponent's accuracy by one stage 
 Nasty Plot,dark ,-1,-100,Increases the user's Special Attack by two stages. 
-Natural Gift,normal ,-1,100,The type and power depends on the user's held berry. 
-Nature Power,normal ,-1,-100,Uses a certain move based on the current location. 
 Needle Arm,grass ,60,100,May cause flinching. 
 Night Shade,ghost ,-1,100,Damage = User's level. 
 Night Slash,dark ,70,100,High Critical-Hit ratio. 
@@ -272,16 +238,8 @@ Pin Missile,bug ,14,85,Hits 2-5 times.
 Pluck,flying ,60,100,"If the opponent is holding a berry, its effect is stolen by user. "
 Poison Fang,poison ,50,100,May cause poison that gets worse each turn. 
 Poison Gas,poison ,-1,55,"Poisons the opponent, if it hits. "
-Poison Jab,poison ,80,100,May poison the opponent. 
-Poison Sting,poison ,15,100,May poison the opponent. 
-Poison Tail,poison ,50,100,High Critical-Hit ratio. May poison the opponent. 
-Poisonpowder,poison ,-1,75,"Poisons the opponent, if it hits. "
+Poison Powder,poison ,-1,75,"Poisons the opponent, if it hits. "
 Pound,normal ,40,100,No Added Effect
-Powder Snow,ice ,40,100,May cause freezing. 
-Power Gem,rock ,70,100,No Added Effect
-Power Swap,psychic ,-1,-100,User and opponent swap Attack and Special Attack. 
-Power Trick,psychic ,-1,-100,User's own Attack and Defense switch. 
-Power Whip,grass ,120,85,No Added Effect
 Present,normal ,-1,90,Either deals damage or heals. 
 Protect,normal ,-1,-100,User is not affected by opponent's move. May fail if used often. 
 Psybeam,psychic ,65,100,May confuse the opponent. 
@@ -295,10 +253,8 @@ Punishment,dark ,-1,100,Power depends on opponent's stats.
 Pursuit,dark ,40,100,Double power if the opponent is switching out. 
 Quick Attack,normal ,40,100,User goes first. 
 Rage,normal ,20,100,Increases user's Attack by one stage when hit. 
-Rain Dance,water ,-1,-100,Causes the weather to change to rain for 5 turns. 
 Rapid Spin,normal ,20,100,"Removes Spikes, Leech Seed, Bind, Wrap, etc. "
 Razor Leaf,grass ,55,95,High Critical-Hit ratio. 
-Razor Wind,normal ,80,100,"Immobile on the first turn, attacks on the second turn. High Critical-Hit ratio. "
 Recover,normal ,-1,-100,User recovers 50% of its max HP. 
 Reflect,psychic ,-1,-100,User's party receives 1/2 damage from Ph. Attacks for 5 turns. 
 Refresh,normal ,-1,-100,"Cures paralysis, poison, and burns. "
@@ -307,15 +263,7 @@ Return,normal ,-1,100,Power increases with user's Happiness.
 Revenge,fighting ,60,100,Power increases if user was hit first. 
 Reversal,fighting ,-1,100,"The lower the user's HP is, the higher the power. "
 Roar,normal ,-1,100,"In battles, the opponent switches. In the wild, the Pokemon runs. "
-Roar of Time,dragon ,150,90,The user cannot move in the following turn. 
-Rock Blast,rock ,25,80,Hits 2-5 times. 
-Rock Climb,normal ,90,85,May cause confusion. 
-Rock Polish,rock ,-1,-100,Increases the user's Speed by two stages. 
-Rock Slide,rock ,75,90,"May cause flinching, if it hits. "
-Rock Smash,fighting ,40,100,Likely to decrease the opponent's Defense by one stage. 
 Rock Throw,rock ,50,90,No Added Effect
-Rock Tomb,rock ,50,80,"Decreases the opponent's Speed by one stage, if it hits. "
-Rock Wrecker,rock ,150,90,The user cannot move in the following turn. 
 Rolling Kick,fighting ,60,85,May cause flinching. 
 Rollout,rock ,30,90,An attack lasting for 5 turns that grows in power. 
 Roost,flying ,-1,-100,User recovers 50% of its max HP. Flying-type users are not immune to Ground-type moves immediately following this move. 
@@ -332,11 +280,6 @@ Seed Bomb,grass ,80,100,No Added Effect
 Seed Flare,grass ,120,85,May decrease the opponent's Special Defense by one stage. 
 Seismic Toss,fighting ,-1,100,Damage = User's level. 
 Selfdestruct,normal ,200,100,User faints. 
-Shadow Ball,ghost ,80,100,May decrease opponent's Special Defense. 
-Shadow Claw,ghost ,70,100,High Critical-Hit ratio. 
-Shadow Force,ghost ,120,100,"Disappears on the 1st turn, attacks on the 2nd turn. "
-Shadow Punch,ghost ,60,1000,"Cannot miss, regardless of Accuracy and Evasiveness. "
-Shadow Sneak,ghost ,40,100,User goes first. 
 Sharpen,normal ,-1,-100,Increases the user's Attack by one stage. 
 Sheer Cold,ice ,99999,30,"An instant 1-hit KO, if it hits. "
 Shock Wave,electric ,60,1000,"Cannot miss, regardless of Accuracy and Evasiveness. "
@@ -369,7 +312,7 @@ Spike Cannon,normal ,20,100,Hits 2-5 times.
 Spikes,ground ,-1,-100,Hurts opponents when they switch into battle. 
 Spit Up,normal ,-1,100,Power depends on how many times the user performed Stockpile. 
 Spite,ghost ,-1,100,The opponent's last move loses 2-5 PP. 
-Splash,normal ,-1,-100,Doesn't do ANYTHING. 
+Splash,normal ,0,100,Doesn't do ANYTHING. 
 Spore,grass ,-1,100,Puts the opponent to sleep. 
 Stealth Rock,rock ,-1,-100,Damages opponent when they switch into battle. 
 Steel Wing,steel ,70,90,May increases user's Defense by one stage. 
@@ -381,7 +324,6 @@ String Shot,bug ,-1,95,Decreases opponent's Speed by one stage.
 Stun Spore,grass ,-1,75,"Causes paralysis, if it hits. "
 Submission,fighting ,80,80,User receives recoil damage. 
 Substitute,normal ,-1,-100,"User loses 1/4 of its max HP, but can take hits without losing HP for awhile. "
-Sucker Punch,dark ,80,100,"User goes first, but won't work if opponent doesn't use an attacking move. "
 Sunny Day,fire ,-1,-100,Changes the weather to sunny. 
 Super Fang,normal ,-1,90,Always takes off half of the opponent's HP. 
 Superpower,fighting ,120,100,Decreases user's Attack and Defense by one stage each. 
@@ -401,15 +343,12 @@ Tail Whip,normal ,-1,100,Decreases opponent's Defense by one stage.
 Tailwind,flying ,-1,-100,The user's party's Speed is increased by one stage for 5 turns. 
 Take Down,normal ,90,85,User receives recoil damage. 
 Taunt,dark ,-1,100,Opponent can only use moves that attack. 
-Teeter Dance,normal ,-1,100,All Pokemon on the field become confused. 
 Teleport,psychic ,-1,-100,"Allows user to switch out. In the wild, the battle ends. Can be used like an Escape Rope outside of battles. "
 Thief,dark ,40,100,May steal opponent's held item. 
 Thrash,normal ,90,100,"User attacks for 2-3 turns, but becomes confused. "
 Thunder,electric ,120,70,May cause paralysis. 
-Thunder Fang,electric ,65,95,May cause paralysis and flinching. 
 Thunder Wave,electric ,-1,100,Causes paralysis. 
-Thunderbolt,electric ,95,100,May cause paralysis. 
-Thunderpunch,electric ,75,100,May cause paralysis. 
+Thunder Punch,electric ,75,100,May cause paralysis. 
 Thundershock,electric ,40,100,May cause paralysis. 
 Tickle,normal ,-1,100,Decreases the opponent's Attack and Defense by one stage each. 
 Torment,dark ,-1,100,Opponent cannot use the same move in a row. 
@@ -426,7 +365,7 @@ Twister,dragon ,40,100,May cause flinching. 2x damage against an opponent using 
 Uproar,normal ,50,100,User attacks for 2-5 turns and cannot sleep during that time. 
 U-turn,bug ,70,100,User switches out immediately after attacking. 
 Vacuum Wave,fighting ,40,100,User goes first. 
-Vicegrip,normal ,55,100,No Added Effect
+Vice Grip,normal ,55,100,No Added Effect
 Vine Whip,grass ,35,100,No Added Effect
 Vital Throw,fighting ,70,1000,"User attacks last, but cannot miss. "
 Volt Tackle,electric ,120,100,User receives recoil damage. 
