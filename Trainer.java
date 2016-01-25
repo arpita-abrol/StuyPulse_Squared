@@ -445,7 +445,6 @@ public class Trainer{
 	    if (choiceStr.equals("1")){
 		if (yCoor== 0){
 		    System.out.println("Reached end of map");
-		    move(map);
 		}else{
 		    yCoor-=1;
 		    map.setYCoor(yCoor);
@@ -453,7 +452,6 @@ public class Trainer{
 	    }else if (choiceStr.equals("2")){
 		if (xCoor== map.getDefault()-1){
 		    System.out.println("Reached end of map");
-		    move(map);
 		}else{
 		    xCoor+=1;
 		    map.setXCoor(xCoor);
@@ -461,7 +459,6 @@ public class Trainer{
 	    }else if (choiceStr.equals("3")){
 		if (yCoor== map.getDefault()-1){
 		    System.out.println("Reached end of map");
-		    move(map);
 		}else{
 		    yCoor+=1;
 		    map.setYCoor(yCoor);
@@ -469,7 +466,6 @@ public class Trainer{
 	    }else if (choiceStr.equals("4")){
 		if (xCoor== 0){
 		    System.out.println("Reached end of map");
-		    move(map);
 		}else{
 		    xCoor-=1;
 		    map.setXCoor(xCoor);
@@ -477,11 +473,14 @@ public class Trainer{
 	    }else if (choiceStr.equals("5")){
 		System.out.println("Return to main menu");
 		return;
+	    }else{
+		System.out.println("Please choose a number between 1-5 inclusijve");
 	    }
-	    map.placeHuman();
-	    System.out.println(map.getMap());
-	    move(map);
 	}
+	map.placeHuman();
+	System.out.println(map.getMap());
+	move(map);
+	
     }
     //================================================
 

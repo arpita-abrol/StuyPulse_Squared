@@ -7,7 +7,10 @@ public class PokemonDriver {
     System.out.println("Welcome Trainer "+ TrainerName+"!");
     
     Trainer test= new Trainer(TrainerName);
+    Maps testing= new Maps();
     test.chooseStarter();
+    System.out.println(testing.getMap());
+    test.move(testing);
     
     }
 }
