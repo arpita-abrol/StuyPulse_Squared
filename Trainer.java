@@ -308,22 +308,23 @@ public class Trainer{
 	return "1234".indexOf(str) != -1;
     }
 
-    /*public void shop(){
-      checkBag();
-      System.out.println("Where would you like to go?");
-      System.out.println("1: Potion Shop\n2: Pokeball Shop\n3: Exit");
-      String choice= Keyboard.readString();
-      if (choice.equals("1")){
-	    
-      }else if(choice.equals("2")){
-
-      }else if(choice.equals("3")){
-      return;
-      }else{
-      System.out.println("Please enter a number between 1-3 inclusive");
-      shop();
-      }
-      }*/
+    public void shop(){
+	checkBag();
+	System.out.println("Where would you like to go?");
+	System.out.println("1: Potion Shop\n2: Pokeball Shop\n3: Exit");
+	String choice= Keyboard.readString();
+	if (choice.equals("1")){
+	    buyPotions();
+	}else if(choice.equals("2")){
+	    buyPokeballs();
+	}else if(choice.equals("3")){
+	    System.out.println("Map");
+	    return;
+	}else{
+	    System.out.println("Please enter a number between 1-3 inclusive");
+	    shop();
+	}
+    }
 
     public void buyPotions(){
 	System.out.println("Which potion would you like to buy?");
@@ -435,11 +436,11 @@ public class Trainer{
     }
 
     public void move(Maps map){
-	System.out.println("Where do you want to move?");
-	System.out.println("1: Up\n2: Right\n3: Down\n4: Left\n5: Exit");
+	System.out.println("What do you want to do?");
+	System.out.println("1: Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me");
 	String choiceStr= Keyboard.readString();
 	
-	if ("12345".indexOf(choiceStr)==-1){
+	if ("123456".indexOf(choiceStr)==-1){
 	    System.out.println("Please choose a number between 1-5 inclusijve");
 	}else{
 	    if (choiceStr.equals("1")){
@@ -471,8 +472,9 @@ public class Trainer{
 		    map.setXCoor(xCoor);
 		}
 	    }else if (choiceStr.equals("5")){
-		System.out.println("Return to main menu");
-		return;
+		System.out.println(checkBag());
+	    }else if (choiceStr.equals("6")){
+		System.out.println(getPokeOnMe());
 	    }else{
 		System.out.println("Please choose a number between 1-5 inclusijve");
 	    }
