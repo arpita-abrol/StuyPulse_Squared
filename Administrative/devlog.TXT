@@ -135,32 +135,40 @@ Ling:
 Arpita:
 
 Ling:
+-Trainer- Finished buyPotions()
+-Trainer- Started and finished buyPokeballs() and shop()
+
+  __    _  ___   ___    _  __   _  
+ /  )  / )(__ \ (__ )  / )/  ) / ) 
+  )(  / /  / _/  (_ \ / /  )( / _ \
+ (__)(_/  (____)(___/(_/  (__)\___/
+Arpita:
+
+Ling:
+-Driver- created a Trainer and tested chooseStarter()
 
 
+  __    _  ___   __    _  __   _  
+ /  )  / )(__ \ /. |  / )/  ) / ) 
+  )(  / /  / _/(_  _)/ /  )( / _ \
+ (__)(_/  (____) (_)(_/  (__)\___/
+Arpita:
+
+Ling:
+-Maps- Started Maps
 
 
-01-23-16:
+  __    _  ___   ___    _  __   _  
+ /  )  / )(__ \ | __)  / )/  ) / ) 
+  )(  / /  / _/ |__ \ / /  )( / _ \
+ (__)(_/  (____)(___/(_/  (__)\___/
 
 Arpita:
 
 Ling:
-
-
-
-01-24-16:
-
-Arpita:
-
-Ling:
-
-
-
-
-01-25-16:
-
-Arpita:
-
-Ling:
+-Maps- Have a working Maps
+-Trainer- Tested Maps
+-Driver- Added Maps
 
 
 
