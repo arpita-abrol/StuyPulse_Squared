@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+
+public class Maps{
+    private ArrayList<String>[][] map;
+    private String person= "O"; 
+    public Maps(){
+	map= new ArrayList<String>[1][1];
+	map.get(0).add("X");
+	map.get(0).add("X");
+	map.get(0).add("X");
+	map.get(0).add("X");
+    }
+    public ArrayList<String>[][] getMap(){
+	return map;
+    }
+    
+    public static void main(String[] args){
+	Maps test= new Maps();
+	System.out.println(test.getMap());
+    }
+}

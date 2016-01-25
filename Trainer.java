@@ -12,6 +12,10 @@ public class Trainer{
     private int PokeDollars;
     private int numPokeOnMe;
     private int numPokeInLab;
+    private int currentTown;
+    private Boolean inAdventure;
+    private int xCoor;
+    private int yCoor; 
     //================================================
 
     //===============Constructors=================================
@@ -22,6 +26,10 @@ public class Trainer{
 	createPokeballs();
 	createPotions();
 	PokeDollars= 500;//Trainer starts with 500 money
+	currentTown= 0;
+	inAdventure= true;
+	yCoor= 0;
+	xCoor= 0;
     }
 
     public Trainer(String Name){
@@ -85,6 +93,12 @@ public class Trainer{
 	choice-=1;
 	return (Integer)(arr.get(choice));
     }
+    public int getCurrentTown(){
+	return currentTown;
+    }
+    public Boolean getInAdventure(){
+	return inAdventure;
+    }
     //================================================
 
     //================Mutators================================
@@ -108,6 +122,12 @@ public class Trainer{
     }
     public void setMoney(int newMoney){
 	PokeDollars= newMoney;
+    }
+    public void setInAdventure(Boolean bool){
+	inAdventure= bool;
+    }
+    public void setCurrentTown(int town){
+	currentTown= town;
     }
     //================================================
 
@@ -136,6 +156,7 @@ public class Trainer{
 	Potions.add("Max Potions");
 	Potions.add(0);
     }
+    
 
     //thows Pokeball. Catches Pokemon depending on the stats
     public void throwPokeball(Pokemon pokemonToCatch){
@@ -288,21 +309,21 @@ public class Trainer{
     }
 
     /*public void shop(){
-	checkBag();
-	System.out.println("Where would you like to go?");
-	System.out.println("1: Potion Shop\n2: Pokeball Shop\n3: Exit");
-	String choice= Keyboard.readString();
-	if (choice.equals("1")){
+      checkBag();
+      System.out.println("Where would you like to go?");
+      System.out.println("1: Potion Shop\n2: Pokeball Shop\n3: Exit");
+      String choice= Keyboard.readString();
+      if (choice.equals("1")){
 	    
-	}else if(choice.equals("2")){
+      }else if(choice.equals("2")){
 
-	}else if(choice.equals("3")){
-	    return;
-	}else{
-	    System.out.println("Please enter a number between 1-3 inclusive");
-	    shop();
-	}
-	}*/
+      }else if(choice.equals("3")){
+      return;
+      }else{
+      System.out.println("Please enter a number between 1-3 inclusive");
+      shop();
+      }
+      }*/
 
     public void buyPotions(){
 	System.out.println("Which potion would you like to buy?");
@@ -409,59 +430,115 @@ public class Trainer{
     }
     
     public Boolean canAfford(int cost, int amount){
-	    int totalCost= cost*amount;
+	int totalCost= cost*amount;
 	return getMoney()>= totalCost;
+    }
+
+    public void move(Maps map){
+	System.out.println("Where do you want to move?");
+	System.out.println("1: Up\n2: Right\n3: Down\n4: Left\n5: Exit");
+	String choiceStr= Keyboard.readString();
+	
+	if ("12345".indexOf(choiceStr)==-1){
+	    System.out.println("Please choose a number between 1-5 inclusijve");
+	}else{
+	    if (choiceStr.equals("1")){
+		if (yCoor== 0){
+		    System.out.println("Reached end of map");
+		    move(map);
+		}else{
+		    yCoor-=1;
+		    map.setYCoor(yCoor);
+		}
+	    }else if (choiceStr.equals("2")){
+		if (xCoor== map.getDefault()-1){
+		    System.out.println("Reached end of map");
+		    move(map);
+		}else{
+		    xCoor+=1;
+		    map.setXCoor(xCoor);
+		}
+	    }else if (choiceStr.equals("3")){
+		if (yCoor== map.getDefault()-1){
+		    System.out.println("Reached end of map");
+		    move(map);
+		}else{
+		    yCoor+=1;
+		    map.setYCoor(yCoor);
+		}
+	    }else if (choiceStr.equals("4")){
+		if (xCoor== 0){
+		    System.out.println("Reached end of map");
+		    move(map);
+		}else{
+		    xCoor-=1;
+		    map.setXCoor(xCoor);
+		}
+	    }else if (choiceStr.equals("5")){
+		System.out.println("Return to main menu");
+		return;
+	    }
+	    map.placeHuman();
+	    System.out.println(map.getMap());
+	    move(map);
+	}
     }
     //================================================
 
     
     public static void main(String[] args){
 	Trainer test= new Trainer("Ling");
-	
-	System.out.println("Your name is Trainer "+test.getTrainerName());
-	System.out.println("You have "+test.getNumPokeOnMe()+" Pokemon on you");
-	System.out.println("You have a total of "+(test.getNumPokeOnMe()+test.getNumPokeInLab()) + " Pokemon");	
-	System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
-	System.out.println("These are the Pokemon in your lab:\n" +test.getPokeInLab().toString());
+	/*
+	  System.out.println("Your name is Trainer "+test.getTrainerName());
+	  System.out.println("You have "+test.getNumPokeOnMe()+" Pokemon on you");
+	  System.out.println("You have a total of "+(test.getNumPokeOnMe()+test.getNumPokeInLab()) + " Pokemon");	
+	  System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
+	  System.out.println("These are the Pokemon in your lab:\n" +test.getPokeInLab().toString());
 
-	System.out.println();
-	System.out.println(test.checkBag());
-	System.out.println("Got 10 more potions.");
-	test.setPotions(1, 10);
-	System.out.println(test.checkBag());
+	  System.out.println();
+	  System.out.println(test.checkBag());
+	  System.out.println("Got 10 more potions.");
+	  test.setPotions(1, 10);
+	  System.out.println(test.checkBag());
     
-	System.out.println("You bought 10 MasterBalls");
-	test.setPokeballs(4, 10);
-	test.setMoney(test.getMoney()-200);
-	System.out.println("PokeDollars: "+ test.getMoney());
-	System.out.println(test.getPokeballsStr());
+	  System.out.println("You bought 10 MasterBalls");
+	  test.setPokeballs(4, 10);
+	  test.setMoney(test.getMoney()-200);
+	  System.out.println("PokeDollars: "+ test.getMoney());
+	  System.out.println(test.getPokeballsStr());
 	
 
-	Pokemon test2= new Pokemon("Eevee");
-	test2.setHPT(1);
-	test2.setHP(3);
-	System.out.println("Testing how Pokeball================");
-	test.throwPokeball(test2);
-	System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
-	//System.out.println("The name of your first Pokemon is "+test.getPokeOnMe().get(0).getName());
+	  Pokemon test2= new Pokemon("Eevee");
+	  test2.setHPT(1);
+	  test2.setHP(3);
+	  System.out.println("Testing how Pokeball================");
+	  test.throwPokeball(test2);
+	  System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
+	  //System.out.println("The name of your first Pokemon is "+test.getPokeOnMe().get(0).getName());
 
-	System.out.println("Choosing starter Pokemon");
-	test.chooseStarter();
-	System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
+	  System.out.println("Choosing starter Pokemon");
+	  test.chooseStarter();
+	  System.out.println("These are the Pokemon on you:\n" +test.getPokeOnMe().toString());
 
-	test.usePotions(test.getPokeOnMe().get(0));
-	System.out.println(test.getPokeOnMe().get(0).getHP());
-	
+	  test.usePotions(test.getPokeOnMe().get(0));
+	  System.out.println(test.getPokeOnMe().get(0).getHP());
+	*/
 	/*System.out.println("Should be Potions: "+test.getName(test.getPotions(), 1));
 	  System.out.println("Should be 20: "+test.getAmount(test.getPotions(), 1));*/
-	
-	test.buyPotions();
-	System.out.println(test.checkBag());
+	/*
+	  test.buyPotions();
+	  System.out.println(test.checkBag());
 
-	test.buyPokeballs();
-	System.out.println(test.checkBag());
+	  test.buyPokeballs();
+	  System.out.println(test.checkBag());
+	*/
+	Maps testing= new Maps();
+	System.out.println(testing.getMap());
+	test.move(testing);
+	
+
 	    
     }
     
-
+    
 }
