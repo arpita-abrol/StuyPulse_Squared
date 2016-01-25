@@ -15,7 +15,8 @@ public class Trainer{
     private int currentTown;
     private Boolean inAdventure;
     private int xCoor;
-    private int yCoor; 
+    private int yCoor;
+    private String type; 
     //================================================
 
     //===============Constructors=================================
@@ -98,6 +99,22 @@ public class Trainer{
     }
     public Boolean getInAdventure(){
 	return inAdventure;
+    }
+
+    public Pokemon getRare(){
+	Pokemon rare;
+	rare= new Pokemon("Mew");
+	return rare;
+    }
+    public Pokemon getUncommon(){
+	Pokemon uncommon;
+	uncommon= new Pokemon("Pikachu");
+	return uncommon;
+    }
+    public Pokemon getCommon(){
+	Pokemon common;
+	common= new Pokemon("Mew");
+	return common;
     }
     //================================================
 
@@ -484,6 +501,31 @@ public class Trainer{
 	move(map);
 	
     }
+    public Boolean encounter(){
+	int randNum= (Integer)((Math.random()+1)*3);
+	if (randNum==1){
+	    meetPokemon();
+	}else{
+	    System.out.println("No sign of any Pokemon here");
+	}
+    }
+    
+    public Pokemon meetPokemon(){
+	int randNum= (Integer)((Math.random()+1)*100);
+	if (randNum< 10){
+	    System.out.println("Rare 10%");
+	}else if (randNum< 40){
+	    System.out.println("Uncommon 30%");
+	}else if (randNum< 100){
+	    System.out.println("Common 60%");
+	}
+	
+    }
+
+    public void battlePokemon(Pokemon enemy){
+	System.out.println("Which Pokemon would you like to use?");
+    }
+
     //================================================
 
     
