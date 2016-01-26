@@ -490,6 +490,7 @@ public class Trainer{
 	int pokeToHeal= Keyboard.readInt();
 	usePotions(getPokeOnMe().get(pokeToHeal-1));
     }
+    
     public void move(Maps map){
 	System.out.println(map.getMap());
 	System.out.println("What do you want to do?");
@@ -641,6 +642,7 @@ public class Trainer{
 	}
 	System.out.println("You found a "+ findPotion);
     }
+    
     public void meetPokeballs(){
 	double chance = Math.random();
 	String findPokeball;;

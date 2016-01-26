@@ -248,6 +248,7 @@ public class Pokemon {
 	String[] born = m.split("1");
 	for( int x = 0; x < born.length; x++ ) {
 	    possibleMoves.add(born[x]);
+	    //System.out.println(born[x]);
 	}
 	for( int x = 1; x <= getLevel(); x++ ) {
 	    String move = CSVMaster.singleLine( CSVMaster.pokeMoves.get(getNum()))[x+2] ;
@@ -255,9 +256,10 @@ public class Pokemon {
 		possibleMoves.add(move);
 	    }
 	}
+	System.out.println(possibleMoves.size());
 	//give pokemon moves
 	if( possibleMoves.size() <= 4 ) {
-	    for( int x = 0; x < possibleMoves.size()-1; x++ ) {
+	    for( int x = 0; x <= possibleMoves.size()-1; x++ ) {
 		setMove( x, possibleMoves.get(x) );
 		setNumMoves( getNumMoves() + 1 );
 	    }
@@ -412,11 +414,8 @@ public class Pokemon {
     //trainer's pokemon gets attacked
     public void attackT( Pokemon opp ) {
 	int move = (int)(this.getNumMoves() * Math.random());
-	int damage= (int)(this.calcDamage(_moves[move][1],opp)*.5);
+	int damage = this.calcDamage(_moves[move][1],opp);
 	opp.setHPT( opp.getHPT() - damage );
-	if (opp.getHPT()<0){
-	    opp.setHPT(0);
-	}
 	System.out.println(this.getName() + " used " + _moves[move][0] + "!");
 	System.out.println(opp.getName() + " took " + damage + " damage!");
     }
@@ -425,38 +424,40 @@ public class Pokemon {
     public void battle( Pokemon opp, Trainer person ) {
 	while( this.isAlive() && opp.isAlive()&& !opp.getIsCaught() ) {
 	    System.out.println( this + "\n" + opp );
-	    // System.out.println("Would you like to (1)battle, (2)throw a pokeball,(3)use a potion, or (4)run?");
-	    //String rep = Keyboard.readString();
-	    // if( rep.equals("1") ) {
-	    if( this.getSpeed() >= opp.getSpeed() ) {
-		this.attack(opp);
-		if( opp.isAlive() ) {
-		    opp.attackT(this);
-		}
-	    }else{
-		opp.attackT(this);
-		if( this.isAlive() ) {
+	    System.out.println("Would you like to (1)battle, (2)throw a pokeball,(3)use a potion, or (4)run?");
+	    String rep = Keyboard.readString();
+	    if( rep.equals("1") ) {
+		if( this.getSpeed() >= opp.getSpeed() ) {
 		    this.attack(opp);
+		    if( opp.isAlive() ) {
+			opp.attackT(this);
+		    }
+		}
+		else {
+		    opp.attackT(this);
+		    if( this.isAlive() ) {
+			this.attack(opp);
+		    }
 		}
 	    }
-	}
-	    /*else if( rep.equals("2") ) {
-	      person.throwPokeball(opp);
-	      if( !opp.getIsCaught() ) {
-	      opp.attackT(this);
-	      }
-	      }
-	      else if( rep.equals("3") ) {
-	      person.usePotions(this);
-	      opp.attackT(this);
-	      }
-	      else if( rep.equals("4") ) {
-	      if( Math.random() * opp.getHPT() / this.getHPT() < .5 ) {
-	      System.out.println("You have escaped.");
-	      return;
-	      }
+	    else if( rep.equals("2") ) {
+		person.throwPokeball(opp);
+		if( !opp.getIsCaught() ) {
+		    opp.attackT(this);
+		}
+	    }
+	    else if( rep.equals("3") ) {
+		person.usePotions(this);
+		opp.attackT(this);
+	    }
+	    else if( rep.equals("4") ) {
+		if( Math.random() * opp.getHPT() / this.getHPT() < .5 ) {
+		    System.out.println("You have escaped.");
+		    return;
+		}
 		opp.attack(this);
-		}*/
+	    }
+	}
 	if( this.isAlive() ) {
 	    int newExp = (opp.getLevel() * (int)(Math.random() * 3 + 1));
 	    this.setExpT( this.getExpT() + newExp );
@@ -512,8 +513,26 @@ public class Pokemon {
 
     public String toString() {
 	String fin = _name;
-	fin += "\tLevel: " + getLevel() + "\tAttack: " + getAttackT() + "\tDefense: " + getDefenseT() + "\tHP: " + getHPT();
+	fin += "\nLevel: " + getLevel() + "\nAttack: " + getAttackT() + "\nDefense: " + getDefenseT() + "\nHP: " + getHPT();
 	return fin + "\n";
+    }
+
+
+
+
+    public static String getRandom( int town ) {
+	ArrayList<String> arr = new ArrayList<String>();
+	arr = CSVMaster.CSVtoArray("Town" + town + ".csv");
+	int pNum = (int)(Math.random() * arr.size()-1);
+	double random = Math.random()*100;
+	if( 100-Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) < random ) {
+	    String pokeName = CSVMaster.singleLine(arr.get(pNum+1))[1];
+	    System.out.println( Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) + "\t" + random );
+	    return pokeName;
+	}
+	else{
+	    return getRandom( town );
+	}
     }
 
 
@@ -522,16 +541,15 @@ public class Pokemon {
     //for testing purposes only
     public static void main( String[]args ) {
 	String[] pokeMoves = {"Tackle","Poison Powder"};
-	Pokemon sample = new Pokemon("Blastoise",41);
-	Pokemon sample2 = new Pokemon("Bulbasaur",28);
-	Trainer sample3 = new Trainer("H");
+	//Pokemon sample = new Pokemon("Blastoise",4);
+	Pokemon sample2 = new Pokemon("Squirtle",2);
+	//Trainer sample3 = new Trainer("H");
 	//System.out.println(sample + "\n" + sample.getAllMoves());
 	//System.out.println(sample2 + "\n" + sample2.getAllMoves());
-	sample.battle(sample2,sample3);
+	//sample2.battle(sample,sample3);
 	//System.out.println( sample.getNumMoves() );
-	//System.out.println( sample );
-	//sample.setExpT(1000000);
-	//System.out.println( sample + "\n" + sample.getAllMoves() + "\n" + sample.getMove(0));
+	//System.out.println( getRandom(0) );
+	System.out.println( sample2 + "\n" + sample2.getAllMoves() + "\n" + sample2.getMove(0));
     }
 	    
 
