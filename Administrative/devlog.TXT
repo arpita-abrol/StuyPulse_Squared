@@ -143,6 +143,7 @@ Ling:
   )(  / /  / _/  (_ \ / /  )( / _ \
  (__)(_/  (____)(___/(_/  (__)\___/
 Arpita:
+-Pokemon: randomize moves
 
 Ling:
 -Driver- created a Trainer and tested chooseStarter()
@@ -153,6 +154,7 @@ Ling:
   )(  / /  / _/(_  _)/ /  )( / _ \
  (__)(_/  (____) (_)(_/  (__)\___/
 Arpita:
+-Pokemon: give specific moves
 
 Ling:
 -Maps- Started Maps
@@ -168,6 +170,7 @@ Arpita:
 -Finished evolution
 -Finished battle
 -Trainer- randomly generated Pokemon
+-Made gym battles
 
 Ling:
 -Maps- Have a working Maps
