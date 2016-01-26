@@ -383,6 +383,7 @@ public class Pokemon {
 
     //finds the power of a selected move
     public int findPower( String move ) {
+	//System.out.println( move );
 	int num = CSVMaster.searchCSV( move, CSVMaster.moves, 0 );
 	return Integer.parseInt(CSVMaster.singleLine( CSVMaster.moves.get(num) )[2]);
     }

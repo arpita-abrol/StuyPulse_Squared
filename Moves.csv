@@ -239,6 +239,7 @@ Pluck,flying ,60,100,"If the opponent is holding a berry, its effect is stolen b
 Poison Fang,poison ,50,100,May cause poison that gets worse each turn. 
 Poison Gas,poison ,-1,55,"Poisons the opponent, if it hits. "
 Poison Powder,poison ,-1,75,"Poisons the opponent, if it hits. "
+Poison Sting,poison ,15,100,"Poisons the opponent, if it hits. "
 Pound,normal ,40,100,No Added Effect
 Present,normal ,-1,90,Either deals damage or heals. 
 Protect,normal ,-1,-100,User is not affected by opponent's move. May fail if used often. 
@@ -270,7 +271,7 @@ Roost,flying ,-1,-100,User recovers 50% of its max HP. Flying-type users are not
 Sacred Fire,fire ,100,95,Likely to cause a burn. 
 Safeguard,normal ,-1,-100,The user's party is protected from status conditions. 
 Sand Tomb,ground ,15,70,"Damages opponent for 2-5 turns, opponent cannot switch/escape. "
-Sand-attack,ground ,-1,100,Decreases the opponent's Accuracy by one stage. 
+Sand-Attack,ground ,-1,100,Decreases the opponent's Accuracy by one stage. 
 Sandstorm,rock ,-1,-100,"Damages all Pokemon except Rock-, Ground-, and Steel-types. "
 Scary Face,normal ,-1,90,"Decreases the opponent's Speed by two stages, if it hits. "
 Scratch,normal ,40,100,No Added Effect
