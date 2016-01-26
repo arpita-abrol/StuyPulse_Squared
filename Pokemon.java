@@ -350,20 +350,33 @@ public class Pokemon {
     public void evolve() {
 	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
 	if( data[2].equals("true") ) {
-	    System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
-	    String ans = Keyboard.readString();
-	    if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
-		//evolve
-		if( data[3].equals("-1") ) {
+	   
+	    //evolve
+	    if( data[3].equals("-1") ) {
+		System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
+		String ans = Keyboard.readString();
+		if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
 		    //stones
 		}
-		if( data[3].equals("-2") ) {
+	    }
+	    if( data[3].equals("-2") ) {
+		System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
+		String ans = Keyboard.readString();
+		if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
 		    //trade
 		}
-		if( data[3].equals("-3") ) {
+	    }
+	    if( data[3].equals("-3") ) {
+		System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
+		String ans = Keyboard.readString();
+		if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
 		    //EEVEE
 		}
-		if( Integer.parseInt(data[3]) <= getLevel() ) {
+	    }
+	    if( Integer.parseInt(data[3]) <= getLevel() ) {
+		System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
+		String ans = Keyboard.readString();
+		if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
 		    setName( data[4] );
 		    setNum( getNum() + 1 );
 		    setAttack( getAttack() + 5 );
