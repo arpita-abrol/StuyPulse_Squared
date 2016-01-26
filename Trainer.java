@@ -576,11 +576,8 @@ public class Trainer{
 		//generates and fight a wild pokemon
 	   
 		if (encounterPoke()){
-		    System.out.println("hello");
-		
-		    Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
 
-		    System.out.println("hello");
+		    Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
 		    System.out.println("A wild "+wildPoke.getName()+" appeared!");
 		    if (!stillAlive()){
 			System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal or use potions");
