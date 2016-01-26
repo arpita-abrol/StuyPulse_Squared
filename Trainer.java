@@ -742,15 +742,65 @@ public class Trainer{
 	setMoney(temp); 
     }
 
-   
+    public void swapPokemon(){
+	System.out.println("Which Pokemon would you like to swap out?");
+	String pokeOnMe= "";
+	for (int i= 0; i< getNumPokeOnMe(); i++){
+	    pokeOnMe+= (i+1)+": "+getPokeOnMe().get(i);
+	}
+	System.out.println(pokeOnMe);
 	
-
+	int choice1=Keyboard.readInt();
+	
+	if (choice1> getNumPokeOnMe()|| choice1< 0){
+	    System.out.println("Choose a valid number");
+	    swapPokemon();
+	}else{
+	    System.out.println("Which Pokemon would you like to swap with?");
+	    String pokeInLab= "";
+	    for (int i= 0; i< getNumPokeInLab(); i++){
+		pokeInLab+= (i+1)+": "+getPokeInLab().get(i);
+	    }
+	    System.out.println(pokeInLab);
+	
+	    int choice2=Keyboard.readInt();
+	    if (choice2> getNumPokeInLab()|| choice2< 0){
+		System.out.println("Choose a valid number");
+		swapPokemon();
+	    }else{
+	        Pokemon temp1= getPokeOnMe().get(choice1-1);
+		Pokemon temp2= getPokeInLab().get(choice2-1);
+		getPokeOnMe().remove(choice1-1);
+		getPokeInLab().remove(choice2-1);
+		getPokeOnMe().add(temp2);
+		getPokeInLab().add(temp1);
+	    }
+	}
+	
+    }
 
     //================================================
 
     
     public static void main(String[] args){
 	Trainer test= new Trainer("Ling");
+	/*Pokemon test1= new Pokemon("Eevee");
+	Pokemon test2= new Pokemon("Squirtle");
+	Pokemon test3= new Pokemon("Bulbasaur");
+	Pokemon test4= new Pokemon("Charmander");
+	Pokemon test5= new Pokemon("Mewtwo");	
+	Pokemon test6= new Pokemon("Mew");
+	Pokemon test7= new Pokemon("Pikachu");
+	test.catchPokemon(test1);
+	test.catchPokemon(test2);
+	test.catchPokemon(test3);
+	test.catchPokemon(test4);
+	test.catchPokemon(test5);
+	test.catchPokemon(test6);
+	test.catchPokemon(test7);
+	test.swapPokemon();
+	System.out.println(test.getPokeOnMe());
+	*/
 	/*
 	  System.out.println("Your name is Trainer "+test.getTrainerName());
 	  System.out.println("You have "+test.getNumPokeOnMe()+" Pokemon on you");
@@ -795,10 +845,11 @@ public class Trainer{
 	  test.buyPokeballs();
 	  System.out.println(test.checkBag());
 	*/
+	/*
 	Maps testing= new Maps();
 	System.out.println(testing.getMap());
 	test.move(testing);
-	
+	*/
 
 	    
     }
