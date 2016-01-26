@@ -726,7 +726,9 @@ public class Trainer{
 	System.out.println("You found a "+ findPokeball);
     }
     public void meetMoney(){
-	setMoney((int)(getMoney()+ Math.random()*200));
+	int temp= (int)(Math.random()*200);
+	System.out.println("You found "+ temp+" PokeDollars");
+	setMoney(temp);
     }
 
    

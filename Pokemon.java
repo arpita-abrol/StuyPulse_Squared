@@ -422,48 +422,26 @@ public class Pokemon {
 
     //battles another pokemon
     public void battle( Pokemon opp, Trainer person ) {
-	while( this.isAlive() && opp.isAlive()&& !opp.getIsCaught() ) {
+
 	    System.out.println( this + "\n" + opp );
-	    System.out.println("Would you like to (1)battle, (2)throw a pokeball,(3)use a potion, or (4)run?");
-	    String rep = Keyboard.readString();
-	    if( rep.equals("1") ) {
-		if( this.getSpeed() >= opp.getSpeed() ) {
-		    this.attack(opp);
-		    if( opp.isAlive() ) {
-			opp.attackT(this);
-		    }
-		}
-		else {
-		    opp.attackT(this);
-		    if( this.isAlive() ) {
-			this.attack(opp);
-		    }
-		}
-	    }
-	    else if( rep.equals("2") ) {
-		person.throwPokeball(opp);
-		if( !opp.getIsCaught() ) {
+	    if( this.getSpeed() >= opp.getSpeed() ) {
+		this.attack(opp);
+		if( opp.isAlive() ) {
 		    opp.attackT(this);
 		}
-	    }
-	    else if( rep.equals("3") ) {
-		person.usePotions(this);
+	    }else{
 		opp.attackT(this);
-	    }
-	    else if( rep.equals("4") ) {
-		if( Math.random() * opp.getHPT() / this.getHPT() < .5 ) {
-		    System.out.println("You have escaped.");
-		    return;
+		if( this.isAlive() ) {
+		    this.attack(opp);
 		}
-		opp.attack(this);
 	    }
-	}
-	if( this.isAlive() ) {
+	
+	if( !opp.isAlive() ) {
 	    int newExp = (opp.getLevel() * (int)(Math.random() * 3 + 1));
 	    this.setExpT( this.getExpT() + newExp );
 	    System.out.println( this.getName() + " won. " + this.getName() + " gained " + newExp + " exp." );
 	}
-	else {
+	else if(!this.isAlive()) {
 	    System.out.println( opp.getName() + " won." );
 	}
     }
