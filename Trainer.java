@@ -605,6 +605,8 @@ public class Trainer{
 		Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
 
 		while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
+		    System.out.println(enemy);
+		    System.out.println(yourPokemon);
 		    System.out.println("What would you like to do?");
 		    System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Change Pokemon\n5: Run");
 		    int battleChoice=Keyboard.readInt();
