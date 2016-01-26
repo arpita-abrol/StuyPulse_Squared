@@ -507,6 +507,7 @@ public class Trainer{
 	System.out.println("1: Move Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me\n7: Use Potion");
 	System.out.println("8: Go to the Healing Center for 3,000 PokeDollars");
 	System.out.println("9: Go shopping");
+	System.out.println("10: Swap with Pokemon in Lab");
 	String choiceStr= Keyboard.readString();
 	System.out.println("");
 	
@@ -523,6 +524,12 @@ public class Trainer{
 	    healingCenter();
 	}else if (choiceStr.equals("9")){
 	    shop();
+	}else if (choiceStr.equals("10")){
+	    if (getNumPokeInLab()== 0){
+		System.out.println("You don't have any Pokemon in your lab");
+	    }else{
+		swapPokemon();
+	    }
 	}else{
 	    //sets xCoor and yCoor
 	    if (choiceStr.equals("1")){
