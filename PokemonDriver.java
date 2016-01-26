@@ -9,7 +9,6 @@ public class PokemonDriver {
     Trainer test= new Trainer(TrainerName);
     Maps testing= new Maps();
     test.chooseStarter();
-    System.out.println(testing.getMap());
     test.move(testing);
     
     }

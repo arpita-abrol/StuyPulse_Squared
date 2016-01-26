@@ -17,6 +17,7 @@ public class Pokemon {
     private int[] _exp = new int[2];        //pokemon exp--determines current exp/needed exp
     private int _numMoves = 0;    //number of moves pokemon has (max 4)
     private String[][]  _moves = new String[4][2];  //pokemon moves [[m1,p1][m2,p2][m3,p3][m4,p4]]
+    private Boolean isCaught;
 
 
 
@@ -34,6 +35,7 @@ public class Pokemon {
         setSpeed(Integer.parseInt(data[5]));
 	setExp();
 	setRandomMoves();
+	isCaught= false;
     }
     
     public Pokemon( String name, int level ) {
@@ -121,8 +123,10 @@ public class Pokemon {
     public String getPower( int move ) {
 	return _moves[move][1];
     }
-
-
+    public Boolean getIsCaught(){
+	return isCaught;
+    }
+    
 
     
     //mutators
@@ -265,7 +269,9 @@ public class Pokemon {
 	    }
 	}
     }
-
+    public Boolean setIsCaught(Boolean bool){
+	return isCaught== bool;
+    }
 
     //other methods
 
@@ -341,9 +347,9 @@ public class Pokemon {
     }
 
     public String toString() {
-	String fin = "\n"+_name;
+	String fin = _name;
 	fin += "\tLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
-	return fin;
+	return fin+"\n";
     }
 
 

@@ -6,6 +6,7 @@ public class Maps{
     private int _default= 10;
     private int yCoor;
     private int xCoor;
+    private int size;
     
     public Maps(){
 	yCoor=0;
@@ -13,10 +14,11 @@ public class Maps{
 	map= new String[_default][_default];
 	makeMap();
     }
-    public Maps(int x, int y){
-	this();
+    public Maps(int x, int y, int size){
 	xCoor=x;
 	yCoor=y;
+	map= new String[size][size];
+	makeMap();
 	placeHuman();
     }
     private void makeMap(){

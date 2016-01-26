@@ -1,3 +1,6 @@
+//meetPotions
+
+
 import java.util.ArrayList;
 import cs1.Keyboard;
 
@@ -113,7 +116,7 @@ public class Trainer{
     }
     public Pokemon getCommon(){
 	Pokemon common;
-	common= new Pokemon("Mew");
+	common= new Pokemon("Vulpix");
 	return common;
     }
     //================================================
@@ -152,25 +155,25 @@ public class Trainer{
     //Trainers starts with 5 Pokeball, 0 Great Ball, 0 Ultra Ball, and 0 Master Ball
     public void createPokeballs(){
 	Pokeballs= new ArrayList();
-	Pokeballs.add("Pokeballs");
+	Pokeballs.add("Pokeball");
 	Pokeballs.add(5);
-	Pokeballs.add("Great Balls");
+	Pokeballs.add("Great Ball");
 	Pokeballs.add(0);
-	Pokeballs.add("Ultra Balls");
+	Pokeballs.add("Ultra Ball");
 	Pokeballs.add(0);
-	Pokeballs.add("Master");
+	Pokeballs.add("Master Ball");
 	Pokeballs.add(0);
     }
     //Trainers starts with 10 Potions, 5 Super Potions, 0 Hyper Potions, and 0 Max Potions
     public void createPotions(){
 	Potions= new ArrayList();
-	Potions.add("Potions");
+	Potions.add("Potion");
 	Potions.add(10);
-	Potions.add("Super Potions");
+	Potions.add("Super Potion");
 	Potions.add(5);
-	Potions.add("Hyper Potions");
+	Potions.add("Hyper Potion");
 	Potions.add(0);
-	Potions.add("Max Potions");
+	Potions.add("Max Potion");
 	Potions.add(0);
     }
     
@@ -180,7 +183,8 @@ public class Trainer{
 	System.out.println("Which Pokeball do you want to use?\nYour backpack:");
 	System.out.println(getPokeballsStr());
 	String PokeChoiceStr = Keyboard.readString();
-
+	System.out.println("");
+	
 	//if input is not within "1234", return message and recurse
 	if (!isNum(PokeChoiceStr)){
 	    System.out.println("Please enter a number between 1-4 inclusive");
@@ -238,6 +242,7 @@ public class Trainer{
 	    System.out.println("Max number of Pokemon you can carry was reached, so "+newPokemon.getName() +" was sent to lab.");
 	}else{
 	    onMePokemon.add(newPokemon);
+	    newPokemon.setIsCaught(true);
 	    System.out.println(newPokemon.getName()+ " was sent to your backpack. You now have "+getNumPokeOnMe()+" Pokemon on you.");
 	}
     }
@@ -260,6 +265,7 @@ public class Trainer{
 	System.out.println("2: Squirtle");
 	System.out.println("3: Bulbsaur");
 	String choice = Keyboard.readString();
+	System.out.println("");
 
 	Pokemon starter;
 	if (choice.equals("1")){
@@ -282,16 +288,19 @@ public class Trainer{
     public void usePotions(Pokemon pokemon){
 	System.out.println("Which potion would you like to use?");
 	System.out.println(getPotionsStr());
+	System.out.println("5: Exit");
 	String choiceStr = Keyboard.readString();
+	System.out.println("");
+	
 
-	if (!isNum(choiceStr)){
+	if ("12345".indexOf(choiceStr)==-1){
 	    System.out.println("Please enter a number between 1-4 inclusive");
 	    usePotions(pokemon);
 	}else{
 
 	    int choice= Integer.parseInt(choiceStr);
-	    if (!(choice> 0&& choice<5)){
-		System.out.println("Please enter a number between 1-4 inclusive");
+	    if (!(choice> 0&& choice<6)){
+		System.out.println("Please enter a number between 1-5 inclusive");
 		usePotions(pokemon);
 	    }
 	
@@ -302,10 +311,16 @@ public class Trainer{
 	    }else{
 	
 		setPotions(choice, -1);
-		if (choice== 4)
+		if (choice== 5)
+		    return;
+		else if (choice== 4){
 		    pokemon.setHPT(pokemon.getHP());
-		else
+		    System.out.println("Your "+pokemon.getName()+" now has full HP");
+		}
+		else{
 		    pokemon.setHPT(pokemon.getHPT()+addHP(choice));
+		    System.out.println("Your "+pokemon.getName()+" gained "+ addHP(choice)+" HP");
+		}
 	    }
 	}
     }
@@ -321,15 +336,15 @@ public class Trainer{
 	return retInt;
     }
 
-    public Boolean isNum(String str){
-	return "1234".indexOf(str) != -1;
-    }
+
 
     public void shop(){
 	checkBag();
 	System.out.println("Where would you like to go?");
 	System.out.println("1: Potion Shop\n2: Pokeball Shop\n3: Exit");
 	String choice= Keyboard.readString();
+	System.out.println("");
+	
 	if (choice.equals("1")){
 	    buyPotions();
 	}else if(choice.equals("2")){
@@ -352,6 +367,7 @@ public class Trainer{
 	System.out.println("4: Max Potion\tMaxHP     \t2500PokeDollars");
 	System.out.println("5: Exit Shop");
 	String choiceStr= Keyboard.readString();
+	System.out.println("");
 	
 	if (choiceStr.equals("5")){
 	    System.out.println("shop here");//shop();
@@ -360,6 +376,7 @@ public class Trainer{
 		int choice= Integer.parseInt(choiceStr);
 		System.out.println("How many "+getName(Potions, choice)+" would you like to buy?");
 		int amount=Keyboard.readInt();
+		System.out.println("");
 		if (choice==1){
 		    if (canAfford(300, amount)){
 			setPotions(1, amount);
@@ -407,6 +424,7 @@ public class Trainer{
 	System.out.println("3: Ultra Ball\t2x          \t1200PokeDollars");
 	System.out.println("4: Exit Shop");
 	String choiceStr= Keyboard.readString();
+	System.out.println("");
 	
 	if (choiceStr.equals("4")){
 	    System.out.println("shop here");//shop();
@@ -415,6 +433,7 @@ public class Trainer{
 		int choice= Integer.parseInt(choiceStr);
 		System.out.println("How many "+getName(Pokeballs, choice)+" would you like to buy?");
 		int amount=Keyboard.readInt();
+		System.out.println("");
 		if (choice==1){
 		    if (canAfford(300, amount)){
 			setPokeballs(1, amount);
@@ -453,12 +472,18 @@ public class Trainer{
     }
 
     public void move(Maps map){
+	System.out.println(map.getMap());
 	System.out.println("What do you want to do?");
 	System.out.println("1: Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me");
 	String choiceStr= Keyboard.readString();
+	System.out.println("");
 	
 	if ("123456".indexOf(choiceStr)==-1){
-	    System.out.println("Please choose a number between 1-5 inclusijve");
+	    System.out.println("Please choose a number between 1-5 inclusive");
+	}else if (choiceStr.equals("5")){
+	    System.out.println(checkBag());
+	}else if (choiceStr.equals("6")){
+	    System.out.println(getPokeOnMe());
 	}else{
 	    if (choiceStr.equals("1")){
 		if (yCoor== 0){
@@ -488,43 +513,125 @@ public class Trainer{
 		    xCoor-=1;
 		    map.setXCoor(xCoor);
 		}
-	    }else if (choiceStr.equals("5")){
-		System.out.println(checkBag());
-	    }else if (choiceStr.equals("6")){
-		System.out.println(getPokeOnMe());
-	    }else{
-		System.out.println("Please choose a number between 1-5 inclusijve");
+	    }	
+	    map.placeHuman();
+	    if (encounterPotions()){
+		meetPotions();
+	    }
+	    if (encounterPokeballs()){
+		meetPokeballs();
+	    }
+	
+	    if (encounterPoke()){
+		Pokemon wildPoke = meetPokemon();
+		System.out.println("A wild "+wildPoke.getName()+" appeared!");
+		System.out.println("What will you do?");
+		System.out.println("1: Battle\n2: Run");
+		int choice=Keyboard.readInt();
+		System.out.println("");
+		while(wildPoke.isAlive()&&!(wildPoke.getIsCaught())){
+		    if (choice==1){
+			battlePokemon(wildPoke);
+		    }else if (choice== 2){
+			break;
+		    }
+		}
 	    }
 	}
-	map.placeHuman();
-	System.out.println(map.getMap());
 	move(map);
 	
     }
-    public Boolean encounter(){
-	int randNum= (Integer)((Math.random()+1)*3);
-	if (randNum==1){
-	    meetPokemon();
-	}else{
-	    System.out.println("No sign of any Pokemon here");
-	}
+    public Boolean encounterPoke(){
+        return Math.random()<.33;
+    }
+    public Boolean encounterPotions(){
+        return Math.random()<1.0;
+    }
+    public Boolean encounterPokeballs(){
+        return Math.random()<.40;
     }
     
     public Pokemon meetPokemon(){
-	int randNum= (Integer)((Math.random()+1)*100);
+	int randNum= (int)((Math.random()+1)*100);
+	Pokemon wild;
 	if (randNum< 10){
-	    System.out.println("Rare 10%");
+	    wild= getRare();
 	}else if (randNum< 40){
-	    System.out.println("Uncommon 30%");
-	}else if (randNum< 100){
-	    System.out.println("Common 60%");
+	    wild= getUncommon();
+	}else{
+	    wild= getCommon();
 	}
-	
+	return wild;
+    }
+
+    public void meetPotions(){
+	double chance = Math.random();
+	String findPotion;
+	if (chance< .5){
+	    setPotions(1, 1);
+	    findPotion= getName(Potions, 1);
+	}else if (chance< .75){
+	    setPotions(2, 1);
+	    findPotion= getName(Potions, 2);
+	}else if (chance< .95){
+	    setPotions(3, 1);
+	    findPotion= getName(Potions, 3);
+	}else{
+	    setPotions(4, 1);
+	    findPotion= getName(Potions, 4);
+	}
+	System.out.println("You found a "+ findPotion);
+    }
+    public void meetPokeballs(){
+	double chance = Math.random();
+	String findPokeball;;
+	if (chance< .5){
+	    setPokeballs(1, 1);
+	    findPokeball= getName(Pokeballs, 1);
+	}else if (chance< .75){
+	    setPokeballs(2, 1);
+	    findPokeball= getName(Pokeballs, 2);
+	}else if (chance< .95){
+	    setPokeballs(3, 1);
+	    findPokeball= getName(Pokeballs, 3);
+	}else{
+	    setPokeballs(4, 1);
+	    findPokeball= getName(Pokeballs, 4);
+	}
+	System.out.println("You found a "+ findPokeball);
     }
 
     public void battlePokemon(Pokemon enemy){
 	System.out.println("Which Pokemon would you like to use?");
+	String pokeOnMe= "";
+	for (int i= 0; i< getNumPokeOnMe(); i++){
+	    pokeOnMe+= (i+1)+": "+getPokeOnMe().get(i);
+	}
+	System.out.println(pokeOnMe);
+	int pokeChoice=Keyboard.readInt();
+	System.out.println("");
+	pokeChoice-=1;
+
+	Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
+
+	while(enemy.isAlive()&& !(enemy.getIsCaught())){
+	    System.out.println("What would you like to do?");
+	    System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Run");
+	    int battleChoice=Keyboard.readInt();
+	    System.out.println("");
+	    if (battleChoice== 1){
+		System.out.println("Attacking");
+	    }else if(battleChoice== 2){
+		throwPokeball(enemy);
+	    }else if(battleChoice== 3){
+		usePotions(yourPokemon);
+	    }else if (battleChoice==4 ){
+		return;
+	    }
+	}
     }
+	
+
 
     //================================================
 
