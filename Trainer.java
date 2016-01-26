@@ -728,7 +728,7 @@ public class Trainer{
     public void meetMoney(){
 	int temp= (int)(Math.random()*200);
 	System.out.println("You found "+ temp+" PokeDollars");
-	setMoney(temp);
+	setMoney(temp); 
     }
 
    
