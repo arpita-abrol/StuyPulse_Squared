@@ -412,8 +412,11 @@ public class Pokemon {
     //trainer's pokemon gets attacked
     public void attackT( Pokemon opp ) {
 	int move = (int)(this.getNumMoves() * Math.random());
-	int damage = this.calcDamage(_moves[move][1],opp);
+	int damage= (int)(this.calcDamage(_moves[move][1],opp)*.5);
 	opp.setHPT( opp.getHPT() - damage );
+	if (opp.getHPT()<0){
+	    opp.setHPT(0);
+	}
 	System.out.println(this.getName() + " used " + _moves[move][0] + "!");
 	System.out.println(opp.getName() + " took " + damage + " damage!");
     }

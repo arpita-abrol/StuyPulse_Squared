@@ -546,18 +546,21 @@ public class Trainer{
 	    if (encounterPoke()){
 		Pokemon wildPoke = meetPokemon();
 		System.out.println("A wild "+wildPoke.getName()+" appeared!");
-		System.out.println("What will you do?");
-		System.out.println("1: Battle\n2: Run");
-		int choice=Keyboard.readInt();
-		System.out.println("");
-		if (choice==1&& !stillAlive()){
-		    System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal");
+		if (!stillAlive()){
+		    System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal or use potions");
 		}else{
 		    while(wildPoke.isAlive()&&stillAlive()&&!(wildPoke.getIsCaught())){
+			System.out.println("What will you do?");
+			System.out.println("1: Battle\n2: Run");
+			int choice=Keyboard.readInt();
+			System.out.println("");
+			
 			if (choice==1){
 			    battlePokemon(wildPoke);
 			}else if (choice== 2){
 			    break;
+			}else{
+			    System.out.println("Choose 1 or 2");   
 			}
 		    }
 		}
@@ -619,13 +622,13 @@ public class Trainer{
     public void meetPokeballs(){
 	double chance = Math.random();
 	String findPokeball;;
-	if (chance< .5){
+	if (chance< .4){
 	    setPokeballs(1, 1);
 	    findPokeball= getName(Pokeballs, 1);
-	}else if (chance< .75){
+	}else if (chance< .6){
 	    setPokeballs(2, 1);
 	    findPokeball= getName(Pokeballs, 2);
-	}else if (chance< .95){
+	}else if (chance< .85){
 	    setPokeballs(3, 1);
 	    findPokeball= getName(Pokeballs, 3);
 	}else{
