@@ -1,7 +1,7 @@
 import java.util.*;
 import cs1.Keyboard;
 
-public class Towns {
+public class Town1Pewter {
 	
 
     public boolean gym( Trainer player) {
