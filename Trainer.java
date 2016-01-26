@@ -30,7 +30,7 @@ public class Trainer{
 	createPokeballs();
 	createPotions();
 	PokeDollars= 500;//Trainer starts with 500 money
-	currentTown= 0;
+	currentTown= 1;
 	inAdventure= true;
 	yCoor= 0;
 	xCoor= 0;
@@ -857,14 +857,17 @@ public class Trainer{
     }
 
     public Boolean gymBattle(){
-	if (getCurrentTown()== 0){
+	if (getCurrentTown()== 1){
 	    Town1Pewter Gym =new Town1Pewter();
 	    return Gym.gym(this);
-	}else if (getCurrentTown()== 1){
+	}else if (getCurrentTown()== 2){
 	    Town2Cerulean Gym = new Town2Cerulean();
 	    return Gym.gym(this);
-	}else{
+	}else if (getCurrentTown()== 3){
 	    Town3Vermillion Gym = new Town3Vermillion();
+	    return Gym.gym(this);
+	}else{
+	    Town4Celadon Gym = new Town4Celadon();
 	    return Gym.gym(this);
 	}
 
