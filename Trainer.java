@@ -182,23 +182,25 @@ public class Trainer{
     public void throwPokeball(Pokemon pokemonToCatch){
 	System.out.println("Which Pokeball do you want to use?\nYour backpack:");
 	System.out.println(getPokeballsStr());
+	System.out.println("5- Exit");
 	String PokeChoiceStr = Keyboard.readString();
 	System.out.println("");
 	
 	//if input is not within "1234", return message and recurse
-	if (!isNum(PokeChoiceStr)){
-	    System.out.println("Please enter a number between 1-4 inclusive");
+	if ("12345".indexOf(PokeChoiceStr)==-1){
+	    System.out.println("Please enter a number between 1-5 inclusive");
 	    throwPokeball(pokemonToCatch);
 	}else{
 	
 	    int PokeChoice= Integer.parseInt(PokeChoiceStr);
-	    if (!(PokeChoice >0 && PokeChoice<5)){
-		System.out.println("Please enter a number between 1-4 inclusive");
+	    if (!(PokeChoice >0 && PokeChoice<6)){
+		System.out.println("Please enter a number between 1-5 inclusive");
 		throwPokeball(pokemonToCatch);
 	    }
-	
+	    else if(PokeChoice==5){
+		return;
 	    //if there are <= 0 of that Pokeball, return message and recurse
-	    else if (getAmount(Pokeballs, PokeChoice) < 1 ){
+	    }else if (getAmount(Pokeballs, PokeChoice) < 1 ){
 		System.out.println("You are out of "+ getName(Pokeballs, PokeChoice));
 		throwPokeball(pokemonToCatch);
 	    }else{
@@ -288,7 +290,7 @@ public class Trainer{
     public void usePotions(Pokemon pokemon){
 	System.out.println("Which potion would you like to use?");
 	System.out.println(getPotionsStr());
-	System.out.println("5: Exit");
+	System.out.println("5- Exit");
 	String choiceStr = Keyboard.readString();
 	System.out.println("");
 	
@@ -303,7 +305,8 @@ public class Trainer{
 		System.out.println("Please enter a number between 1-5 inclusive");
 		usePotions(pokemon);
 	    }
-	
+	    else if (choice==5)
+		return;
 	    //checks if you have 
 	    else if ( getAmount(Potions, choice) <= 0 ){
 		System.out.println("You are out of "+ getName(Potions, choice));
@@ -311,15 +314,17 @@ public class Trainer{
 	    }else{
 	
 		setPotions(choice, -1);
-		if (choice== 5)
-		    return;
-		else if (choice== 4){
+		
+		if (choice== 4){
 		    pokemon.setHPT(pokemon.getHP());
 		    System.out.println("Your "+pokemon.getName()+" now has full HP");
 		}
 		else{
 		    pokemon.setHPT(pokemon.getHPT()+addHP(choice));
-		    System.out.println("Your "+pokemon.getName()+" gained "+ addHP(choice)+" HP");
+		    if (pokemon.getHPT()> pokemon.getHP()){
+			pokemon.setHPT(pokemon.getHP());
+		    }
+		    System.out.println("Your "+pokemon.getName()+" now has "+ pokemon.getHPT()+" HP");
 		}
 	    }
 	}
@@ -372,7 +377,7 @@ public class Trainer{
 	if (choiceStr.equals("5")){
 	    System.out.println("shop here");//shop();
 	}else{
-	    if (isNum(choiceStr)){
+	    if ("1234".indexOf(choiceStr)!=-1){
 		int choice= Integer.parseInt(choiceStr);
 		System.out.println("How many "+getName(Potions, choice)+" would you like to buy?");
 		int amount=Keyboard.readInt();
@@ -429,7 +434,7 @@ public class Trainer{
 	if (choiceStr.equals("4")){
 	    System.out.println("shop here");//shop();
 	}else{
-	    if (isNum(choiceStr)){
+	    if ("1234".indexOf(choiceStr)!=-1){
 		int choice= Integer.parseInt(choiceStr);
 		System.out.println("How many "+getName(Pokeballs, choice)+" would you like to buy?");
 		int amount=Keyboard.readInt();
@@ -474,7 +479,7 @@ public class Trainer{
     public void move(Maps map){
 	System.out.println(map.getMap());
 	System.out.println("What do you want to do?");
-	System.out.println("1: Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me");
+	System.out.println("1: Move Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me");
 	String choiceStr= Keyboard.readString();
 	System.out.println("");
 	
@@ -626,6 +631,7 @@ public class Trainer{
 	    }else if(battleChoice== 3){
 		usePotions(yourPokemon);
 	    }else if (battleChoice==4 ){
+		enemy.setIsCaught(true);
 		return;
 	    }
 	}

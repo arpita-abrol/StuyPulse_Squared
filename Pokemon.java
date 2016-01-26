@@ -269,8 +269,8 @@ public class Pokemon {
 	    }
 	}
     }
-    public Boolean setIsCaught(Boolean bool){
-	return isCaught== bool;
+    public void setIsCaught(Boolean bool){
+	isCaught= bool;
     }
 
     //other methods
