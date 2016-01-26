@@ -31,7 +31,7 @@ public class Maps{
 		map[i][j]= "X";
 	    }
 	}
-	map[_size-1][_size-1]= "T";
+	map[_size-1][_size-1]= "G";
 	placeHuman();
     }
 

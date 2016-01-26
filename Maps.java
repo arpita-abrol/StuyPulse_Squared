@@ -73,7 +73,7 @@ public class Maps{
 	return _default;
     }
     public int getSize(){
-	return _size;
+	return _default;
     }
     
 }

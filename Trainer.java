@@ -555,14 +555,15 @@ public class Trainer{
 		}
 	    }
 	    
-	    map.placeHuman();//adds the player
-	    if (getXCoor()== map.getSize()&& getYCoor()==map.getSize()){
+	    if (map.getXCoor()== (map.getSize()-1)&& map.getYCoor()== (map.getSize()-1)){
+		map.placeHuman();//adds the player
 		if (gymBattle());{
 		    setXCoor(0);
 		    setYCoor(0);
 		    setCurrentTown(getCurrentTown()+1);
 		}
 	    }else{
+		map.placeHuman();//adds the player
 		//chance of finding objects
 		if (encounterPotions()){
 		    meetPotions();
