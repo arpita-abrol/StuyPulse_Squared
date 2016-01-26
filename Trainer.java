@@ -265,7 +265,7 @@ public class Trainer{
 	System.out.println("Which starter Pokemon do you choose?");
 	System.out.println("1: Charmander");
 	System.out.println("2: Squirtle");
-	System.out.println("3: Bulbsaur");
+	System.out.println("3: Bulbasaur");
 	String choice = Keyboard.readString();
 	System.out.println("");
 
@@ -277,7 +277,7 @@ public class Trainer{
 	    starter= new Pokemon("Squirtle");
 	    catchPokemon(starter);}
 	else if (choice.equals("3")){
-	    starter= new Pokemon("Bulbsaur");
+	    starter= new Pokemon("Bulbasaur");
 	    catchPokemon(starter);}
 	else{
 	    System.out.println("Please enter a number between 1-3 inclusive");

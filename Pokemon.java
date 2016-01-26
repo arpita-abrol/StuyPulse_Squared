@@ -416,7 +416,7 @@ public class Pokemon {
 
     //battles another pokemon
     public void battle( Pokemon opp ) {
-	while( this.isAlive() && opp.isAlive() ) {
+	while( this.isAlive() && opp.isAlive()&& !opp.getIsCaught() ) {
 	    //System.out.println("J");
 	    if( this.getSpeed() >= opp.getSpeed() ) {
 		this.attack(opp);
