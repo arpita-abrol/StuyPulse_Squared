@@ -511,8 +511,8 @@ public class Trainer{
 	String choiceStr= Keyboard.readString();
 	System.out.println("");
 	
-	if ("123456789".indexOf(choiceStr)==-1){
-	    System.out.println("Please choose a number between 1-9 inclusive");
+	if ("12345678910".indexOf(choiceStr)==-1){
+	    System.out.println("Please choose a number between 1-10 inclusive");
 	}else if (choiceStr.equals("5")){
 	    System.out.println(checkBag());
 	}else if (choiceStr.equals("6")){
