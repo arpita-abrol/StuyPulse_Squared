@@ -491,11 +491,13 @@ public class Trainer{
 	System.out.println(map.getMap());
 	System.out.println("What do you want to do?");
 	System.out.println("1: Move Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me\n7: Use Potion");
+	System.out.println("8: Go to the Healing Center for 10,000 PokeDollars");
+	System.out.println("9: Go shopping");
 	String choiceStr= Keyboard.readString();
 	System.out.println("");
 	
-	if ("1234567".indexOf(choiceStr)==-1){
-	    System.out.println("Please choose a number between 1-7 inclusive");
+	if ("123456789".indexOf(choiceStr)==-1){
+	    System.out.println("Please choose a number between 1-9 inclusive");
 	}else if (choiceStr.equals("5")){
 	    System.out.println(checkBag());
 	}else if (choiceStr.equals("6")){
@@ -503,6 +505,10 @@ public class Trainer{
 	    System.out.println(getPokeOnMe());
 	}else if (choiceStr.equals("7")){
 	    choosePotion();
+	}else if (choiceStr.equals("8")){
+	    healingCenter();
+	}else if (choiceStr.equals("9")){
+	    shop();
 	}else{
 	    //sets xCoor and yCoor
 	    if (choiceStr.equals("1")){
@@ -794,6 +800,23 @@ public class Trainer{
 		getPokeInLab().remove(choice2-1);
 		getPokeOnMe().add(temp2);
 		getPokeInLab().add(temp1);
+	    }
+	}
+	
+    }
+
+    public void healingCenter(){
+	System.out.println("Do you want to spend 3,000 PokeDollars to heal all Pokemon on you? (y/n)");
+	String choice=Keyboard.readString();
+	if (choice.equals("y")){
+	    if (canAfford(3000, 1)){
+		setMoney(getMoney()-3000);
+		for (int i=0; i< getNumPokeOnMe(); i++){
+		    getPokeOnMe().get(i).setHPT(getPokeOnMe().get(i).getHP());
+		}
+		System.out.println("All your Pokemon are fully healed");
+	    }else{
+		System.out.println("Sorry, you don't have enough money.");
 	    }
 	}
 	

@@ -19,20 +19,8 @@ public class PokemonDriver {
 	Trainer test= new Trainer(TrainerName);
 	Maps testing= new Maps();
 	test.chooseStarter();
-	//test.move(testing);
+	test.move(testing);
 
-	boolean canProgress = false;
-	
-	Towns town = new Towns();
-	while( !canProgress) {
-	    lock.lock();
-	    try {
-		town.gym(test);
-	    }
-	    finally {
-		lock.unlock();
-	    }
-	}
 	
     
     }
