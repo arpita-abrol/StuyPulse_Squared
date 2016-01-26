@@ -45,7 +45,7 @@ public class Pokemon {
 	_level = level;
 	setAttack( getAttack() + (int)(Math.random()*2.5*level) );
 	setDefense( getDefense() + (int)(Math.random()*2*level) );
-	setHP( getHP() + (int)(Math.random()*3*level) );
+	setHP( getHP() + (int)(Math.random()*4*level) );
 	setSpeed( getSpeed() + (int)(Math.random()*2*level) );
 	setExp();
 	removeAllMoves();
@@ -343,6 +343,7 @@ public class Pokemon {
 	}
     }
 
+    //NOTE: NEED TO ASK IF YOU WANT TO EVOLVE AND DO STUFF FOR SPECIAL CASES
     //evolves pokemon if possible
     public void evolve() {
 	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
@@ -380,16 +381,19 @@ public class Pokemon {
 	return Integer.parseInt(CSVMaster.singleLine( CSVMaster.moves.get(num) )[2]);
     }
 
-    
+    //NOTE: NOT SANITIZED
     //trainer selects move
     public int selectMove() {
-	int move = (int)(this.getNumMoves() * Math.random());
+	System.out.println("Which move would you like to use?");
+	System.out.println( getAllMoves() );
+	int move = Keyboard.readInt();
 	return move;
     }
 
+    //NOTE: DOESN'T ACCOUNT FOR TYPES
     //calculates damage
     public int calcDamage( String power, Pokemon opp ) {
-	int damage = this.getAttack() * Integer.parseInt(power) / opp.getDefense();
+	int damage = this.getAttack() * Integer.parseInt(power) / (opp.getDefense() + opp.getLevel() );
 	if( Integer.parseInt(power) <= 0 ) {
 	    damage = 0;
 	}
@@ -398,9 +402,9 @@ public class Pokemon {
     
     //attack another pokemon
     public void attack( Pokemon opp ) {
-	int move = selectMove();
+	int move = this.selectMove();
 	int damage = this.calcDamage(_moves[move][1],opp);
-	opp.setHPT( getHPT() - damage );
+	opp.setHPT( opp.getHPT() - damage );
 	System.out.println(this.getName() + " used " + _moves[move][0] + "!");
 	System.out.println(opp.getName() + " took " + damage + " damage!");
     }
@@ -409,7 +413,7 @@ public class Pokemon {
     public void attackT( Pokemon opp ) {
 	int move = (int)(this.getNumMoves() * Math.random());
 	int damage = this.calcDamage(_moves[move][1],opp);
-	opp.setHPT( getHPT() - damage );
+	opp.setHPT( opp.getHPT() - damage );
 	System.out.println(this.getName() + " used " + _moves[move][0] + "!");
 	System.out.println(opp.getName() + " took " + damage + " damage!");
     }
@@ -417,6 +421,7 @@ public class Pokemon {
     //battles another pokemon
     public void battle( Pokemon opp, Trainer person ) {
 	while( this.isAlive() && opp.isAlive()&& !opp.getIsCaught() ) {
+	    System.out.println( this + "\n" + opp );
 	    System.out.println("Would you like to (1)battle, (2)throw a pokeball,(3)use a potion, or (4)run?");
 	    String rep = Keyboard.readString();
 	    if( rep.equals("1") ) {
@@ -435,17 +440,54 @@ public class Pokemon {
 	    }
 	    else if( rep.equals("2") ) {
 		person.throwPokeball(opp);
-		opp.attack(this);
+		if( !opp.getIsCaught() ) {
+		    opp.attackT(this);
+		}
 	    }
 	    else if( rep.equals("3") ) {
 		person.usePotions(this);
-		opp.attack(this);
+		opp.attackT(this);
 	    }
 	    else if( rep.equals("4") ) {
 		if( Math.random() * opp.getHPT() / this.getHPT() < .5 ) {
 		    System.out.println("You have escaped.");
 		    return;
 		}
+		opp.attack(this);
+	    }
+	}
+	if( this.isAlive() ) {
+	    int newExp = (opp.getLevel() * (int)(Math.random() * 3 + 1));
+	    this.setExpT( this.getExpT() + newExp );
+	    System.out.println( this.getName() + " won. " + this.getName() + " gained " + newExp + " exp." );
+	}
+	else {
+	    System.out.println( opp.getName() + " won." );
+	}
+    }
+
+        //battles another pokemon
+    public void battleTrainer( Pokemon opp, Trainer person ) {
+	while( this.isAlive() && opp.isAlive() ) {
+	    System.out.println( this + "\n" + opp );
+	    System.out.println("Would you like to (1)battle or (2)use a potion");
+	    String rep = Keyboard.readString();
+	    if( rep.equals("1") ) {
+		if( this.getSpeed() >= opp.getSpeed() ) {
+		    this.attack(opp);
+		    if( opp.isAlive() ) {
+			opp.attackT(this);
+		    }
+		}
+		else {
+		    opp.attackT(this);
+		    if( this.isAlive() ) {
+			this.attack(opp);
+		    }
+		}
+	    }
+	    else if( rep.equals("2") ) {
+		person.usePotions(this);
 		opp.attack(this);
 	    }
 	}
@@ -469,7 +511,7 @@ public class Pokemon {
 
     public String toString() {
 	String fin = _name;
-	fin += "\tLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
+	fin += "\nLevel: " + getLevel() + "\nAttack: " + getAttackT() + "\nDefense: " + getDefenseT() + "\nHP: " + getHPT();
 	return fin + "\n";
     }
 
@@ -482,8 +524,8 @@ public class Pokemon {
 	Pokemon sample = new Pokemon("Blastoise",41);
 	Pokemon sample2 = new Pokemon("Bulbasaur",28);
 	Trainer sample3 = new Trainer("H");
-	System.out.println(sample + "\n" + sample.getAllMoves());
-	System.out.println(sample2 + "\n" + sample2.getAllMoves());
+	//System.out.println(sample + "\n" + sample.getAllMoves());
+	//System.out.println(sample2 + "\n" + sample2.getAllMoves());
 	sample.battle(sample2,sample3);
 	//System.out.println( sample.getNumMoves() );
 	//System.out.println( sample );
