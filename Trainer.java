@@ -491,7 +491,7 @@ public class Trainer{
 	System.out.println(map.getMap());
 	System.out.println("What do you want to do?");
 	System.out.println("1: Move Up\n2: Move Right\n3: Move Down\n4: Move Left\n5: Check Bag\n6: Check the Pokemon on Me\n7: Use Potion");
-	System.out.println("8: Go to the Healing Center for 10,000 PokeDollars");
+	System.out.println("8: Go to the Healing Center for 3,000 PokeDollars");
 	System.out.println("9: Go shopping");
 	String choiceStr= Keyboard.readString();
 	System.out.println("");
