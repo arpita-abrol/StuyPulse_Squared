@@ -415,20 +415,38 @@ public class Pokemon {
     }
 
     //battles another pokemon
-    public void battle( Pokemon opp ) {
+    public void battle( Pokemon opp, Trainer person ) {
 	while( this.isAlive() && opp.isAlive()&& !opp.getIsCaught() ) {
-	    //System.out.println("J");
-	    if( this.getSpeed() >= opp.getSpeed() ) {
-		this.attack(opp);
-		if( opp.isAlive() ) {
+	    System.out.println("Would you like to (1)battle, (2)throw a pokeball,(3)use a potion, or (4)run?");
+	    String rep = Keyboard.readString();
+	    if( rep.equals("1") ) {
+		if( this.getSpeed() >= opp.getSpeed() ) {
+		    this.attack(opp);
+		    if( opp.isAlive() ) {
+			opp.attackT(this);
+		    }
+		}
+		else {
 		    opp.attackT(this);
+		    if( this.isAlive() ) {
+			this.attack(opp);
+		    }
 		}
 	    }
-	    else {
-		opp.attackT(this);
-		if( this.isAlive() ) {
-		    this.attack(opp);
+	    else if( rep.equals("2") ) {
+		person.throwPokeball(opp);
+		opp.attack(this);
+	    }
+	    else if( rep.equals("3") ) {
+		person.usePotions(this);
+		opp.attack(this);
+	    }
+	    else if( rep.equals("4") ) {
+		if( Math.random() * opp.getHPT() / this.getHPT() < .5 ) {
+		    System.out.println("You have escaped.");
+		    return;
 		}
+		opp.attack(this);
 	    }
 	}
 	if( this.isAlive() ) {
@@ -463,9 +481,10 @@ public class Pokemon {
 	String[] pokeMoves = {"Tackle","Poison Powder"};
 	Pokemon sample = new Pokemon("Blastoise",41);
 	Pokemon sample2 = new Pokemon("Bulbasaur",28);
+	Trainer sample3 = new Trainer("H");
 	System.out.println(sample + "\n" + sample.getAllMoves());
 	System.out.println(sample2 + "\n" + sample2.getAllMoves());
-	sample.battle(sample2);
+	sample.battle(sample2,sample3);
 	//System.out.println( sample.getNumMoves() );
 	//System.out.println( sample );
 	//sample.setExpT(1000000);
