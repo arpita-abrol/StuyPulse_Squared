@@ -195,7 +195,7 @@ public class Trainer{
 		System.out.println("You are out of "+ getName(Pokeballs, PokeChoice));
 		throwPokeball(pokemonToCatch);
 	    }else{
-	
+
 		setPokeballs(PokeChoice, -1);
 		if (blinkingPokeball(pokemonToCatch, PokeChoice)){
 		    System.out.println("You caught a "+pokemonToCatch.getName()+"!");
@@ -359,6 +359,7 @@ public class Trainer{
 
     //allows you to buy potions
     public void buyPotions(){
+	System.out.println(checkBag());
 	System.out.println("Which potion would you like to buy?");
 	System.out.println("Name      \tHealing   \tCost");
 	System.out.println("1: Potion\t20HP     \t300PokeDollars");
@@ -419,6 +420,7 @@ public class Trainer{
 
     //allows you to buy pokeballs
     public void buyPokeballs(){
+	System.out.println(checkBag());
 	System.out.println("Which pokeball would you like to buy?");
 	System.out.println("Name      \tRate Success   \tCost");
 	System.out.println("1: Pokeball\t1x          \t200PokeDollars");
@@ -553,8 +555,13 @@ public class Trainer{
 		meetMoney();
 	    }
 	    //generates and fight a wild pokemon
+	   
 	    if (encounterPoke()){
+		System.out.println("hello");
+		
 		Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
+
+		System.out.println("hello");
 		System.out.println("A wild "+wildPoke.getName()+" appeared!");
 		if (!stillAlive()){
 		    System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal or use potions");
@@ -583,7 +590,6 @@ public class Trainer{
     //generates a random pokemon depending on the town
     public Pokemon getRandomPokemon( int town ) {
 	String name = getRandomName( town );
-	int level = (int)(town * town * Math.sqrt(town) / 2) + (int)(10 * Math.random()) + 3;
 	Pokemon poke = new Pokemon(name,getAvgLvl());
 	return poke;
     }
@@ -593,9 +599,10 @@ public class Trainer{
 	arr = CSVMaster.CSVtoArray("Town" + town + ".csv");
 	int pNum = (int)(Math.random() * arr.size()-1);
 	double random = Math.random()*100;
+	
 	if( 100-Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) < random ) {
 	    String pokeName = CSVMaster.singleLine(arr.get(pNum+1))[1];
-	    //System.out.println( Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) + "\t" + random );
+	
 	    return pokeName;
 	}
 	else{
@@ -624,7 +631,17 @@ public class Trainer{
 		Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
 
 		while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
+		    System.out.println("");
 		    System.out.println(enemy);
+		    System.out.println("\t\t\t/$$    /$$  /$$$$$$");
+		    System.out.println("\t\t\t| $$   | $$ /$$__  $$");
+		    System.out.println("\t\t\t| $$   | $$| $$  \\__/");
+		    System.out.println("\t\t\t|  $$ / $$/|  $$$$$$ ");
+		    System.out.println("\t\t\t \\  $$ $$/  \\____  $$");
+		    System.out.println("\t\t\t  \\  $$$/   /$$  \\ $$");
+		    System.out.println("\t\t\t   \\  $/   |  $$$$$$/");
+		    System.out.println("\t\t\t    \\_/     \\______/ ");
+                     
 		    System.out.println(yourPokemon);
 		    System.out.println("What would you like to do?");
 		    System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Change Pokemon\n5: Run");
@@ -827,7 +844,9 @@ public class Trainer{
     
     public static void main(String[] args){
 	Trainer test= new Trainer("Ling");
-	/*Pokemon test1= new Pokemon("Eevee");
+	Pokemon test1= new Pokemon("Eevee");
+	System.out.println(test1.getName());
+	    /*
 	Pokemon test2= new Pokemon("Squirtle");
 	Pokemon test3= new Pokemon("Bulbasaur");
 	Pokemon test4= new Pokemon("Charmander");

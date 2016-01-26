@@ -426,7 +426,7 @@ public class Pokemon {
 	int damage = this.calcDamage(_moves[move][1],opp);
 	opp.setHPT( opp.getHPT() - damage );
 	System.out.println(this.getName() + " used " + _moves[move][0] + "!");
-	System.out.println(opp.getName() + " took " + damage + " damage!");
+	System.out.println(opp.getName() + " took " + damage + " damage!\n\n");
     }
 
     //trainer's pokemon gets attacked
