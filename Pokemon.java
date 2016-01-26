@@ -2,6 +2,9 @@
 */
 
 import java.util.*;
+import cs1.Keyboard;
+import java.io.*;
+
 
 public class Pokemon {
 
@@ -17,8 +20,7 @@ public class Pokemon {
     private int[] _exp = new int[2];        //pokemon exp--determines current exp/needed exp
     private int _numMoves = 0;    //number of moves pokemon has (max 4)
     private String[][]  _moves = new String[4][2];  //pokemon moves [[m1,p1][m2,p2][m3,p3][m4,p4]]
-    private Boolean isCaught;
-
+    private boolean isCaught;
 
 
     //Constructors
@@ -35,7 +37,7 @@ public class Pokemon {
         setSpeed(Integer.parseInt(data[5]));
 	setExp();
 	setRandomMoves();
-	isCaught= false;
+	isCaught = false;
     }
     
     public Pokemon( String name, int level ) {
@@ -46,14 +48,17 @@ public class Pokemon {
 	setHP( getHP() + (int)(Math.random()*3*level) );
 	setSpeed( getSpeed() + (int)(Math.random()*2*level) );
 	setExp();
+	removeAllMoves();
 	setRandomMoves();
     }
 
     public Pokemon( String name, int level, String[] moveList ) {
 	this( name, level );
+	removeAllMoves();
 	setGivenMoves(moveList);
     }
-		   
+
+    
 
     //accessors
     public String getName() {
@@ -123,10 +128,11 @@ public class Pokemon {
     public String getPower( int move ) {
 	return _moves[move][1];
     }
-    public Boolean getIsCaught(){
+
+    public boolean getIsCaught() {
 	return isCaught;
     }
-    
+
 
     
     //mutators
@@ -197,10 +203,13 @@ public class Pokemon {
 	}
     }
 
+    public void setIsCaught( Boolean bool ) {
+	isCaught = bool;
+    }
+
     public void setNumMoves( int num ) {
 	_numMoves = num;
 	if( _numMoves > 4 ) { _numMoves = 4; }
-	//System.out.println( "NUM" + _numMoves );
     }
 
     //assigns a pokemon a move
@@ -215,12 +224,17 @@ public class Pokemon {
 	_moves[move][1] = null;
     }
 
-    //gives pokemon moves in array
-    public void setGivenMoves( String[] moves ) {
+    //removes all moves
+    public void removeAllMoves() {
 	setNumMoves(0);
 	for( int x = 0; x < 4; x++ ) {
 	    removeMove(x);
 	}
+    }
+
+    //gives pokemon moves in array
+    public void setGivenMoves( String[] moves ) {
+	removeAllMoves();
 	for( int x = 0; x < moves.length; x++ ) {
 	    setMove( x, moves[x] );
 	    setNumMoves( getNumMoves() + 1 );
@@ -269,10 +283,49 @@ public class Pokemon {
 	    }
 	}
     }
-    public Boolean setIsCaught(Boolean bool){
-	return isCaught== bool;
+
+    //NOTE: NEED TO SANITIZE 
+    //adds move to pokemon if leveling up
+    public void addMove() {
+	System.out.println("L");
+	String move = CSVMaster.singleLine( CSVMaster.pokeMoves.get(getNum()))[getLevel()+1];
+	System.out.println(move);
+	if( !(move.length() > 1) ) {
+	    System.out.println("J");
+	    return;
+	}
+	if( getNumMoves() < 4 ) {
+	    setMove( getNumMoves()+1, move );
+	    System.out.println( getName() + " has learned " + move + "!" );
+	}
+	else {
+	    System.out.println( getName() + " can learn " + move + ". However, " + getName() + " already knows 4 moves. Delete a move? [y/n]" );
+	    String resp = Keyboard.readString();
+	    if( !(resp.toLowerCase().equals("y") || resp.toLowerCase().equals("yes") || resp.toLowerCase().equals("n") || resp.toLowerCase().equals("no") ) ) {
+		System.out.println("y/n");
+		resp = Keyboard.readString();
+	    }
+	    if( resp.toLowerCase().equals("y") || resp.toLowerCase().equals("yes") ) {
+		System.out.println( getAllMoves() );
+		System.out.println( "Select a move." );
+		resp = Keyboard.readString();
+		if( "12345".indexOf(resp)==-1 ) {
+		    System.out.println( "Select the number to the left of a move to replace it. Or \"n\" to keep all moves the same.");
+		}
+		if( resp.toLowerCase().equals("n") || resp.toLowerCase().equals("no") ) {
+		    return;
+		}
+		setMove( Integer.parseInt(resp), move );
+		System.out.println( getName() + " has learned " + move + "!" );
+	    }
+	    else if( resp.toLowerCase().equals("n") || resp.toLowerCase().equals("no") ) {
+		return;
+	    }
+	}
     }
 
+
+    
     //other methods
 
     //levels up pokemon 
@@ -285,6 +338,7 @@ public class Pokemon {
 	    setSpeed( getSpeed() + (int)(Math.random() * 2) );
 	    setExp();
 	    System.out.println( _name + " is now at level " + _level + "!");
+	    addMove();
 	    evolve();
 	}
     }
@@ -325,23 +379,55 @@ public class Pokemon {
 	int num = CSVMaster.searchCSV( move, CSVMaster.moves, 0 );
 	return Integer.parseInt(CSVMaster.singleLine( CSVMaster.moves.get(num) )[2]);
     }
+
     
-    //attack another pokemon
-    public int attack( Pokemon opp ) {
-	return 0;
+    //trainer selects move
+    public int selectMove() {
+	int move = (int)(this.getNumMoves() * Math.random());
+	return move;
     }
 
-    //quick summary about pokemon when you catch
-    //idea: be able to call About: <pokeName> anywhere in the game
-    public String about( String pokemonName){
-	//GET FROM CSV
-	return "";
+    //calculates damage
+    public int calcDamage( String power, Pokemon opp ) {
+	int damage = this.getAttack() * Integer.parseInt(power) / opp.getDefense();
+	return damage;
+    }
+    
+    //attack another pokemon
+    public void attack( Pokemon opp ) {
+	int move = selectMove();
+	int damage = this.calcDamage(_moves[move][1],opp);
+	opp.setHPT( getHPT() - damage );
+	System.out.println(opp + " took" + damage + " damage!");
+    }
+
+    //trainer's pokemon gets attacked
+    public void attackT( Pokemon opp ) {
+	int move = (int)(this.getNumMoves() * Math.random());
+	int damage = this.calcDamage(_moves[move][1],opp);
+	opp.setHPT( getHPT() - Math.abs(damage) );
+	System.out.println(opp + " took" + damage + " damage!");
+    }
+
+    //battles another pokemon
+    public void battle( Pokemon opp ) {
+	while( this.isAlive() && opp.isAlive() ) {
+	    //System.out.println("J");
+	    if( this.getSpeed() >= opp.getSpeed() ) {
+		this.attack(opp);
+		opp.attackT(this);
+	    }
+	    else {
+		opp.attackT(this);
+		this.attack(opp);
+	    }
+	}
     }
 
     public String getAllMoves() {
 	String fin = "";
 	for( int x = 0; x < getNumMoves(); x++ ) {
-	    fin += getMove(x) + "\t" + getPower(x) + "\n";
+	    fin += x + ": " + getMove(x) + "\t" + getPower(x) + "\n";
 	}
 	return fin;
     }
@@ -349,7 +435,7 @@ public class Pokemon {
     public String toString() {
 	String fin = _name;
 	fin += "\tLevel: " + _level + "\tAttack: " + _attack[0] + "\tDefense: " + _defense[0];
-	return fin+"\n";
+	return fin + "\n";
     }
 
 
@@ -358,11 +444,15 @@ public class Pokemon {
     //for testing purposes only
     public static void main( String[]args ) {
 	String[] pokeMoves = {"Tackle","Poison Powder"};
-	Pokemon sample = new Pokemon("Bulbasaur",35,pokeMoves);
+	Pokemon sample = new Pokemon("Blastoise",41);
+	Pokemon sample2 = new Pokemon("Bulbasaur",28);
+	System.out.println(sample + "\n" + sample.getAllMoves());
+	System.out.println(sample2 + "\n" + sample2.getAllMoves());
+	sample.battle(sample2);
 	//System.out.println( sample.getNumMoves() );
-	System.out.println( sample );
-	//sample.setExpT(10000);
-	System.out.println( sample.getAllMoves() + "\n" + sample.getMove(0));
+	//System.out.println( sample );
+	//sample.setExpT(1000000);
+	//System.out.println( sample + "\n" + sample.getAllMoves() + "\n" + sample.getMove(0));
     }
 	    
 
