@@ -5,7 +5,7 @@ public class Town3Vermillion {
 
     public boolean gym( Trainer player ) {
 
-	System.out.println("Welcome to the Vermillion City Gym. The Gym Leader is Misty. \nTo prove that you are worthy of challenging the gym leader, Lt. Surge, you must first beat some fellow Pokemon Trainers. Good luck, Trainer.");
+	System.out.println("Welcome to the Vermillion City Gym. The Gym Leader is Lt. Surge. \nTo prove that you are worthy of challenging the gym leader, Lt. Surge, you must first beat some fellow Pokemon Trainers. Good luck, Trainer.");
 	
 	System.out.println("! \nElectrician Ernie challenges you to a battle!");
 	Pokemon SS1 = new Pokemon( "Pikachu",16 );
