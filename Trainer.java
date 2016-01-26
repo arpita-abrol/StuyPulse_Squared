@@ -698,18 +698,6 @@ public class Trainer{
         return Math.random()<.50;
     }
     
-    public Pokemon meetPokemon(){
-	int randNum= (int)((Math.random()+1)*100);
-	Pokemon wild;	
-	if (randNum< 10){
-	    wild= getRare();
-	}else if (randNum< 40){
-	    wild= getUncommon();
-	}else{
-	    wild= getCommon();
-	}
-	return wild;
-    }
 
     public void meetPotions(){
 	double chance = Math.random();
