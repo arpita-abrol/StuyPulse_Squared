@@ -197,7 +197,7 @@ public class Pokemon {
 		   
     public void setExp() {
 	_exp[0] = 0;
-	_exp[1] = ( getLevel()*getLevel()*getLevel()+1 );
+	_exp[1] = (int)( getLevel()*getLevel()*getLevel()+1 / 2); //reduced for the sake of the game
 	if( getLevel() == 100 ) {
 	    _exp[1] = 999999999;
 	}
@@ -256,7 +256,7 @@ public class Pokemon {
 		possibleMoves.add(move);
 	    }
 	}
-	System.out.println(possibleMoves.size());
+	//System.out.println(possibleMoves.size());
 	//give pokemon moves
 	if( possibleMoves.size() <= 4 ) {
 	    for( int x = 0; x <= possibleMoves.size()-1; x++ ) {
@@ -289,11 +289,11 @@ public class Pokemon {
     //NOTE: NEED TO SANITIZE 
     //adds move to pokemon if leveling up
     public void addMove() {
-	System.out.println("L");
+	//System.out.println("L");
 	String move = CSVMaster.singleLine( CSVMaster.pokeMoves.get(getNum()))[getLevel()+1];
-	System.out.println(move);
+	//System.out.println(move);
 	if( !(move.length() > 1) ) {
-	    System.out.println("J");
+	    //System.out.println("J");
 	    return;
 	}
 	if( getNumMoves() < 4 ) {
@@ -349,25 +349,29 @@ public class Pokemon {
     //evolves pokemon if possible
     public void evolve() {
 	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
-	if( data[2].equals("true") ) {
-	    //evolve
-	    if( data[3].equals("-1") ) {
-		//stones
-	    }
-	    if( data[3].equals("-2") ) {
-		//trade
-	    }
-	    if( data[3].equals("-3") ) {
-		//EEVEE
-	    }
-	    if( Integer.parseInt(data[3]) <= getLevel() ) {
-		setName( data[4] );
-		setNum( getNum() + 1 );
-		setAttack( getAttack() + 5 );
-		setDefense( getDefense() + 3 );
-		setHP( getHP() + 5 );
-		setSpeed( getSpeed() + 2 );
-		System.out.println(data[1] + " has evolved to " + getName() + "!");
+	System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
+	String ans = Keyboard.readString();
+	if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
+	    if( data[2].equals("true") ) {
+		//evolve
+		if( data[3].equals("-1") ) {
+		    //stones
+		}
+		if( data[3].equals("-2") ) {
+		    //trade
+		}
+		if( data[3].equals("-3") ) {
+		    //EEVEE
+		}
+		if( Integer.parseInt(data[3]) <= getLevel() ) {
+		    setName( data[4] );
+		    setNum( getNum() + 1 );
+		    setAttack( getAttack() + 5 );
+		    setDefense( getDefense() + 3 );
+		    setHP( getHP() + 5 );
+		    setSpeed( getSpeed() + 2 );
+		    System.out.println(data[1] + " has evolved to " + getName() + "!");
+		}
 	    }
 	}
     }
@@ -520,7 +524,8 @@ public class Pokemon {
     public static void main( String[]args ) {
 	String[] pokeMoves = {"Tackle","Poison Powder"};
 	//Pokemon sample = new Pokemon("Blastoise",4);
-	Pokemon sample2 = new Pokemon("Squirtle",2);
+	Pokemon sample2 = new Pokemon("Squirtle",44);
+	sample2.setExpT(1111111);
 	//Trainer sample3 = new Trainer("H");
 	//System.out.println(sample + "\n" + sample.getAllMoves());
 	//System.out.println(sample2 + "\n" + sample2.getAllMoves());
