@@ -16,14 +16,15 @@ public class Maps{
 	map= new String[_size][_size];
 	makeMap();
     }
-    public Maps(int x, int y, int size){
-	xCoor=x;
-	yCoor=y;
-	_size= size;
-	map= new String[_size][_size];
-	makeMap();
+
+    public Maps( int town ){
+	this();
 	placeHuman();
+	currentTown = town;
+	_size = (int)(Math.sqrt( town * 50 )) + 5;
+	map= new String[_default][_default];
     }
+    
     private void makeMap(){
 	for (int i= 0; i< _size; i++){
 	    for (int j= 0; j<_size; j++){
