@@ -103,25 +103,6 @@ public class Trainer{
     public Boolean getInAdventure(){
 	return inAdventure;
     }
-
-    //generate a random rare Pokemon
-    public Pokemon getRare(){
-	Pokemon rare;
-	rare= new Pokemon("Mew", getAvgLvl());
-	return rare;
-    }
-    //generate a random uncommon Pokemon
-    public Pokemon getUncommon(){
-	Pokemon uncommon;
-	uncommon= new Pokemon("Pikachu", getAvgLvl());
-	return uncommon;
-    }
-    //generate a random common Pokemon
-    public Pokemon getCommon(){
-	Pokemon common;
-	common= new Pokemon("Vulpix", getAvgLvl());
-	return common;
-    }
     public int getAvgLvl(){
 	double level=0.0;
 	for(int i= 0; i<getNumPokeOnMe();i++){
@@ -262,9 +243,6 @@ public class Trainer{
 	}
     }
 
-    public void fight(){
-	
-    }
 
     //Returns a string of all your Pokeballs and Potions.
     public String checkBag(){
@@ -657,6 +635,47 @@ public class Trainer{
 	    }
 	}
     }
+    public void battlePokemonT(Pokemon enemy){
+	while(enemy.isAlive()&& stillAlive()&& !(enemy.getIsCaught())){
+	    System.out.println("Which Pokemon would you like to use?");
+	    String pokeOnMe= "";
+	    for (int i= 0; i< getNumPokeOnMe(); i++){
+		if (getPokeOnMe().get(i).getHPT()>0){
+		    pokeOnMe+= (i+1)+": "+getPokeOnMe().get(i);
+		}
+	    }
+	    System.out.println(pokeOnMe);
+	    int pokeChoice=Keyboard.readInt();
+	    if (pokeChoice> getNumPokeOnMe()|| pokeChoice< 0){
+		System.out.println("Choose a valid number");
+		battlePokemon(enemy);
+	    }else{
+		System.out.println("");
+		pokeChoice-=1;
+
+		Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
+
+		while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
+		    System.out.println("What would you like to do?");
+		    System.out.println("1: Attack\n2: Potion\n3: Change Pokemon\n");
+		    int battleChoice=Keyboard.readInt();
+		    System.out.println("");
+		    if (battleChoice== 1){
+			yourPokemon.battle(enemy, this);
+		    }else if(battleChoice== 2){
+			usePotions(yourPokemon);
+			enemy.attackT(yourPokemon);
+		    }else if(battleChoice== 3){
+			break;
+		    }
+		}
+		if(!stillAlive()){
+		    System.out.println("All of your Pokemon have been defeated.");
+		}
+	    }
+	}
+    }
+    
     //makes sure at least 1 Pokemon is still alive
     public Boolean stillAlive(){
 	for (int i=0; i<getNumPokeOnMe(); i++){
