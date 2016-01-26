@@ -283,7 +283,6 @@ public class Pokemon {
 	    }
 	}
     }
-<<<<<<< HEAD
 
     //NOTE: NEED TO SANITIZE 
     //adds move to pokemon if leveling up
@@ -323,10 +322,6 @@ public class Pokemon {
 		return;
 	    }
 	}
-=======
-    public void setIsCaught(Boolean bool){
-	isCaught= bool;
->>>>>>> origin/master
     }
 
 
