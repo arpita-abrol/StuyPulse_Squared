@@ -164,18 +164,16 @@ Ling:
  (__)(_/  (____)(___/(_/  (__)\___/
 
 Arpita:
+-Finished all the CSV files for moves, evolution, and towns
+-Finished evolution
+-Finished battle
+-Trainer- randomly generated Pokemon
 
 Ling:
 -Maps- Have a working Maps
 -Trainer- Tested Maps
 -Driver- Added Maps
-
-
-
-
-01-26-16:
-
-Arpita:
-
-Ling:
+-Trainer- swapPokemon
+-Trainer- battle, get money/ pokeballs/ potions in travel
+-Trainer- encounter Pokemon
 
