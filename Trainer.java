@@ -617,42 +617,46 @@ public class Trainer{
 	    }
 	    System.out.println(pokeOnMe);
 	    int pokeChoice=Keyboard.readInt();
-	    System.out.println("");
-	    pokeChoice-=1;
-
-	    Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
-
-	    while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
-		System.out.println("What would you like to do?");
-		System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Change Pokemon\n5: Run");
-		int battleChoice=Keyboard.readInt();
+	    if (pokeChoice> getNumPokeOnMe()|| pokeChoice< 0){
+		System.out.println("Choose a valid number");
+		battlePokemon(enemy);
+	    }else{
 		System.out.println("");
-		if (battleChoice== 1){
-		    yourPokemon.battle(enemy, this);
-		    int temp=(int) ((Math.random()*100)+enemy.getLevel()*50);
-		    setMoney(getMoney()+temp);
-		    System.out.println("You earned "+temp+" PokeDollars. You now have "+getMoney()+" PokeDollars");
-		}else if(battleChoice== 2){
-		    throwPokeball(enemy);
-		    if (!enemy.getIsCaught()){
+		pokeChoice-=1;
+
+		Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
+
+		while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
+		    System.out.println("What would you like to do?");
+		    System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Change Pokemon\n5: Run");
+		    int battleChoice=Keyboard.readInt();
+		    System.out.println("");
+		    if (battleChoice== 1){
+			yourPokemon.battle(enemy, this);
+			int temp=(int) ((Math.random()*100)+enemy.getLevel()*50);
+			setMoney(getMoney()+temp);
+			System.out.println("You earned "+temp+" PokeDollars. You now have "+getMoney()+" PokeDollars");
+		    }else if(battleChoice== 2){
+			throwPokeball(enemy);
+			if (!enemy.getIsCaught()){
+			    enemy.attackT(yourPokemon);
+			}
+		    }else if(battleChoice== 3){
+			usePotions(yourPokemon);
 			enemy.attackT(yourPokemon);
+		    }else if(battleChoice== 4){
+			break;
+		    }else if (battleChoice==5 ){
+			enemy.setIsCaught(true);
+			return;
 		    }
-		}else if(battleChoice== 3){
-		    usePotions(yourPokemon);
-		    enemy.attackT(yourPokemon);
-		}else if(battleChoice== 4){
-		    break;
-		}else if (battleChoice==5 ){
-		    enemy.setIsCaught(true);
-		    return;
 		}
-	    }
-	    if(!stillAlive()){
-		System.out.println("All of your Pokemon have been defeated.");
+		if(!stillAlive()){
+		    System.out.println("All of your Pokemon have been defeated.");
+		}
 	    }
 	}
     }
-    
     //makes sure at least 1 Pokemon is still alive
     public Boolean stillAlive(){
 	for (int i=0; i<getNumPokeOnMe(); i++){
