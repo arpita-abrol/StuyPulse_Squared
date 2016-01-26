@@ -6,35 +6,39 @@ public class Maps{
     private int _default= 10;
     private int yCoor;
     private int xCoor;
-    private int size;
+    private int _size;
+    private double currentTown;
     
     public Maps(){
 	yCoor=0;
 	xCoor=0;
-	map= new String[_default][_default];
+	_size= _default;
+	map= new String[_size][_size];
 	makeMap();
     }
     public Maps(int x, int y, int size){
 	xCoor=x;
 	yCoor=y;
-	map= new String[size][size];
+	_size= size;
+	map= new String[_size][_size];
 	makeMap();
 	placeHuman();
     }
     private void makeMap(){
-	for (int i= 0; i< _default; i++){
-	    for (int j= 0; j<_default; j++){
+	for (int i= 0; i< _size; i++){
+	    for (int j= 0; j<_size; j++){
 		map[i][j]= "X";
 	    }
 	}
+	map[_size-1][_size-1]= "T";
 	placeHuman();
     }
 
     public String getMap(){
 	String ret= "";
 	makeMap();
-	for (int i= 0; i< _default; i++){
-	    for (int j= 0; j<_default; j++){
+	for (int i= 0; i< _size; i++){
+	    for (int j= 0; j<_size; j++){
 		ret+=map[i][j]+"  ";
 	    }
 	    ret+= "\n";
@@ -55,6 +59,9 @@ public class Maps{
     public void setYCoor(int num){
 	yCoor= num;
     }
+    public void setSize(int size){
+	_size=size;
+    }
     public int getYCoor(){
 	return yCoor; 
     }
@@ -63,6 +70,9 @@ public class Maps{
     }
     public int getDefault(){
 	return _default;
+    }
+    public int getSize(){
+	return _size;
     }
     
 }
