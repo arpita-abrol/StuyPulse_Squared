@@ -50,7 +50,7 @@ public class Town1Pewter {
 	    return false;
 	}
 	player.setMoney( player.getMoney() + 100 );
-	System/out.println("Good job, kid. Take this Boulder Badge; you deserve it.");
+	System.out.println("Good job, kid. Take this Boulder Badge; you deserve it.");
 	
 	return true;
     }
