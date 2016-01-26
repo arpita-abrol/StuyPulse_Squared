@@ -251,7 +251,8 @@ public class Trainer{
 	    "\nHere are your Pokeballs:\n"+getPokeballsStr()+
 	    "\nPokeDollars: "+getMoney()+ "\n";
     }
-
+    
+    //choose your starter Pokemon
     public void chooseStarter(){
 	System.out.println("Which starter Pokemon do you choose?");
 	System.out.println("1: Charmander");
@@ -278,6 +279,7 @@ public class Trainer{
 
     
     //1= potion 20HP, 2= Super Potion 50HP, 3= Hyper Potion 200HP, 4= Max Potion
+    //Use potion on input Pokemon
     public void usePotions(Pokemon pokemon){
 	System.out.println("Which potion would you like to use?");
 	System.out.println(getPotionsStr());
@@ -321,6 +323,7 @@ public class Trainer{
 	}
     }
 
+    //calculates the HP a Pokemon adds depending on the choice
     public int addHP(int choice){
 	int retInt= 0;
 	if (choice == 1)
@@ -334,6 +337,7 @@ public class Trainer{
 
 
 
+    //directs you to buy potion or pokeballs
     public void shop(){
 	checkBag();
 	System.out.println("Where would you like to go?");
@@ -346,7 +350,6 @@ public class Trainer{
 	}else if(choice.equals("2")){
 	    buyPokeballs();
 	}else if(choice.equals("3")){
-	    System.out.println("Map");
 	    return;
 	}else{
 	    System.out.println("Please enter a number between 1-3 inclusive");
@@ -354,6 +357,7 @@ public class Trainer{
 	}
     }
 
+    //allows you to buy potions
     public void buyPotions(){
 	System.out.println("Which potion would you like to buy?");
 	System.out.println("Name      \tHealing   \tCost");
@@ -412,6 +416,8 @@ public class Trainer{
 	    }
 	}
     }
+
+    //allows you to buy pokeballs
     public void buyPokeballs(){
 	System.out.println("Which pokeball would you like to buy?");
 	System.out.println("Name      \tRate Success   \tCost");
@@ -461,12 +467,14 @@ public class Trainer{
 	    }
 	}
     }
-    
+
+    //returns whether you can afford something
     public Boolean canAfford(int cost, int amount){
 	int totalCost= cost*amount;
 	return getMoney()>= totalCost;
     }
 
+    //allows you to heal your pokemon
     public void choosePotion(){
 	System.out.println("Which Pokemon would you like to heal?");
         String pokeOnMe= "";
@@ -478,6 +486,7 @@ public class Trainer{
 	usePotions(getPokeOnMe().get(pokeToHeal-1));
     }
     
+    //allows you to travel on the map
     public void move(Maps map){
 	System.out.println(map.getMap());
 	System.out.println("What do you want to do?");
@@ -495,6 +504,7 @@ public class Trainer{
 	}else if (choiceStr.equals("7")){
 	    choosePotion();
 	}else{
+	    //sets xCoor and yCoor
 	    if (choiceStr.equals("1")){
 		if (yCoor== 0){
 		    System.out.println("Reached end of map");
@@ -523,8 +533,10 @@ public class Trainer{
 		    xCoor-=1;
 		    map.setXCoor(xCoor);
 		}
-	    }	
-	    map.placeHuman();
+	    }
+	    
+	    map.placeHuman();//adds the player
+	    //chance of finding objects
 	    if (encounterPotions()){
 		meetPotions();
 	    }
@@ -534,7 +546,7 @@ public class Trainer{
 	    if (encounterMoney()){
 		meetMoney();
 	    }
-	    
+	    //generates and fight a wild pokemon
 	    if (encounterPoke()){
 		Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
 		System.out.println("A wild "+wildPoke.getName()+" appeared!");
@@ -558,17 +570,18 @@ public class Trainer{
 		}
 	    }
 	}
+	//recursion
 	move(map);
 	
     }
-
+    //generates a random pokemon depending on the town
     public Pokemon getRandomPokemon( int town ) {
 	String name = getRandomName( town );
 	int level = (int)(town * town * Math.sqrt(town) / 2) + (int)(10 * Math.random()) + 3;
 	Pokemon poke = new Pokemon(name,getAvgLvl());
 	return poke;
     }
-
+    //generates a random pokemon name depending on the town
     public String getRandomName( int town ) {
 	ArrayList<String> arr = new ArrayList<String>();
 	arr = CSVMaster.CSVtoArray("Town" + town + ".csv");
@@ -583,7 +596,7 @@ public class Trainer{
 	    return getRandomName( town );
 	}
     }
-
+    //stimutates a pokemon battle
     public void battlePokemon(Pokemon enemy){
 	while(enemy.isAlive()&& stillAlive()&& !(enemy.getIsCaught())){
 	    System.out.println("Which Pokemon would you like to use?");
@@ -637,6 +650,8 @@ public class Trainer{
 	    }
 	}
     }
+
+    //stimutates a trainer battle
     public void battlePokemonT(Pokemon enemy){
 	while(enemy.isAlive()&& stillAlive()&& !(enemy.getIsCaught())){
 	    System.out.println("Which Pokemon would you like to use?");
@@ -687,6 +702,8 @@ public class Trainer{
 	}
 	return false;
     }
+
+    //returns whether you will encounter a Pokemon or objects
     public Boolean encounterPoke(){
         return Math.random()<.33;
     }
@@ -700,7 +717,7 @@ public class Trainer{
         return Math.random()<.50;
     }
     
-
+    //generates objects
     public void meetPotions(){
 	double chance = Math.random();
 	String findPotion;
@@ -719,7 +736,6 @@ public class Trainer{
 	}
 	System.out.println("You found a "+ findPotion);
     }
-    
     public void meetPokeballs(){
 	double chance = Math.random();
 	String findPokeball;;
@@ -744,6 +760,8 @@ public class Trainer{
 	setMoney(temp); 
     }
 
+
+    //allows you to swap pokemon from your bag to the lab
     public void swapPokemon(){
 	System.out.println("Which Pokemon would you like to swap out?");
 	String pokeOnMe= "";
