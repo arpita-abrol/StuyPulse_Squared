@@ -383,7 +383,7 @@ public class Trainer{
 	System.out.println("");
 	 
 	if (choiceStr.equals("5")){
-	    System.out.println("shop here");//shop();
+	    return;
 	}else{
 	    if ("1234".indexOf(choiceStr)!=-1){
 		int choice= Integer.parseInt(choiceStr);
