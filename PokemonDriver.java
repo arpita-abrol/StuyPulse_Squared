@@ -1,4 +1,5 @@
 import cs1.Keyboard;
+import java.util.*;
 
 public class PokemonDriver {
     public static void main(String[] args){
@@ -18,7 +19,23 @@ public class PokemonDriver {
 	Trainer test= new Trainer(TrainerName);
 	Maps testing= new Maps();
 	test.chooseStarter();
-	test.move(testing);
+	//test.move(testing);
+
+	boolean canProgress = false;
+	
+	Towns town = new Towns();
+	while( !canProgress) {
+	    lock.lock();
+	    try {
+		town.gym(test);
+	    }
+	    finally {
+		lock.unlock();
+	    }
+	}
+	
     
     }
-}
+
+}//end class
+

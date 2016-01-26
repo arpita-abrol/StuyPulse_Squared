@@ -576,7 +576,7 @@ public class Trainer{
 	double random = Math.random()*100;
 	if( 100-Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) < random ) {
 	    String pokeName = CSVMaster.singleLine(arr.get(pNum+1))[1];
-	    System.out.println( Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) + "\t" + random );
+	    //System.out.println( Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) + "\t" + random );
 	    return pokeName;
 	}
 	else{
