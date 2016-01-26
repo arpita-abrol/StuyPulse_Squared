@@ -349,10 +349,10 @@ public class Pokemon {
     //evolves pokemon if possible
     public void evolve() {
 	String[] data = CSVMaster.singleLine( CSVMaster.pokeEvolutions.get(getNum()) );
-	System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
-	String ans = Keyboard.readString();
-	if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
-	    if( data[2].equals("true") ) {
+	if( data[2].equals("true") ) {
+	    System.out.println( getName() + " is evolving! Allow pokemon to evolve? [y/n]" );
+	    String ans = Keyboard.readString();
+	    if( ans.toLowerCase().equals("y") || ans.toLowerCase().equals("yes") ) {
 		//evolve
 		if( data[3].equals("-1") ) {
 		    //stones
