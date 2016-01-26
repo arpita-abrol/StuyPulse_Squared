@@ -110,6 +110,12 @@ public class Trainer{
 	}
 	return (int)(level/getNumPokeOnMe());
     }
+    public int getXCoor(){
+	return xCoor;
+    }
+    public int getYCoor(){
+	return yCoor;
+    }
     //================================================
 
     //================Mutators================================
@@ -139,6 +145,12 @@ public class Trainer{
     }
     public void setCurrentTown(int town){
 	currentTown= town;
+    }
+    public void setXCoor(int x){
+	xCoor= x;
+    }
+    public void setYCoor(int y){
+	yCoor= y;
     }
     //================================================
 
@@ -544,40 +556,45 @@ public class Trainer{
 	    }
 	    
 	    map.placeHuman();//adds the player
-	    //chance of finding objects
-	    if (encounterPotions()){
-		meetPotions();
-	    }
-	    if (encounterPokeballs()){
-		meetPokeballs();
-	    }
-	    if (encounterMoney()){
-		meetMoney();
-	    }
-	    //generates and fight a wild pokemon
+	    if (getXCoor()== map.getSize()&& getYCoor()==map.getSize()){
+		if (gymBattle());{
+		    setXCoor(0);
+		    setYCoor(0);
+		    setCurrentTown(getCurrentTown()+1);
+		}
+	    }else{
+		//chance of finding objects
+		if (encounterPotions()){
+		    meetPotions();
+		}
+		if (encounterPokeballs()){
+		    meetPokeballs();
+		}
+		if (encounterMoney()){
+		    meetMoney();
+		}
+		//generates and fight a wild pokemon
 	   
-	    if (encounterPoke()){
-		System.out.println("hello");
-		
-		Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
+		if (encounterPoke()){
 
-		System.out.println("hello");
-		System.out.println("A wild "+wildPoke.getName()+" appeared!");
-		if (!stillAlive()){
-		    System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal or use potions");
-		}else{
-		    while(wildPoke.isAlive()&&stillAlive()&&!(wildPoke.getIsCaught())){
-			System.out.println("What will you do?");
-			System.out.println("1: Battle\n2: Run");
-			int choice=Keyboard.readInt();
-			System.out.println("");
+		    Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
+		    System.out.println("A wild "+wildPoke.getName()+" appeared!");
+		    if (!stillAlive()){
+			System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal or use potions");
+		    }else{
+			while(wildPoke.isAlive()&&stillAlive()&&!(wildPoke.getIsCaught())){
+			    System.out.println("What will you do?");
+			    System.out.println("1: Battle\n2: Run");
+			    int choice=Keyboard.readInt();
+			    System.out.println("");
 			
-			if (choice==1){
-			    battlePokemon(wildPoke);
-			}else if (choice== 2){
-			    break;
-			}else{
-			    System.out.println("Choose 1 or 2");   
+			    if (choice==1){
+				battlePokemon(wildPoke);
+			    }else if (choice== 2){
+				break;
+			    }else{
+				System.out.println("Choose 1 or 2");   
+			    }
 			}
 		    }
 		}
@@ -839,6 +856,19 @@ public class Trainer{
 	
     }
 
+    public Boolean gymBattle(){
+	if (getCurrentTown()== 0){
+	    Town1Pewter Gym =new Town1Pewter();
+	    return Gym.gym(this);
+	}else if (getCurrentTown()== 1){
+	    Town2Cerulean Gym = new Town2Cerulean();
+	    return Gym.gym(this);
+	}else{
+	    Town3Vermillion Gym = new Town3Vermillion();
+	    return Gym.gym(this);
+	}
+
+    }
     //================================================
 
     
