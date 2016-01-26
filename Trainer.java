@@ -107,20 +107,27 @@ public class Trainer{
     //generate a random rare Pokemon
     public Pokemon getRare(){
 	Pokemon rare;
-	rare= new Pokemon("Mew");
+	rare= new Pokemon("Mew", getAvgLvl());
 	return rare;
     }
     //generate a random uncommon Pokemon
     public Pokemon getUncommon(){
 	Pokemon uncommon;
-	uncommon= new Pokemon("Pikachu");
+	uncommon= new Pokemon("Pikachu", getAvgLvl());
 	return uncommon;
     }
     //generate a random common Pokemon
     public Pokemon getCommon(){
 	Pokemon common;
-	common= new Pokemon("Vulpix");
+	common= new Pokemon("Vulpix", getAvgLvl());
 	return common;
+    }
+    public int getAvgLvl(){
+	double level=0.0;
+	for(int i= 0; i<getNumPokeOnMe();i++){
+	    level+= getPokeOnMe().get(i).getLevel();
+	}
+	return (int)(level/getNumPokeOnMe());
     }
     //================================================
 
@@ -244,9 +251,11 @@ public class Trainer{
     //Sends newly caught Pokemon to your backpack or lab depending on how many Pokemon you're carrying
     public void catchPokemon(Pokemon newPokemon){
 	if (getNumPokeOnMe()> 5){
+	    newPokemon.setHPT(newPokemon.getHP());
 	    inLabPokemon.add(newPokemon);
 	    System.out.println("Max number of Pokemon you can carry was reached, so "+newPokemon.getName() +" was sent to lab.");
 	}else{
+	    newPokemon.setHPT(newPokemon.getHP());
 	    onMePokemon.add(newPokemon);
 	    newPokemon.setIsCaught(true);
 	    System.out.println(newPokemon.getName()+ " was sent to your backpack. You now have "+getNumPokeOnMe()+" Pokemon on you.");
@@ -377,7 +386,7 @@ public class Trainer{
 	System.out.println("5: Exit Shop");
 	String choiceStr= Keyboard.readString();
 	System.out.println("");
-	
+	 
 	if (choiceStr.equals("5")){
 	    System.out.println("shop here");//shop();
 	}else{
@@ -503,6 +512,7 @@ public class Trainer{
 	}else if (choiceStr.equals("5")){
 	    System.out.println(checkBag());
 	}else if (choiceStr.equals("6")){
+	    System.out.println("Here are the Pokemon you have on you");
 	    System.out.println(getPokeOnMe());
 	}else if (choiceStr.equals("7")){
 	    choosePotion();
@@ -543,6 +553,9 @@ public class Trainer{
 	    if (encounterPokeballs()){
 		meetPokeballs();
 	    }
+	    if (encounterMoney()){
+		meetMoney();
+	    }
 	    
 	    if (encounterPoke()){
 		Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
@@ -568,16 +581,17 @@ public class Trainer{
 	    }
 	}
 	move(map);
+	
     }
 
-    public static Pokemon getRandomPokemon( int town ) {
+    public Pokemon getRandomPokemon( int town ) {
 	String name = getRandomName( town );
 	int level = (int)(town * town * Math.sqrt(town) / 2) + (int)(10 * Math.random()) + 3;
-	Pokemon poke = new Pokemon(name,level);
+	Pokemon poke = new Pokemon(name,getAvgLvl());
 	return poke;
     }
 
-    public static String getRandomName( int town ) {
+    public String getRandomName( int town ) {
 	ArrayList<String> arr = new ArrayList<String>();
 	arr = CSVMaster.CSVtoArray("Town" + town + ".csv");
 	int pNum = (int)(Math.random() * arr.size()-1);
@@ -589,6 +603,53 @@ public class Trainer{
 	}
 	else{
 	    return getRandomName( town );
+	}
+    }
+
+    public void battlePokemon(Pokemon enemy){
+	while(enemy.isAlive()&& stillAlive()&& !(enemy.getIsCaught())){
+	    System.out.println("Which Pokemon would you like to use?");
+	    String pokeOnMe= "";
+	    for (int i= 0; i< getNumPokeOnMe(); i++){
+		if (getPokeOnMe().get(i).getHPT()>0){
+		    pokeOnMe+= (i+1)+": "+getPokeOnMe().get(i);
+		}
+	    }
+	    System.out.println(pokeOnMe);
+	    int pokeChoice=Keyboard.readInt();
+	    System.out.println("");
+	    pokeChoice-=1;
+
+	    Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
+
+	    while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
+		System.out.println("What would you like to do?");
+		System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Change Pokemon\n5: Run");
+		int battleChoice=Keyboard.readInt();
+		System.out.println("");
+		if (battleChoice== 1){
+		    yourPokemon.battle(enemy, this);
+		    int temp=(int) ((Math.random()*100)+enemy.getLevel()*50);
+		    setMoney(getMoney()+temp);
+		    System.out.println("You earned "+temp+" PokeDollars. You now have "+getMoney()+" PokeDollars");
+		}else if(battleChoice== 2){
+		    throwPokeball(enemy);
+		    if (!enemy.getIsCaught()){
+			enemy.attackT(yourPokemon);
+		    }
+		}else if(battleChoice== 3){
+		    usePotions(yourPokemon);
+		    enemy.attackT(yourPokemon);
+		}else if(battleChoice== 4){
+		    break;
+		}else if (battleChoice==5 ){
+		    enemy.setIsCaught(true);
+		    return;
+		}
+	    }
+	    if(!stillAlive()){
+		System.out.println("All of your Pokemon have been defeated.");
+	    }
 	}
     }
     
@@ -610,10 +671,13 @@ public class Trainer{
     public Boolean encounterPokeballs(){
         return Math.random()<.40;
     }
+    public Boolean encounterMoney(){
+        return Math.random()<.50;
+    }
     
     public Pokemon meetPokemon(){
 	int randNum= (int)((Math.random()+1)*100);
-	Pokemon wild;
+	Pokemon wild;	
 	if (randNum< 10){
 	    wild= getRare();
 	}else if (randNum< 40){
@@ -661,48 +725,11 @@ public class Trainer{
 	}
 	System.out.println("You found a "+ findPokeball);
     }
-
-    public void battlePokemon(Pokemon enemy){
-	while(enemy.isAlive()&& stillAlive()&& !(enemy.getIsCaught())){
-	    System.out.println("Which Pokemon would you like to use?");
-	    String pokeOnMe= "";
-	    for (int i= 0; i< getNumPokeOnMe(); i++){
-		if (getPokeOnMe().get(i).getHPT()>0){
-		    pokeOnMe+= (i+1)+": "+getPokeOnMe().get(i);
-		}
-	    }
-	    System.out.println(pokeOnMe);
-	    int pokeChoice=Keyboard.readInt();
-	    System.out.println("");
-	    pokeChoice-=1;
-
-	    Pokemon yourPokemon= getPokeOnMe().get(pokeChoice);
-
-	    while(enemy.isAlive()&& yourPokemon.isAlive()&& !(enemy.getIsCaught())){
-		System.out.println("What would you like to do?");
-		System.out.println("1: Attack\n2: Pokeball\n3: Potion\n4: Run");
-		int battleChoice=Keyboard.readInt();
-		System.out.println("");
-		if (battleChoice== 1){
-		    yourPokemon.battle(enemy, this);
-		}else if(battleChoice== 2){
-		    throwPokeball(enemy);
-		    if (!enemy.getIsCaught()){
-			enemy.attackT(yourPokemon);
-		    }
-		}else if(battleChoice== 3){
-		    usePotions(yourPokemon);
-		    enemy.attackT(yourPokemon);
-		}else if (battleChoice==4 ){
-		    enemy.setIsCaught(true);
-		    return;
-		}
-	    }
-	    if(!stillAlive()){
-		System.out.println("All of your Pokemon have been defeated.");
-	    }
-	}
+    public void meetMoney(){
+	setMoney((int)(getMoney()+ Math.random()*200));
     }
+
+   
 	
 
 
@@ -762,6 +789,5 @@ public class Trainer{
 
 	    
     }
-    
-    
+        
 }
