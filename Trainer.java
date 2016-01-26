@@ -544,7 +544,7 @@ public class Trainer{
 	    }
 	    
 	    if (encounterPoke()){
-		Pokemon wildPoke = meetPokemon();
+		Pokemon wildPoke = getRandomPokemon( getCurrentTown() );
 		System.out.println("A wild "+wildPoke.getName()+" appeared!");
 		if (!stillAlive()){
 		    System.out.println("None of your Pokemon has the energy to fight. Go to the next town to heal or use potions");
@@ -567,8 +567,30 @@ public class Trainer{
 	    }
 	}
 	move(map);
-	
     }
+
+    public static Pokemon getRandomPokemon( int town ) {
+	String name = getRandomName( town );
+	int level = (int)(town * town * Math.sqrt(town) / 2) + (int)(10 * Math.random()) + 3;
+	Pokemon poke = new Pokemon(name,level);
+	return poke;
+    }
+
+    public static String getRandomName( int town ) {
+	ArrayList<String> arr = new ArrayList<String>();
+	arr = CSVMaster.CSVtoArray("Town" + town + ".csv");
+	int pNum = (int)(Math.random() * arr.size()-1);
+	double random = Math.random()*100;
+	if( 100-Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) < random ) {
+	    String pokeName = CSVMaster.singleLine(arr.get(pNum+1))[1];
+	    System.out.println( Double.parseDouble(CSVMaster.singleLine(arr.get(pNum+1))[2]) + "\t" + random );
+	    return pokeName;
+	}
+	else{
+	    return getRandomName( town );
+	}
+    }
+    
     //makes sure at least 1 Pokemon is still alive
     public Boolean stillAlive(){
 	for (int i=0; i<getNumPokeOnMe(); i++){
