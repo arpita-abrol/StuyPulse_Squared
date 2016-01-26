@@ -513,7 +513,7 @@ public class Pokemon {
 
     public String toString() {
 	String fin = _name;
-	fin += "\nLevel: " + getLevel() + "\nAttack: " + getAttackT() + "\nDefense: " + getDefenseT() + "\nHP: " + getHPT();
+	fin += "\tLevel: " + getLevel() + "\tAttack: " + getAttackT() + "\tDefense: " + getDefenseT() + "\tHP: " + getHPT();
 	return fin + "\n";
     }
 
